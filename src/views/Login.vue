@@ -64,6 +64,7 @@ export default {
       if (localStorage.token) {
         this.loginSuccessful
       }
+      localStorage.user = await AuthRepository.currentUser(localStorage.token)
     },
     loginSuccessful(req) {
       if (!req.data.token) {
