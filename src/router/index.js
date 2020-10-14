@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+import FourFour from '../views/404.vue'
 import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
+import next from '../views/next.vue'
 
 const routes = [
   {
@@ -12,6 +15,16 @@ const routes = [
     path: '/sign-up',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: '/next',
+    name: 'next',
+    component: next
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: FourFour
   }
 ]
 
