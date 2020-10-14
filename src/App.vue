@@ -1,7 +1,16 @@
 <template>
   <router-view />
 </template>
-
+<script>
+export default {
+  name: 'App',
+  updated() {
+    if (!localStorage.token && this.$route.path !== '/') {
+      this.$router.push('/?redirect=' + this.$route.path)
+    }
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
