@@ -8,10 +8,11 @@ const logout = async () => {
   const response = await axios.post('/auth')
   return response.data
 }
-const currentUser = async (token) => {
-  const response = await axios.post('/auth', {token: token})
+const currentUser = async () => {
+  const response = await axios.post('/auth', { token: localStorage.token })
   return response.data
 }
 export { login }
 export { logout }
 export { currentUser }
+export default {}

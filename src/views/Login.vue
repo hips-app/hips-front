@@ -61,10 +61,10 @@ export default {
     },
     async login() {
       localStorage.token = await AuthRepository.login(this.email, this.password)
+      localStorage.setItem('User', await AuthRepository.currentUser())
       if (localStorage.token) {
         this.loginSuccessful
       }
-      localStorage.user = await AuthRepository.currentUser(localStorage.token)
     },
     loginSuccessful(req) {
       if (!req.data.token) {
