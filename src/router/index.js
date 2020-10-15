@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../components/logout.vue'
 import SignUp from '../views/SignUp.vue'
 import next from '../views/next.vue'
+import Schedule from '../views/Schedule.vue'
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/logout',
     name: 'Logout',
     component: Logout
+  },
+  {
+    path: '/schedule',
+    name: 'Schedule',
+    component: Schedule
   }
 ]
 
