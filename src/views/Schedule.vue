@@ -68,6 +68,12 @@ export default {
           category: 'strength'
         },
         {
+          name: 'Pistol Squats',
+          desc:
+            'Increase single leg strength, balance, and improve movement mechanics of the lower body',
+          category: 'strength'
+        },
+        {
           name: 'Knee rotation',
           desc: 'Maintain flexibility',
           category: 'stretching'
@@ -132,6 +138,7 @@ export default {
 }
 #cards-container {
   display: flex;
+  height: 100%;
   justify-content: center;
   /* background: linear-gradient(to top, #9796f0, #fbc7d4); */
 }

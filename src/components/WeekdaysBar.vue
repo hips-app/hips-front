@@ -33,7 +33,7 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
-  background: linear-gradient(to top, #8e0e00, #1f1c18);
+  background: linear-gradient(to right, #ff5f6d, #ffc371);
 }
 
 #weekdays-container div {

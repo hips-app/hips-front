@@ -32,7 +32,7 @@ export default {
   color: white;
 }
 div {
-  background-color: rgb(25, 25, 112);
+  background-color: rgb(0, 206, 209);
   padding: 2px 10px;
   border-radius: 4px;
   height: 30px;
