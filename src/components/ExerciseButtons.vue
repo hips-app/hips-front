@@ -29,7 +29,7 @@ export default {
   padding: 10px 0;
   justify-content: center;
   width: 100%;
-  background: linear-gradient(to top, #ffeeee, #ddefbb);
+  background-color: rgb(240, 248, 255);
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
 }
 

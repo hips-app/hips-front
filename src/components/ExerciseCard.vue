@@ -32,7 +32,7 @@ export default {
   width: 18vw;
   height: 260px;
   border-radius: 4px;
-  background-color: rgb(255, 250, 205);
+  background-color: rgb(240, 248, 255);
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
 }
 
