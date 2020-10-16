@@ -62,8 +62,11 @@ export default {
     display: block;
     letter-spacing: 1px;
     border: none;
-    color: white;
     border-radius: 0;
+  }
+
+  .highlighted {
+    color: rgb(0, 255, 127) !important;
   }
 }
 </style>
