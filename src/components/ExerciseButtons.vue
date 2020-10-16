@@ -24,13 +24,19 @@ export default {
 
 <style scoped>
 #buttons-container {
-  display: inline-block;
   display: flex;
-  padding: 10px 0;
+  /* padding: 10px 0; */
   justify-content: center;
-  width: 100%;
   background-color: rgb(240, 248, 255);
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
+}
+
+@media only screen and (max-width: 720px) {
+  #buttons-container {
+    display: block;
+    box-shadow: none;
+    background-color: none;
+  }
 }
 
 /* #buttons-container div {

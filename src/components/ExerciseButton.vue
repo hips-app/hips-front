@@ -38,7 +38,7 @@ div {
   height: 30px;
   line-height: 26px;
   text-align: center;
-  margin: 0 10px;
+  margin: 10px 10px;
   cursor: grab;
 }
 

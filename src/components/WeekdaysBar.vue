@@ -50,6 +50,20 @@ export default {
   cursor: grab;
 }
 .highlighted {
-  border-color: rgb(255, 215, 0) !important;
+  border-color: rgb(0, 255, 127) !important;
+}
+
+@media only screen and (max-width: 720px) {
+  #weekdays-container div {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    line-height: 40px;
+    display: block;
+    letter-spacing: 1px;
+    border: none;
+    color: white;
+    border-radius: 0;
+  }
 }
 </style>

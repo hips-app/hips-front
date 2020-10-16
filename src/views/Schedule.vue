@@ -7,13 +7,16 @@
         :categories="categories"
         :activeCategory="activeCategory"
       ></exercise-buttons>
-      <div id="cards-container">
-        <exercise-card
-          v-for="{ name, desc } in exerciseListToShow"
-          :key="name"
-          :name="name"
-          :desc="desc"
-        ></exercise-card>
+      <div class="container-fluid">
+        <div class="row align-items-start justify-content-center">
+          <exercise-card
+            v-for="{ name, desc } in exerciseListToShow"
+            :key="name"
+            :name="name"
+            :desc="desc"
+            class="col-sm-8 col-md-3"
+          ></exercise-card>
+        </div>
       </div>
     </div>
   </div>
@@ -85,6 +88,48 @@ export default {
         },
         {
           name: 'Outside Running',
+          desc:
+            'Get along with your body Get along with your body Get along with your body Get along with your body',
+          category: 'cardio'
+        },
+        {
+          name: 'Outside Running2',
+          desc: 'Get along with your body2',
+          category: 'cardio'
+        },
+        {
+          name: 'Knee rotation',
+          desc: 'Maintain flexibility',
+          category: 'stretching'
+        },
+        {
+          name: 'Standing knee lift',
+          desc: 'feel steadier on your feet and helps prevent falls',
+          category: 'balance'
+        },
+        {
+          name: 'Outside Running',
+          desc: 'Get along with your body',
+          category: 'cardio'
+        },
+        {
+          name: 'Outside Running2',
+          desc: 'Get along with your body2',
+          category: 'cardio'
+        },
+        {
+          name: 'Knee rotation',
+          desc:
+            'Maintain flexibility Maintain flexibility Maintain flexibility',
+          category: 'stretching'
+        },
+        {
+          name: 'Standing knee lift',
+          desc: 'feel steadier on your feet and helps prevent falls',
+          category: 'balance'
+        },
+        {
+          name: 'Outside Running',
           desc: 'Get along with your body',
           category: 'cardio'
         },
@@ -124,22 +169,21 @@ export default {
 }
 </script>
 <style scoped>
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   font-family: 'Raleway', Sans-serif;
   font-size: 15px;
   font-weight: 900;
   letter-spacing: 2px;
   color: black;
 }
-#container {
-  width: 100%;
+.container-fluid {
   height: 100vh;
-  background-color: rgb(255, 255, 255);
 }
-#cards-container {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  /* background: linear-gradient(to top, #9796f0, #fbc7d4); */
+
+.col-md-3 {
+  margin: 30px 15px 0px 15px;
 }
 </style>
