@@ -179,10 +179,6 @@ export default {
   letter-spacing: 2px;
   color: black;
 }
-.container-fluid {
-  height: 100vh;
-}
-
 .col-md-3 {
   margin: 30px 15px 0px 15px;
 }

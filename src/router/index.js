@@ -6,6 +6,7 @@ import Logout from '../components/logout.vue'
 import SignUp from '../views/SignUp.vue'
 import next from '../views/next.vue'
 import Schedule from '../views/Schedule.vue'
+import ModifyPersonal from '../views/ModifyPersonal.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/schedule',
     name: 'Schedule',
     component: Schedule
+  },
+  {
+    path: '/modify-personal',
+    name: 'ModifyPersonal',
+    component: ModifyPersonal
   }
 ]
 
