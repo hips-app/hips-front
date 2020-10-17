@@ -29,7 +29,7 @@
           <label>Age</label>
         </div>
         <button class="button buttonBlue">
-          SAVE PERSONAL DATA
+          UPDATE PERSONAL DATA
         </button>
       </form>
     </div>
@@ -46,10 +46,10 @@ export default {
   },
   data() {
     return {
-      name: '',
-      email: '',
-      weight: null,
-      age: null
+      name: 'Daniel Solano',
+      email: 'dfsolanol@unal.edu.co',
+      weight: 101,
+      age: 41
     }
   },
   methods: {
