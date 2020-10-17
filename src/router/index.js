@@ -3,10 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import FourFour from '../views/404.vue'
 import Login from '../views/Login.vue'
 import Logout from '../components/logout.vue'
-import SignUp from '../views/SignUp.vue'
-import next from '../views/next.vue'
-import Schedule from '../views/Schedule.vue'
 import ModifyPersonal from '../views/ModifyPersonal.vue'
+import next from '../views/next.vue'
+import RegisterPersonal from '../views/RegisterPersonal.vue'
+import SignUp from '../views/SignUp.vue'
+import Schedule from '../views/Schedule.vue'
 
 const routes = [
   {
@@ -43,6 +44,11 @@ const routes = [
     path: '/modify-personal',
     name: 'ModifyPersonal',
     component: ModifyPersonal
+  },
+  {
+    path: '/register-personal',
+    name: 'RegisterPersonal',
+    component: RegisterPersonal
   }
 ]
 

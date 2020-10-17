@@ -21,7 +21,7 @@
       <label>Age</label>
     </div>
     <button class="button buttonBlue">
-      UPDATE PERSONAL DATA
+      SAVE PERSONAL DATA
     </button>
   </form>
 </template>
@@ -30,10 +30,10 @@
 export default {
   data() {
     return {
-      name: 'Daniel Solano',
-      email: 'dfsolanol@unal.edu.co',
-      weight: 101,
-      age: 41
+      name: '',
+      email: '',
+      weight: null,
+      age: null
     }
   },
   methods: {
@@ -201,11 +201,5 @@ input:focus ~ .highlight {
 
 .buttonBlue:hover {
   background: #357bd8;
-}
-
-@media only screen and (max-width: 540px) {
-  #header {
-    letter-spacing: 6px;
-  }
 }
 </style>

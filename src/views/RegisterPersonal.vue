@@ -4,7 +4,7 @@
       <navbar></navbar>
     </div>
     <div id="header">
-      MODIFY PERSONAL DATA
+      REGISTER PERSONAL DATA
     </div>
     <div>
       <personal-data-form></personal-data-form>
@@ -17,7 +17,7 @@ import navbar from '../components/navbar'
 import PersonalDataForm from '../components/PersonalDataForm'
 
 export default {
-  name: 'ModifyPersonal',
+  name: 'RegisterPersonal',
   components: {
     navbar,
     PersonalDataForm
