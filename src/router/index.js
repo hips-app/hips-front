@@ -4,6 +4,7 @@ import FourFour from '../views/404.vue'
 import Login from '../views/Login.vue'
 import Logout from '../components/logout.vue'
 import SignUp from '../views/SignUp.vue'
+import healthData from '../views/healthData.vue'
 import next from '../views/next.vue'
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
     path: '/logout',
     name: 'Logout',
     component: Logout
+  },
+  {
+    path: '/healthData',
+    name: 'healthData',
+    component: healthData
   }
 ]
 
