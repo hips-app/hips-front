@@ -55,6 +55,16 @@ export default {
     }
   },
   watch: {
+    activeDay(newDay, oldDay) {
+      if (newDay !== oldDay) {
+        let modifiedCategories = [
+          ...this.categories.filter(cat => cat !== this.activeCategory)
+        ]
+        let idx = Math.floor(Math.random() * modifiedCategories.length)
+        this.activeCategory = modifiedCategories[idx]
+        this.updateExercisesToShow()
+      }
+    },
     exercisesListToDo(newListToDo) {
       localStorage.setItem(
         'exercisesListToDo',
@@ -190,7 +200,7 @@ export default {
     },
     changeActiveDay(dayName) {
       this.activeDay = dayName
-      this.updateExercisesToShow()
+      // this.updateExercisesToShow()
     },
     updateExercisesToShow() {
       this.exerciseListToShow = this.exerciseList.filter(
@@ -201,13 +211,14 @@ export default {
         let exerciseToDo = this.exercisesListToDo.find(
           exToDo => exToDo.id === ex.id && exToDo.day === this.activeDay
         )
-        if (exerciseToDo)
+        if (exerciseToDo) {
           return {
             ...ex,
             isSelectedEx: true,
             numSeriesEx: exerciseToDo.numSeries,
             repsPerSeriesEx: exerciseToDo.repsPerSeries
           }
+        }
         return {
           ...ex,
           isSelectedEx: false,
