@@ -1,12 +1,12 @@
 <template>
   <div id="weekdays-container">
     <div
-      v-for="dayName in daysNames"
-      @click="changeActiveDay(dayName)"
-      :key="dayName"
-      :class="activeDay === dayName ? 'highlighted' : ''"
+      v-for="day in [1, 2, 3, 4, 5, 6, 7]"
+      @click="changeActiveDay(day)"
+      :key="day"
+      :class="activeDay === day ? 'highlighted' : ''"
     >
-      {{ dayName }}
+      {{ dayNames[day] }}
     </div>
   </div>
 </template>
@@ -16,12 +16,20 @@ export default {
   inject: ['changeActiveDay'],
   data() {
     return {
-      daysNames: ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU']
+      dayNames: {
+        1: 'MO',
+        2: 'TU',
+        3: 'WE',
+        4: 'TH',
+        5: 'FR',
+        6: 'SA',
+        7: 'SU'
+      }
     }
   },
   props: {
     activeDay: {
-      type: String,
+      type: Number,
       required: true
     }
   }

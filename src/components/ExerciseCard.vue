@@ -4,7 +4,7 @@
     <hr />
     <div id="desc-container" v-if="!isEditable">{{ desc }}</div>
     <div id="card-form" v-else>
-      <form @submit.prevent="saveData">
+      <form @submit.prevent>
         <div class="group-form">
           <input type="number" v-model="numSeries" /><span
             class="highlight"
@@ -55,7 +55,7 @@ export default {
   },
   props: {
     id: {
-      type: String,
+      type: Number,
       required: true
     },
     name: {
@@ -71,11 +71,11 @@ export default {
       required: true
     },
     numSeriesEx: {
-      type: String,
+      type: Number,
       required: true
     },
     repsPerSeriesEx: {
-      type: String,
+      type: Number,
       required: true
     }
   },

@@ -74,115 +74,115 @@ export default {
   },
   data() {
     return {
-      activeDay: 'MO',
+      activeDay: 1,
       activeCategory: null,
       // Test Data
       exerciseList: [
         {
-          id: '1',
+          id: 1,
           name: 'Pull Ups',
           desc:
             'Elbows flex and the shoulders adduct and extend to bring the elbows to the torso',
           category: 'strength'
         },
         {
-          id: '2',
+          id: 2,
           name: 'Pull Ups',
           desc:
             'Elbows flex and the shoulders adduct and extend to bring the elbows to the torso',
           category: 'intensive'
         },
         {
-          id: '3',
+          id: 3,
           name: 'Push Ups',
           desc:
             'By raising and lowering the body using the arms, push-ups exercise the pectoral muscles, triceps, and anterior deltoids',
           category: 'strength'
         },
         {
-          id: '4',
+          id: 4,
           name: 'Pistol Squats',
           desc:
             'Increase single leg strength, balance, and improve movement mechanics of the lower body',
           category: 'strength'
         },
         {
-          id: '5',
+          id: 5,
           name: 'Pistol Squats',
           desc:
             'Increase single leg strength, balance, and improve movement mechanics of the lower body',
           category: 'strength'
         },
         {
-          id: '6',
+          id: 6,
           name: 'Knee rotation',
           desc: 'Maintain flexibility',
           category: 'stretching'
         },
         {
-          id: '7',
+          id: 7,
           name: 'Standing knee lift',
           desc: 'feel steadier on your feet and helps prevent falls',
           category: 'balance'
         },
         {
-          id: '8',
+          id: 8,
           name: 'Outside Running',
           desc:
             'Get along with your body Get along with your body Get along with your body Get along with your body',
           category: 'cardio'
         },
         {
-          id: '9',
+          id: 9,
           name: 'Outside Running2',
           desc: 'Get along with your body2',
           category: 'cardio'
         },
         {
-          id: '10',
+          id: 10,
           name: 'Knee rotation',
           desc: 'Maintain flexibility',
           category: 'stretching'
         },
         {
-          id: '11',
+          id: 11,
           name: 'Standing knee lift',
           desc: 'feel steadier on your feet and helps prevent falls',
           category: 'balance'
         },
         {
-          id: '12',
+          id: 12,
           name: 'Outside Running',
           desc: 'Get along with your body',
           category: 'cardio'
         },
         {
-          id: '13',
+          id: 13,
           name: 'Outside Running2',
           desc: 'Get along with your body2',
           category: 'cardio'
         },
         {
-          id: '14',
+          id: 14,
           name: 'Knee rotation',
           desc:
             'Maintain flexibility Maintain flexibility Maintain flexibility',
           category: 'stretching'
         },
         {
-          id: '15',
+          id: 15,
           name: 'Standing knee lift',
           desc: 'feel steadier on your feet and helps prevent falls',
           category: 'balance'
         },
         {
-          id: '16',
+          id: 16,
           name: 'Outside Running',
           desc: 'Get along with your body',
           category: 'cardio'
         },
         {
-          id: '17',
+          id: 17,
           name: 'Outside Running2',
           desc: 'Get along with your body2',
           category: 'cardio'
@@ -222,8 +222,8 @@ export default {
         return {
           ...ex,
           isSelectedEx: false,
-          numSeriesEx: '',
-          repsPerSeriesEx: ''
+          numSeriesEx: 0,
+          repsPerSeriesEx: 0
         }
       })
       // console.log(this.exercisesListToDo)
@@ -239,15 +239,15 @@ export default {
             ex => ex.id !== id
           )
         } else {
-          exercise.numSeries = numSeries
-          exercise.repsPerSeries = repsPerSeries
+          exercise.numSeries = parseInt(numSeries)
+          exercise.repsPerSeries = parseInt(repsPerSeries)
         }
       } else {
         if (isSelected) {
           this.exercisesListToDo.push({
             id,
-            numSeries,
-            repsPerSeries,
+            numSeries: parseInt(numSeries),
+            repsPerSeries: parseInt(repsPerSeries),
             day: this.activeDay
           })
         }
