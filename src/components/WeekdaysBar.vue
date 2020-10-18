@@ -1,17 +1,24 @@
 <template>
   <div id="weekdays-container">
-    <div :class="activeDay === 'MO' ? 'highlighted' : ''">MO</div>
-    <div :class="activeDay === 'TU' ? 'highlighted' : ''">TU</div>
-    <div :class="activeDay === 'WE' ? 'highlighted' : ''">WE</div>
-    <div :class="activeDay === 'TH' ? 'highlighted' : ''">TH</div>
-    <div :class="activeDay === 'FR' ? 'highlighted' : ''">FR</div>
-    <div :class="activeDay === 'SA' ? 'highlighted' : ''">SA</div>
-    <div :class="activeDay === 'SU' ? 'highlighted' : ''">SU</div>
+    <div
+      v-for="dayName in daysNames"
+      @click="changeActiveDay(dayName)"
+      :key="dayName"
+      :class="activeDay === dayName ? 'highlighted' : ''"
+    >
+      {{ dayName }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  inject: ['changeActiveDay'],
+  data() {
+    return {
+      daysNames: ['MO', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU']
+    }
+  },
   props: {
     activeDay: {
       type: String,

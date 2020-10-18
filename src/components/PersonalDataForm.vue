@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     saveData() {
-      console.log(this.name)
+      console.log('saveData method')
     }
   }
 }

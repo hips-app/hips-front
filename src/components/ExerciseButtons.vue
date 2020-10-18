@@ -8,6 +8,7 @@
     >
       {{ catName }}
     </excercise-button>
+    <div @click="savePlanIntoDB" class="btn-save">SAVE</div>
   </div>
 </template>
 
@@ -18,6 +19,7 @@ export default {
   components: {
     ExcerciseButton
   },
+  inject: ['savePlanIntoDB'],
   props: ['categories', 'activeCategory']
 }
 </script>
@@ -31,11 +33,35 @@ export default {
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
 }
 
+* {
+  font-family: 'Raleway', Sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: white;
+}
+.btn-save {
+  background-color: rgb(205, 92, 92);
+  padding: 2px 10px;
+  border-radius: 4px;
+  height: 30px;
+  line-height: 26px;
+  text-align: center;
+  margin: 10px 10px 10px 80px;
+  cursor: grab;
+}
+
 @media only screen and (max-width: 720px) {
   #buttons-container {
     display: block;
     box-shadow: none;
     background-color: none;
+  }
+}
+
+@media only screen and (max-width: 880px) {
+  .btn-save {
+    margin: 10px 10px;
   }
 }
 

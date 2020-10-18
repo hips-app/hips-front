@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="/">HIPS APP</a>
 
     <span class="navbar-text">
-      {{ User }}
+      {{ 'User' }}
       <router-link to="/logout" class="btn btn-logout btn-sm">
         Logout
       </router-link>
@@ -20,8 +20,8 @@ export default {
 
 <style lang="scss" scoped>
 .btn-logout {
-  background-color: #837A75;
-  border-color: #837A75;
+  background-color: #837a75;
+  border-color: #837a75;
   color: #fff;
 }
 
