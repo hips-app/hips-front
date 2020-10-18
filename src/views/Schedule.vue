@@ -57,10 +57,10 @@ export default {
   watch: {
     activeDay(newDay, oldDay) {
       if (newDay !== oldDay) {
-        let modifiedCategories = [
+        const modifiedCategories = [
           ...this.categories.filter(cat => cat !== this.activeCategory)
         ]
-        let idx = Math.floor(Math.random() * modifiedCategories.length)
+        const idx = Math.floor(Math.random() * modifiedCategories.length)
         this.activeCategory = modifiedCategories[idx]
         this.updateExercisesToShow()
       }
@@ -208,7 +208,7 @@ export default {
       )
 
       this.exerciseListToShow = this.exerciseListToShow.map(ex => {
-        let exerciseToDo = this.exercisesListToDo.find(
+        const exerciseToDo = this.exercisesListToDo.find(
           exToDo => exToDo.id === ex.id && exToDo.day === this.activeDay
         )
         if (exerciseToDo) {
@@ -229,7 +229,7 @@ export default {
       // console.log(this.exercisesListToDo)
     },
     updateExercisesToDo(id, numSeries, repsPerSeries, isSelected) {
-      let exercise = this.exercisesListToDo.find(
+      const exercise = this.exercisesListToDo.find(
         ex => ex.id === id && ex.day === this.activeDay
       )
 
@@ -256,7 +256,9 @@ export default {
     },
     savePlanIntoDB() {
       // Needs to be refactored. Only for testing purposes
-      let localS = JSON.parse(localStorage.getItem('exercisesListToDo'))['data']
+      const localS = JSON.parse(localStorage.getItem('exercisesListToDo'))[
+        'data'
+      ]
       console.log(localS)
     }
   },
@@ -274,16 +276,16 @@ export default {
   // },
   mounted() {
     if (localStorage.exercisesListToDo) {
-      let retrievedList = localStorage.getItem('exercisesListToDo')
+      const retrievedList = localStorage.getItem('exercisesListToDo')
       this.exercisesListToDo = JSON.parse(retrievedList)['data']
     }
 
     this.exerciseList.forEach(exercise => {
-      let cat = exercise.category
+      const cat = exercise.category
       if (!this.categories.includes(cat)) this.categories.push(cat)
     })
 
-    let idx = Math.floor(Math.random() * this.categories.length)
+    const idx = Math.floor(Math.random() * this.categories.length)
     this.activeCategory = this.categories[idx]
 
     this.updateExercisesToShow()

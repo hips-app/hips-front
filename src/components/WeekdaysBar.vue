@@ -1,7 +1,7 @@
 <template>
   <div id="weekdays-container">
     <div
-      v-for="day in [1, 2, 3, 4, 5, 6, 7]"
+      v-for="day in 7"
       @click="changeActiveDay(day)"
       :key="day"
       :class="activeDay === day ? 'highlighted' : ''"

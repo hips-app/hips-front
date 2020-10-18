@@ -37,7 +37,7 @@ export default {
   inject: ['updateExercisesToDo'],
   watch: {
     isEditable(newVal, oldVal) {
-      let fieldsAreNotEmpy = this.numSeries && this.repsPerSeries
+      const fieldsAreNotEmpy = this.numSeries && this.repsPerSeries
       if (oldVal && !newVal) {
         if (fieldsAreNotEmpy) {
           this.isSelected = true
