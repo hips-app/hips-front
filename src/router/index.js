@@ -29,15 +29,9 @@ const routes = [
     component: Logout
   },
   {
-<<<<<<< HEAD
-    path: '/*',
-    name: '404',
-    component: FourFour
-=======
     path: '/healthData',
     name: 'healthData',
     component: healthData
->>>>>>> a5456b5eb8ca3839c01ddef30dd9d261a7122636
   }
 ];
 
