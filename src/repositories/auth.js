@@ -13,13 +13,30 @@ const currentUser = async () => {
   return response.data
 }
 const regDatosSalud = async (preg1, preg2, preg3) => {
-  const response = await axios.post('/auth', {
-    birthDay: preg1,
-    heightInCentimeters: preg3,
-    weightInKilograms: preg2
-  })
-  return response.status
+  try {
+    await axios.post('/auth', {
+      birthDay: preg1,
+      heightInCentimeters: preg3,
+      weightInKilograms: preg2
+    })
+    return true
+  } catch (error) {
+    return false
+  }
 }
+const regMeta = async (preg1, preg2) => {
+  try {
+    await axios.post('/auth', {
+      birthDay: preg1,
+      weightInKilograms: preg2
+    })
+    return true
+  } catch (error) {
+    return false
+  }
+}
+
+export { regMeta }
 export { regDatosSalud }
 export { login }
 export { logout }
