@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import FourFour from '../views/404.vue';
-import Login from '../views/Login.vue';
-import Logout from '../components/logout.vue';
-import SignUp from '../views/SignUp.vue';
-import next from '../views/next.vue';
+import FourFour from '../views/404.vue'
+import Login from '../views/Login.vue'
+import Logout from '../components/logout.vue'
+import SignUp from '../views/SignUp.vue'
+import healthData from '../views/healthData.vue'
+import next from '../views/next.vue'
 
 const routes = [
   {
@@ -28,9 +29,15 @@ const routes = [
     component: Logout
   },
   {
+<<<<<<< HEAD
     path: '/*',
     name: '404',
     component: FourFour
+=======
+    path: '/healthData',
+    name: 'healthData',
+    component: healthData
+>>>>>>> a5456b5eb8ca3839c01ddef30dd9d261a7122636
   }
 ];
 

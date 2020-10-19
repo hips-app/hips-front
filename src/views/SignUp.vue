@@ -17,7 +17,6 @@
             <span class="bar"></span>
             <label>Email</label>
           </div>
-
           <div class="group">
             <input type="password" required />
             <span class="highlight"></span>
