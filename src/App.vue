@@ -2,14 +2,18 @@
   <router-view />
 </template>
 <script>
+import { HttpProvider } from './providers';
 export default {
   name: 'App',
   updated() {
     if (!localStorage.token && this.$route.path !== '/') {
-      this.$router.push('/?redirect=' + this.$route.path)
+      this.$router.push('/?redirect=' + this.$route.path);
     }
+  },
+  mounted() {
+    HttpProvider.setDefaultHeaders();
   }
-}
+};
 </script>
 <style>
 #app {

@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
-import FourFour from '../views/404.vue'
-import Login from '../views/Login.vue'
-import Logout from '../components/logout.vue'
-import SignUp from '../views/SignUp.vue'
-import next from '../views/next.vue'
+import FourFour from '../views/404.vue';
+import Login from '../views/Login.vue';
+import Logout from '../components/logout.vue';
+import SignUp from '../views/SignUp.vue';
+import next from '../views/next.vue';
 
 const routes = [
   {
@@ -23,20 +23,20 @@ const routes = [
     component: next
   },
   {
-    path: '/*',
-    name: '404',
-    component: FourFour
-  },
-  {
     path: '/logout',
     name: 'Logout',
     component: Logout
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: FourFour
   }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
 
-export default router
+export default router;
