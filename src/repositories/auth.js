@@ -12,6 +12,10 @@ const currentUser = async () => {
   const response = await axios.post('/auth', { token: localStorage.token })
   return response.data
 }
+const profile = async () => {
+  const response = await axios.post('/auth', { token: localStorage.token })
+  return response.data
+}
 const regDatosSalud = async (preg1, preg2, preg3) => {
   try {
     await axios.post('/auth', {
@@ -36,7 +40,7 @@ const regMeta = async (preg1, preg2, tok) => {
     return false
   }
 }
-
+export { profile }
 export { regMeta }
 export { regDatosSalud }
 export { login }
