@@ -1,6 +1,10 @@
 <template>
   <center>
-    <a><router-link to="/regMeta"> Registro Meta </router-link></a>
+    <a>
+      <router-link class="text-white pr-2 pt-2 pl-5" to="/regMeta">
+        Registro Meta
+      </router-link>
+    </a>
   </center>
 </template>
 
