@@ -1,17 +1,16 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">HIPS APP</a>
-    <div class="popup" style="position:fixed; right:5px; top:5px">
-      <div class="popup-content">
-        <p id="user">USER</p>
-        <button href="#0" class="popup-button">
-          <router-link to="/logout">
-            Logout
-          </router-link>
-        </button>
-      </div>
-    </div>
     <registroMeta style="position:relative; left:50px;"></registroMeta>
+    <div className="mr-auto"></div>
+    <router-link to="/profile">
+      <p id="user" class="text-white pr-2 pt-2 pl-5">USER</p>
+    </router-link>
+    <router-link to="/logout">
+      <button href="#0" class="btn btn-primary">
+        logout
+      </button>
+    </router-link>
   </nav>
 </template>
 
