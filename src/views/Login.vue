@@ -60,12 +60,15 @@ export default {
   methods: {
     checkCurrentLogin() {
       if (localStorage.token) {
-        this.$router.replace(this.$route.query.redirect || '/next')
+        this.$router.replace(this.$route.query.redirect || '/healthData')
       }
     },
     async login() {
-      localStorage.token = await AuthRepository.login(this.email, this.password)
-      localStorage.setItem('User', await AuthRepository.currentUser())
+      localStorage.setItem(
+        'data',
+        await AuthRepository.login(this.email, this.password)
+      )
+      localStorage.token = localStorage.getItem('data').token
       if (localStorage.token) {
         this.loginSuccessful
       }
@@ -75,9 +78,15 @@ export default {
         this.loginFailed()
         return
       }
-      localStorage.token = req.data.token
-      this.error = false
-      this.$router.replace(this.$route.query.redirect || '/next')
+      if (req.data.type.id == 1) {
+        localStorage.token = req.data.token
+        this.error = false
+        this.$router.replace(this.$route.query.redirect || '/next')
+      } else {
+        localStorage.token = req.data.token
+        this.error = false
+        this.$router.replace(this.$route.query.redirect || '/healthData')
+      }
     },
     loginFailed() {
       this.error = 'Login failed!'

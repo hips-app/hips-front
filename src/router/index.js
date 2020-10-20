@@ -6,6 +6,7 @@ import Logout from '../components/logout.vue'
 import ModifyPersonal from '../views/ModifyPersonal.vue'
 import SignUp from '../views/SignUp.vue'
 import healthData from '../views/healthData.vue'
+import metas from '../views/metas.vue'
 import next from '../views/next.vue'
 import RegisterPersonal from '../views/RegisterPersonal.vue'
 import SignUp from '../views/SignUp.vue'
@@ -56,6 +57,11 @@ const routes = [
     path: '/healthData',
     name: 'healthData',
     component: healthData
+  },
+  {
+    path: '/regMeta',
+    name: 'regMetas',
+    component: metas
   }
 ]
 
