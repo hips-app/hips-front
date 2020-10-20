@@ -25,7 +25,11 @@
             placeholder="Password"
             required
           />
-          <button href="#0" class="popup-button" type="submit">Sign in</button>
+          <center>
+            <button href="#0" class="popup-button" type="submit">
+              Sign in
+            </button>
+          </center>
         </form>
         <router-link to="sign-up" id="btn-2" class="popup-button">
           Sign up
@@ -61,10 +65,10 @@ export default {
     },
     async login() {
       localStorage.token = await AuthRepository.login(this.email, this.password)
+      localStorage.setItem('User', await AuthRepository.currentUser())
       if (localStorage.token) {
         this.loginSuccessful
       }
-      localStorage.user = await AuthRepository.currentUser(localStorage.token)
     },
     loginSuccessful(req) {
       if (!req.data.token) {
