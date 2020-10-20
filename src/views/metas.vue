@@ -3,10 +3,11 @@
     <div class="popup">
       <div class="popup-content">
         <div class="form-group " style="">
-          <h4>Ingrese su fecha de realizacion de la meta:</h4>
+          <h4>Ingrese su fecha de expiracion de la meta:</h4>
           <input
             v-model="preg1"
-            type="Date"
+            type="date"
+            date-format="dd/MM/yyyy"
             id="inputMetaDate"
             class="form-control"
             style=""
@@ -44,7 +45,9 @@ export default {
   },
   methods: {
     async healthData() {
-      if (await AuthRepository.regMeta(this.preg1, this.preg2)) {
+      if (
+        await AuthRepository.regMeta(this.preg1, this.preg2, localStorage.token)
+      ) {
         this.$router.push(this.$route.query.redirect || '/next')
       }
     }
