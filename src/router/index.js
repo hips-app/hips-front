@@ -9,7 +9,6 @@ import healthData from '../views/healthData.vue'
 import metas from '../views/metas.vue'
 import next from '../views/next.vue'
 import RegisterPersonal from '../views/RegisterPersonal.vue'
-import SignUp from '../views/SignUp.vue'
 import Schedule from '../views/Schedule.vue'
 
 const routes = [
