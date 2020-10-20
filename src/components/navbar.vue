@@ -25,3 +25,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.btn-logout {
+  background-color: #837a75;
+  border-color: #837a75;
+  color: #fff;
+}
+
+.btn-logout:hover {
+  background-color: #31302f;
+  border-color: #31302f;
+  color: #fff;
+}
+</style>
