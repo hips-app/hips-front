@@ -22,8 +22,8 @@
 export default {
   name: 'Navbar',
   getuser() {
-    var user = localStorage.getItem('User')
-    document.getElementById('user').innerHTML = user
+    var user = localStorage.getItem('User');
+    document.getElementById('user').innerHTML = user;
   }
-}
+};
 </script>

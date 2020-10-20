@@ -1,18 +1,22 @@
-import axios from 'axios'
+const { HttpProvider } = require('../providers');
 
-const login = async (user, password) => {
-  const response = await axios.post('/auth', { user: user, password: password })
-  return response.data
-}
-const logout = async tok => {
-  const response = await axios.post('/auth', { token: tok })
-  return response.data
-}
-const currentUser = async () => {
-  const response = await axios.post('/auth', { token: localStorage.token })
-  return response.data
-}
-export { login }
-export { logout }
-export { currentUser }
-export default {}
+const baseEndpoint = '/auth';
+
+const login = async (email, password) => {
+  const response = await HttpProvider.post(baseEndpoint, {
+    email,
+    password
+  });
+  return response;
+};
+const loginWithToken = async token => {
+  HttpProvider.setHeaderToken(token);
+  const response = await HttpProvider.post(baseEndpoint);
+  return response;
+};
+const logout = async () => {
+  const response = await HttpProvider.deleted(baseEndpoint);
+  return response;
+};
+
+export { login, loginWithToken, logout };

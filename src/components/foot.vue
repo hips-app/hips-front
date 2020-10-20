@@ -15,5 +15,5 @@
 <script>
 export default {
   name: 'Foot'
-}
+};
 </script>

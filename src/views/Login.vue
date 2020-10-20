@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { AuthRepository } from '../repositories'
+import { AuthService } from '../repositories';
 export default {
   name: 'Login',
   data() {
@@ -49,41 +49,44 @@ export default {
       email: '',
       password: '',
       error: false
-    }
+    };
   },
   created() {
-    this.checkCurrentLogin()
+    this.checkCurrentLogin();
   },
   updated() {
-    this.checkCurrentLogin()
+    this.checkCurrentLogin();
   },
   methods: {
     checkCurrentLogin() {
       if (localStorage.token) {
-        this.$router.replace(this.$route.query.redirect || '/next')
+        this.$router.replace(this.$route.query.redirect || '/next');
       }
     },
     async login() {
-      localStorage.token = await AuthRepository.login(this.email, this.password)
-      localStorage.setItem('User', await AuthRepository.currentUser())
+      localStorage.token = await AuthService.login(
+        this.email,
+        this.password
+      );
+      localStorage.setItem('User', await AuthService.currentUser());
       if (localStorage.token) {
-        this.loginSuccessful
+        this.loginSuccessful;
       }
     },
     loginSuccessful(req) {
       if (!req.data.token) {
-        this.loginFailed()
-        return
+        this.loginFailed();
+        return;
       }
-      localStorage.token = req.data.token
-      this.error = false
-      this.$router.replace(this.$route.query.redirect || '/next')
+      localStorage.token = req.data.token;
+      this.error = false;
+      this.$router.replace(this.$route.query.redirect || '/next');
     },
     loginFailed() {
-      this.error = 'Login failed!'
-      delete localStorage.token
+      this.error = 'Login failed!';
+      delete localStorage.token;
     }
   },
   components: {}
-}
+};
 </script>

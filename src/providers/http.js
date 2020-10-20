@@ -1,95 +1,95 @@
 import axios from 'axios';
-import { AuthModel } from '../models';
+import { AuthController } from '../controllers';
 
-const get = (url, query = {}, params = {}) => {
+const get = (url, query = {}, body = {}) => {
   let queryString = '?';
-  Object.keys(query).forEach((key) => {
+  Object.keys(query).forEach(key => {
     queryString += `${key}=${query[key]}&`;
   });
   return new Promise((resolve, reject) => {
     axios
-      .get(url + (queryString.length == 1 ? '' : queryString), params)
-      .then((response) => resolve(response.data))
-      .catch((error) => {
+      .get(url + (queryString.length == 1 ? '' : queryString), body)
+      .then(response => resolve(response.data))
+      .catch(error => {
         validateSessionCredentials(error);
         let exception = Object.assign(error);
         exception.query = query;
-        exception.data = params;
+        exception.body = body;
         reject(error);
       });
   });
 };
 
-const post = (url, data) => {
+const post = (url, body) => {
   return new Promise((resolve, reject) => {
     axios
-      .post(url, data)
-      .then((response) => resolve(response.data))
-      .catch((error) => {
+      .post(url, body)
+      .then(response => resolve(response.data))
+      .catch(error => {
         validateSessionCredentials(error);
         let exception = Object.assign(error);
-        exception.data = data;
+        exception.body = body;
         reject(exception);
       });
   });
 };
 
-const put = (url, data) => {
+const put = (url, body) => {
   return new Promise((resolve, reject) => {
     axios
-      .put(url, data)
-      .then((response) => resolve(response.data))
-      .catch((error) => {
+      .put(url, body)
+      .then(response => resolve(response.data))
+      .catch(error => {
         validateSessionCredentials(error);
         let exception = Object.assign(error);
-        exception.data = data;
+        exception.body = body;
         reject(exception);
       });
   });
 };
 
-const patch = (url, data) => {
+const patch = (url, body) => {
   return new Promise((resolve, reject) => {
     axios
-      .patch(url, data)
-      .then((response) => resolve(response.data))
-      .catch((error) => {
+      .patch(url, body)
+      .then(response => resolve(response.data))
+      .catch(error => {
         validateSessionCredentials(error);
         let exception = Object.assign(error);
-        exception.data = data;
+        exception.body = body;
         reject(exception);
       });
   });
 };
 
-const deleted = (url, data) => {
+const deleted = (url, body) => {
   return new Promise((resolve, reject) => {
     axios
-      .delete(url, data)
-      .then((response) => resolve(response.data))
-      .catch((error) => {
+      .delete(url, body)
+      .then(response => resolve(response.data))
+      .catch(error => {
         validateSessionCredentials(error);
         let exception = Object.assign(error);
-        exception.data = data;
+        exception.body = body;
         reject(exception);
       });
   });
 };
-const validateSessionCredentials = (error) => {
+const validateSessionCredentials = error => {
   if (error.response && error.response.status == 401) {
     removeSessionCredentials();
-    window.location.href = '/login';
+    window.location.href = '/';
   }
 };
 
 const removeSessionCredentials = () => {
-  AuthModel.isAuthenticated = false;
+  AuthController.isAuthenticated = false;
   setHeaderToken('');
-  localStorage.removeItem('authentication_token');
+  localStorage.removeItem('token');
 };
 
 const setDefaultHeaders = () => {
-  axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+  axios.defaults.baseURL = process.env.VUE_APP_API_URL;
   // axios.defaults.timeout = 2500;
   axios.defaults.headers.common['Authorization'] = '';
   axios.defaults.headers.common['Content-Type'] = 'application/json';
@@ -97,11 +97,11 @@ const setDefaultHeaders = () => {
   axios.defaults.headers.common['language'] = 'es';
 };
 
-const setHeaderToken = (token) => {
+const setHeaderToken = token => {
   axios.defaults.headers.common['Authorization'] = token;
 };
 
-const setHeaderBaseURL = (URL) => {
+const setHeaderBaseURL = URL => {
   axios.defaults.baseURL = URL;
 };
 
@@ -114,5 +114,5 @@ export default {
   setDefaultHeaders,
   setHeaderToken,
   setHeaderBaseURL,
-  removeSessionCredentials,
+  removeSessionCredentials
 };
