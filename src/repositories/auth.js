@@ -24,11 +24,12 @@ const regDatosSalud = async (preg1, preg2, preg3) => {
     return false
   }
 }
-const regMeta = async (preg1, preg2) => {
+const regMeta = async (preg1, preg2, tok) => {
   try {
     await axios.post('/auth', {
-      birthDay: preg1,
-      weightInKilograms: preg2
+      expirationDate: preg1,
+      description: preg2,
+      token: tok
     })
     return true
   } catch (error) {
