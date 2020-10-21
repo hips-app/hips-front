@@ -36,7 +36,7 @@
 <script>
 import navbar from '../components/navbar'
 import foot from '../components/foot'
-import { AuthRepository } from '../repositories'
+import { AuthService } from '../services'
 
 export default {
   name: 'profile',
@@ -48,7 +48,7 @@ export default {
     }
   },
   async created() {
-    var data = await AuthRepository.profile()
+    var data = await AuthService.profile()
     this.setProfile(data)
   },
   components: {

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AuthController } from '../controllers';
+import { AccountModel } from '../models';
 
 const get = (url, query = {}, body = {}) => {
   let queryString = '?';
@@ -84,6 +85,7 @@ const validateSessionCredentials = error => {
 
 const removeSessionCredentials = () => {
   AuthController.isAuthenticated = false;
+  AuthController.currentAccount = new AccountModel();
   setHeaderToken('');
   localStorage.removeItem('token');
 };

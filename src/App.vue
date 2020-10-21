@@ -1,17 +1,39 @@
 <template>
-  <router-view />
+  <div v-if="loading" class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <router-view v-else />
 </template>
 <script>
+import { AuthController } from './controllers';
 import { HttpProvider } from './providers';
+import { AuthService } from './services';
 export default {
   name: 'App',
-  updated() {
-    if (!localStorage.token && this.$route.path !== '/') {
-      this.$router.push('/?redirect=' + this.$route.path);
-    }
+  data() {
+    return { loading: true };
   },
   mounted() {
     HttpProvider.setDefaultHeaders();
+    const token = localStorage.getItem('token');
+    if (token) {
+      AuthService.loginWithToken(token)
+        .then(accountData => {
+          AuthController.setAccount(accountData);
+        })
+        .catch(error => {
+          console.log(error);
+          HttpProvider.removeSessionCredentials();
+          this.$router.push('/?redirect=' + this.$route.path);
+        })
+        .finally(() => {
+          this.loading = false;
+          AuthController.hasLoaded = true;
+        });
+    } else {
+      this.loading = false;
+      AuthController.hasLoaded = true;
+    }
   }
 };
 </script>

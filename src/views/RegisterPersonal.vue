@@ -4,7 +4,7 @@
       <navbar></navbar>
     </div>
     <div id="header">
-      REGISTER PERSONAL DATA
+      UPDATE PERSONAL DATA
     </div>
     <div>
       <personal-data-form></personal-data-form>

@@ -1,47 +1,81 @@
 <template>
   <form @submit.prevent="saveData">
     <div class="group">
-      <input type="text" v-model="name" /><span class="highlight"></span
-      ><span class="bar"></span>
-      <label>Name</label>
+      <input type="text" v-model="firstName" />
+      <span class="highlight"></span><span class="bar"></span>
+      <label>First Name</label>
     </div>
     <div class="group">
-      <input type="text" v-model="email" /><span class="highlight"></span
-      ><span class="bar"></span>
-      <label>Email</label>
+      <input type="text" v-model="lastName" />
+      <span class="highlight"></span><span class="bar"></span>
+      <label>Last Name</label>
     </div>
     <div class="group">
-      <input type="number" v-model="weight" /><span class="highlight"></span
-      ><span class="bar"></span>
+      <input type="number" v-model="weight" />
+      <span class="highlight"></span><span class="bar"></span>
       <label>Weight (kg)</label>
     </div>
     <div class="group">
-      <input type="number" v-model="age" /><span class="highlight"></span
-      ><span class="bar"></span>
-      <label>Age</label>
+      <input type="number" v-model="height" />
+      <span class="highlight"></span><span class="bar"></span>
+      <label>Height (cm)</label>
     </div>
-    <button class="button buttonBlue">
+    <span class="">Birth date</span>
+    <div class="group">
+      <input v-model="birthDate" type="date" required />
+      <span class="highlight"></span><span class="bar"></span>
+    </div>
+    <button class="button buttonBlue" v-on:click="sendHealthData()">
       SAVE PERSONAL DATA
     </button>
   </form>
 </template>
 
 <script>
+import { AuthController } from '../controllers';
+import { UserService } from '../services';
 export default {
   data() {
     return {
-      name: '',
-      email: '',
+      firstName: AuthController.currentAccount.firstName,
+      lastName: AuthController.currentAccount.lastName,
       weight: null,
-      age: null
-    }
+      height: null,
+      birthDate: null
+    };
   },
   methods: {
-    saveData() {
-      console.log('saveData method')
+    async sendHealthData() {
+      try {
+        console.log(this.birthDate);
+        if (
+          !(
+            this.weight &&
+            this.height &&
+            this.birthDate &&
+            this.lastName &&
+            this.firstName
+          )
+        ) {
+          alert('Please fill all fields');
+          return;
+        }
+        await UserService.updatePersonalData(
+          this.firstName,
+          this.lastName,
+          this.weight,
+          this.height,
+          this.birthDate
+        );
+        AuthController.currentAccount.firstName = this.firstName;
+        AuthController.currentAccount.lastName = this.lastName;
+        this.$router.replace('goal');
+      } catch (error) {
+        alert('Ha ocurrido un error');
+      }
     }
   }
-}
+};
 </script>
 
 <style scoped>

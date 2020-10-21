@@ -34,14 +34,16 @@
         <router-link to="sign-up" id="btn-2" class="popup-button">
           Sign up
         </router-link>
-        <a href="#0" class="popup-button">Sign in with Google</a>
+        <div id="google-signin-button"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { AuthService } from '../repositories';
+import { AuthController } from '../controllers';
+import { AuthService } from '../services';
+import { AccountTypesEnum } from '../commons/enums';
 export default {
   name: 'Login',
   data() {
@@ -51,46 +53,45 @@ export default {
       error: false
     };
   },
-  created() {
-    this.checkCurrentLogin();
-  },
-  updated() {
-    this.checkCurrentLogin();
+  mounted() {
+    window.gapi.signin2.render('google-signin-button', {
+      onsuccess: this.onGoogleSignIn
+    });
   },
   methods: {
-    checkCurrentLogin() {
-      if (localStorage.token) {
-        this.$router.replace(this.$route.query.redirect || '/healthData')
-      }
-    },
     async login() {
-      localStorage.setItem(
-        'data',
-        await AuthRepository.login(this.email, this.password)
-      )
-      localStorage.token = localStorage.getItem('data').token
-      if (localStorage.token) {
-        this.loginSuccessful;
+      try {
+        const accountData = await AuthService.login(this.email, this.password);
+        AuthController.setAccount(accountData);
+        if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
+          this.$router.replace(this.$route.query.redirect || '/next');
+        } else {
+          this.$router.replace(this.$route.query.redirect || '/personal-data');
+        }
+      } catch (error) {
+        alert('Incorrect credentials');
       }
     },
-    loginSuccessful(req) {
-      if (!req.data.token) {
-        this.loginFailed();
-        return;
+    async onGoogleSignIn(user) {
+      const profile = user.getBasicProfile();
+      try {
+        const accountData = await AuthService.loginWithGoogle(
+          profile.getEmail(),
+          profile.getId()
+        );
+        AuthController.setAccount(accountData);
+        if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
+          this.$router.replace(this.$route.query.redirect || '/next');
+        } else {
+          this.$router.replace(this.$route.query.redirect || '/personal-data');
+        }
+      } catch (error) {
+        alert('Debes registrarte primero para poder iniciar sesión con google');
+        var auth2 = window.gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
       }
-      if (req.data.type.id == 1) {
-        localStorage.token = req.data.token
-        this.error = false
-        this.$router.replace(this.$route.query.redirect || '/next')
-      } else {
-        localStorage.token = req.data.token
-        this.error = false
-        this.$router.replace(this.$route.query.redirect || '/healthData')
-      }
-    },
-    loginFailed() {
-      this.error = 'Login failed!';
-      delete localStorage.token;
     }
   },
   components: {}

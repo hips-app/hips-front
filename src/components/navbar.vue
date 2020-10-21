@@ -6,21 +6,28 @@
     <router-link to="/profile">
       <p id="user" class="text-white pr-2 pt-2 pl-5">USER</p>
     </router-link>
-    <router-link to="/logout">
-      <button href="#0" class="btn btn-primary">
-        logout
-      </button>
-    </router-link>
+    <button href="#0" class="btn btn-primary" v-on:click="logout()">
+      logout
+    </button>
   </nav>
 </template>
 
 <script>
+import { HttpProvider } from '../providers';
+import { AuthService } from '../services';
 // eslint-disable-next-line no-undef
-import registroMeta from './registroMeta'
+import registroMeta from './registroMeta';
 export default {
   name: 'Navbar',
   components: {
     registroMeta
+  },
+  methods: {
+    logout() {
+      AuthService.logout();
+      HttpProvider.removeSessionCredentials();
+      this.$router.push('/');
+    }
   }
 };
 </script>
