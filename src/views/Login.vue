@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { AuthRepository } from '../repositories'
+import { AuthService } from '../repositories';
 export default {
   name: 'Login',
   data() {
@@ -49,13 +49,13 @@ export default {
       email: '',
       password: '',
       error: false
-    }
+    };
   },
   created() {
-    this.checkCurrentLogin()
+    this.checkCurrentLogin();
   },
   updated() {
-    this.checkCurrentLogin()
+    this.checkCurrentLogin();
   },
   methods: {
     checkCurrentLogin() {
@@ -70,13 +70,13 @@ export default {
       )
       localStorage.token = localStorage.getItem('data').token
       if (localStorage.token) {
-        this.loginSuccessful
+        this.loginSuccessful;
       }
     },
     loginSuccessful(req) {
       if (!req.data.token) {
-        this.loginFailed()
-        return
+        this.loginFailed();
+        return;
       }
       if (req.data.type.id == 1) {
         localStorage.token = req.data.token
@@ -89,10 +89,10 @@ export default {
       }
     },
     loginFailed() {
-      this.error = 'Login failed!'
-      delete localStorage.token
+      this.error = 'Login failed!';
+      delete localStorage.token;
     }
   },
   components: {}
-}
+};
 </script>

@@ -35,5 +35,5 @@
 export default {
   name: 'SignUp',
   components: {}
-}
+};
 </script>

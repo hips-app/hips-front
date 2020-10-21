@@ -22,7 +22,7 @@ export default {
   components: {
     registroMeta
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

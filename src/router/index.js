@@ -1,16 +1,16 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
-import FourFour from '../views/404.vue'
-import Login from '../views/Login.vue'
-import Logout from '../components/logout.vue'
-import ModifyPersonal from '../views/ModifyPersonal.vue'
-import RegisterPersonal from '../views/RegisterPersonal.vue'
-import Schedule from '../views/Schedule.vue'
-import SignUp from '../views/SignUp.vue'
-import healthData from '../views/healthData.vue'
-import metas from '../views/metas.vue'
-import next from '../views/next.vue'
-import profile from '../views/profile.vue'
+import FourFour from '../views/404.vue';
+import Login from '../views/Login.vue';
+import Logout from '../components/logout.vue';
+import ModifyPersonal from '../views/ModifyPersonal.vue';
+import RegisterPersonal from '../views/RegisterPersonal.vue';
+import Schedule from '../views/Schedule.vue';
+import SignUp from '../views/SignUp.vue';
+import healthData from '../views/healthData.vue';
+import metas from '../views/metas.vue';
+import next from '../views/next.vue';
+import profile from '../views/profile.vue';
 
 const routes = [
   {
@@ -27,11 +27,6 @@ const routes = [
     path: '/next',
     name: 'next',
     component: next
-  },
-  {
-    path: '/*',
-    name: '404',
-    component: FourFour
   },
   {
     path: '/logout',
@@ -67,12 +62,17 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: profile
+  },
+  {
+    path: '/*',
+    name: '404',
+    component: FourFour
   }
-]
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-})
+});
 
-export default router
+export default router;

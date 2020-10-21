@@ -1,3 +1,3 @@
-import AuthRepository from './auth'
+import * as AuthService from './auth';
 
-export { AuthRepository }
+export { AuthService };
