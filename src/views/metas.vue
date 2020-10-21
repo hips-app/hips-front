@@ -1,5 +1,6 @@
 <template>
   <main class="container  ">
+    <navbar></navbar>
     <div class="popup">
       <div class="popup-content">
         <div class="form-group " style="">
@@ -36,8 +37,13 @@
       </div>
     </div>
   </main>
+  <div>
+    <foot></foot>
+  </div>
 </template>
 <script>
+import navbar from '../components/navbar'
+import foot from '../components/foot'
 import { UserService } from '../services';
 export default {
   name: 'metas',
@@ -46,6 +52,10 @@ export default {
       description: null,
       expirationDate: null
     };
+  },
+  components: {
+    navbar,
+    foot
   },
   methods: {
     async sendGoal() {

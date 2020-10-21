@@ -47,6 +47,9 @@ export default {
       preg3: ''
     }
   },
+  mounted(){
+
+  },
   async created() {
     var data = await AuthService.profile()
     this.setProfile(data)
