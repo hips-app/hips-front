@@ -10,19 +10,22 @@
       <div class="popup-content">
         <div class="form-group " style="">
           <center>
-            <h1 class="text-white pr-2 pt-2 pl-5">Nombre: {{ nombre }}</h1>
-            <h1 class="text-white pr-2 pt-2 pl-5">Nombre: {{ nombre }}</h1>
-            <h1 class="text-white pr-2 pt-2 pl-5">Nombre: {{ nombre }}</h1>
-            <h1 class="text-white pr-2 pt-2 pl-5">Nombre: {{ nombre }}</h1>
+            <h1 class="text-white pr-2 pt-2 pl-5">
+              First name: {{ profileData.firstName }}
+            </h1>
+            <h1 class="text-white pr-2 pt-2 pl-5">
+              Last name: {{ profileData.lastName }}
+            </h1>
+            <h1 class="text-white pr-2 pt-2 pl-5">
+              email: {{ profileData.email }}
+            </h1>
           </center>
           <center>
-            <button
-              href="#0"
-              class="popup-button"
-              v-on:click="printsomething()"
+            <router-link to="personal-data">
+              <button href="#0" class="popup-button">
+                Editar
+              </button></router-link
             >
-              metodo insbv
-            </button>
           </center>
         </div>
       </div>
@@ -34,25 +37,33 @@
 </template>
 
 <script>
-import navbar from '../components/navbar'
-import foot from '../components/foot'
-import { AuthService } from '../services'
+import navbar from '../components/navbar';
+import foot from '../components/foot';
+import { UserService } from '../services';
+import { AuthController } from '../controllers';
 
 export default {
   name: 'profile',
   data() {
     return {
-      nombre: 'ioso',
-      preg2: '',
-      preg3: ''
-    }
+      profileData: {
+        firstName: AuthController.firstName,
+        lastName: AuthController.lastName,
+        email: AuthController.email
+      }
+    };
   },
-  mounted(){
-
-  },
-  async created() {
-    var data = await AuthService.profile()
-    this.setProfile(data)
+  mounted() {
+    UserService.getProfile(AuthController.currentAccount.id)
+      .then(profileData => {
+        this.profileData = profileData;
+        AuthController.firstName = profileData.firstName;
+        AuthController.lastName = profileData.lastName;
+        AuthController.email = profileData.email;
+      })
+      .catch(() => {
+        alert('there was an error fetching user data');
+      });
   },
   components: {
     navbar,
@@ -60,8 +71,8 @@ export default {
   },
   methods: {
     setProfile(data) {
-      this.nombre = data.data.name
+      this.nombre = data.data.name;
     }
   }
-}
+};
 </script>

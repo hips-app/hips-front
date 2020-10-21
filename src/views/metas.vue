@@ -1,6 +1,6 @@
 <template>
+  <navbar></navbar>
   <main class="container  ">
-    <navbar></navbar>
     <div class="popup">
       <div class="popup-content">
         <div class="form-group " style="">
@@ -42,8 +42,8 @@
   </div>
 </template>
 <script>
-import navbar from '../components/navbar'
-import foot from '../components/foot'
+import navbar from '../components/navbar';
+import foot from '../components/foot';
 import { UserService } from '../services';
 export default {
   name: 'metas',

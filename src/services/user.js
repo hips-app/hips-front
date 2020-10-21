@@ -34,4 +34,10 @@ const registerGoal = async (description, expirationDate) => {
   });
   return response;
 };
-export { register, updatePersonalData, registerGoal };
+const getProfile = async accountId => {
+  const response = await HttpProvider.get(
+    baseEndpoint + `/${accountId}/profile`
+  );
+  return response;
+};
+export { register, updatePersonalData, registerGoal, getProfile };

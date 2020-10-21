@@ -4,7 +4,9 @@
     <registroMeta style="position:relative; left:50px;"></registroMeta>
     <div className="mr-auto"></div>
     <router-link to="/profile">
-      <p id="user" class="text-white pr-2 pt-2 pl-5">USER</p>
+      <p id="user" class="text-white pr-2 pt-2 pl-5">
+        {{ userName }} ({{ userEmail }})
+      </p>
     </router-link>
     <button href="#0" class="btn btn-primary" v-on:click="logout()">
       logout
@@ -13,12 +15,19 @@
 </template>
 
 <script>
+import { AuthController } from '../controllers';
 import { HttpProvider } from '../providers';
 import { AuthService } from '../services';
 // eslint-disable-next-line no-undef
 import registroMeta from './registroMeta';
 export default {
   name: 'Navbar',
+  data() {
+    return {
+      userName: AuthController.currentAccount.firstName,
+      userEmail: AuthController.currentAccount.email
+    };
+  },
   components: {
     registroMeta
   },
