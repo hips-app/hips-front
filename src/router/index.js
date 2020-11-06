@@ -58,7 +58,12 @@ const router = createRouter({
   routes
 });
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && to.name !== 'SignUp' && !AuthController.isAuthenticated && AuthController.hasLoaded)
+  if (
+    to.name !== 'Login' &&
+    to.name !== 'SignUp' &&
+    !AuthController.isAuthenticated &&
+    AuthController.hasLoaded
+  )
     next({ name: 'Login' });
   else next();
 });

@@ -2,7 +2,7 @@
   <div>
     <navbar></navbar>
     <div id="container">
-      <weekdays-bar :activeDay="activeDay"></weekdays-bar>
+      <weekdays-bar :activeDay="activeDay" :isEditable="true"></weekdays-bar>
       <exercise-buttons
         :categories="categories"
         :activeCategory="activeCategory"
