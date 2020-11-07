@@ -4,10 +4,10 @@
     <div id="container">
       <weekdays-bar :activeDay="activeDay" :isEditable="false"></weekdays-bar>
       <date-interval
-        :startDate="startDate"
-        :endDate="endDate"
-        :currentDate="currentDate"
-        :activeDay="activeDay"
+        :start-date="startDate"
+        :end-date="endDate"
+        :current-date="currentDate"
+        :active-day="activeDay"
         @go-to-next-week="goToNextWeek"
         @save-day="saveDay"
       ></date-interval>
@@ -17,9 +17,9 @@
           class="row align-items-start justify-content-center"
         >
           <exercise-check-cards
-            :exercisesToShow="exercisesToShow"
-            :currentDate="currentDate"
-            :checkedExercises="checkedExercises"
+            :exercises-to-show="exercisesToShow"
+            :current-date="currentDate"
+            :checked-exercises="checkedExercises"
             @add-checked-exercise="addCheckedExercise"
           ></exercise-check-cards>
         </div>
@@ -49,8 +49,7 @@ export default {
   },
   provide() {
     return {
-      changeActiveDay: this.changeActiveDay,
-      goToNextDay: this.goToNextDay
+      changeActiveDay: this.changeActiveDay
     }
   },
   data() {
@@ -173,7 +172,7 @@ export default {
   mounted() {
     let dayNumber = this.startDate.day()
     if (dayNumber === 0) this.activeDay = 7
-    else this.activeDay = this.startDate.weekday()
+    else this.activeDay = this.startDate.day()
   }
 }
 </script>

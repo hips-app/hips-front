@@ -4,6 +4,7 @@
       v-for="day in 7"
       @click="changeActiveDayIfEditable(day)"
       :key="day"
+      class="day"
       :class="{ isEditable, highlighted: activeDay === day }"
     >
       {{ dayNames[day] }}
@@ -75,6 +76,10 @@ export default {
 }
 .highlighted {
   border-color: rgb(0, 255, 127) !important;
+}
+
+.day {
+  user-select: none;
 }
 
 @media only screen and (max-width: 720px) {
