@@ -1,14 +1,15 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 
-import FourFour from '../views/404.vue';
-import Login from '../views/Login.vue';
-import RegisterPersonal from '../views/RegisterPersonal.vue';
-import Schedule from '../views/Schedule.vue';
-import SignUp from '../views/SignUp.vue';
-import metas from '../views/metas.vue';
-import next from '../views/next.vue';
-import profile from '../views/profile.vue';
-import { AuthController } from '../controllers';
+import FourFour from '../views/404.vue'
+import Login from '../views/Login.vue'
+import RegisterPersonal from '../views/RegisterPersonal.vue'
+import Schedule from '../views/Schedule.vue'
+import SignUp from '../views/SignUp.vue'
+import metas from '../views/metas.vue'
+import next from '../views/next.vue'
+import profile from '../views/profile.vue'
+
+import { AuthController } from '../controllers'
 
 const routes = [
   {
@@ -51,12 +52,12 @@ const routes = [
     name: '404',
     component: FourFour
   }
-];
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-});
+})
 router.beforeEach((to, from, next) => {
   if (
     to.name !== 'Login' &&
@@ -64,7 +65,7 @@ router.beforeEach((to, from, next) => {
     !AuthController.isAuthenticated &&
     AuthController.hasLoaded
   )
-    next({ name: 'Login' });
-  else next();
-});
-export default router;
+    next({ name: 'Login' })
+  else next()
+})
+export default router

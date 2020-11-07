@@ -1,5 +1,5 @@
 <template>
-  <check-card
+  <base-card
     v-for="{
       id,
       exDescription,
@@ -31,14 +31,14 @@
         MARKED AS DONE
       </div>
     </template>
-  </check-card>
+  </base-card>
 </template>
 
 <script>
-import CheckCard from './CheckCard'
+import BaseCard from './BaseCard'
 export default {
   components: {
-    CheckCard
+    BaseCard
   },
   props: ['exercisesToShow', 'currentDate', 'checkedExercises'],
   emits: ['add-checked-exercise'],
@@ -54,11 +54,16 @@ export default {
 </script>
 
 <style scoped>
+p {
+  margin: 0;
+}
+
 .check-btn {
   padding: 2px 10px;
   border-radius: 4px;
   height: 30px;
   line-height: 26px;
+  margin-top: 10px;
   text-align: center;
 }
 
