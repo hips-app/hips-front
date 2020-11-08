@@ -9,6 +9,7 @@ import FoodSchedule from '../views/FoodSchedule'
 import CheckFoods from '../views/CheckFoods'
 import SignUp from '../views/SignUp.vue'
 import metas from '../views/metas.vue'
+import SpecialistUsers from '../views/SpecialistUsers'
 import next from '../views/next.vue'
 import profile from '../views/profile.vue'
 
@@ -46,6 +47,11 @@ const routes = [
     component: CheckExercises
   },
   { path: '/check-foods', name: 'CheckFoods', component: CheckFoods },
+  {
+    path: '/specialist-users',
+    name: 'SpecialistUsers',
+    component: SpecialistUsers
+  },
   {
     path: '/personal-data',
     name: 'RegisterPersonal',

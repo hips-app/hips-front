@@ -36,7 +36,7 @@
             </template>
             <template #footer
               ><div class="check-btn btn-magenta">
-                <router-link to="\">
+                <router-link to="/">
                   EDIT DIETARY PLAN
                 </router-link>
               </div></template

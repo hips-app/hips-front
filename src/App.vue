@@ -1,9 +1,9 @@
 <template>
-  <!-- <div v-if="loading" class="spinner-border" role="status">
+  <div v-if="loading" class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
   </div>
-  <router-view v-else /> -->
-  <food-schedule v-if="true"></food-schedule>
+  <router-view v-else />
+  <food-schedule v-if="false"></food-schedule>
   <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
   <check-foods v-if="false"></check-foods>
