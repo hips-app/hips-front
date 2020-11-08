@@ -15,14 +15,14 @@
               name,
               desc,
               isSelectedEx,
-              ammountEx
+              amountEx
             } in exerciseListToShow"
             :key="id"
             :id="id"
             :name="name"
             :desc="desc"
             :isSelectedEx="isSelectedEx"
-            :ammountEx="ammountEx"
+            :amountEx="amountEx"
             class="col-sm-8 col-md-3"
           ></exercise-card>
         </div>
@@ -81,109 +81,109 @@ export default {
           name: 'rice',
           desc:
             'Elbows flex and the shoulders adduct and extend to bring the elbows to the torso',
-          category: 'carbohydrate'
+          type: 'carbohydrate'
         },
         {
           id: 2,
           name: 'watermelon',
           desc:
             'Elbows flex and the shoulders adduct and extend to bring the elbows to the torso',
-          category: 'fruits'
+          type: 'fruits'
         },
         {
           id: 3,
           name: 'potato',
           desc:
             'By raising and lowering the body using the arms, push-ups exercise the pectoral muscles, triceps, and anterior deltoids',
-          category: 'carbohydrate'
+          type: 'carbohydrate'
         },
         {
           id: 4,
           name: 'potato2',
           desc:
             'Increase single leg carbohydrate, diary, and improve movement mechanics of the lower body',
-          category: 'carbohydrate'
+          type: 'carbohydrate'
         },
         {
           id: 5,
           name: 'rice3',
           desc:
             'Increase single leg carbohydrate, diary, and improve movement mechanics of the lower body',
-          category: 'carbohydrate'
+          type: 'carbohydrate'
         },
         {
           id: 6,
           name: 'spaghetti',
           desc: 'Maintain flexibility',
-          category: 'protein'
+          type: 'protein'
         },
         {
           id: 7,
           name: 'cheese',
           desc: 'feel steadier on your feet and helps prevent falls',
-          category: 'diary'
+          type: 'diary'
         },
         {
           id: 8,
           name: 'onion',
           desc:
             'Get along with your body Get along with your body Get along with your body Get along with your body',
-          category: 'vegetables'
+          type: 'vegetables'
         },
         {
           id: 9,
           name: 'tomatoe',
           desc: 'Get along with your body2',
-          category: 'vegetables'
+          type: 'vegetables'
         },
         {
           id: 10,
           name: 'Beef',
           desc: 'Maintain flexibility',
-          category: 'protein'
+          type: 'protein'
         },
         {
           id: 11,
           name: 'Milk',
           desc: 'feel steadier on your feet and helps prevent falls',
-          category: 'diary'
+          type: 'diary'
         },
         {
           id: 12,
           name: 'pumpkin',
           desc: 'Get along with your body',
-          category: 'vegetables'
+          type: 'vegetables'
         },
         {
           id: 13,
           name: 'carrot',
           desc: 'Get along with your body2',
-          category: 'vegetables'
+          type: 'vegetables'
         },
         {
           id: 14,
           name: 'pork',
           desc:
             'Maintain flexibility Maintain flexibility Maintain flexibility',
-          category: 'protein'
+          type: 'protein'
         },
         {
           id: 15,
           name: 'milk2',
           desc: 'feel steadier on your feet and helps prevent falls',
-          category: 'diary'
+          type: 'diary'
         },
         {
           id: 16,
           name: 'carrot2',
           desc: 'Get along with your body',
-          category: 'vegetables'
+          type: 'vegetables'
         },
         {
           id: 17,
           name: 'carrot3',
           desc: 'Get along with your body2',
-          category: 'vegetables'
+          type: 'vegetables'
         }
       ],
       categories: [],
@@ -202,7 +202,7 @@ export default {
     },
     updateExercisesToShow() {
       this.exerciseListToShow = this.exerciseList.filter(
-        exercise => exercise.category === this.activeCategory
+        exercise => exercise.type === this.activeCategory
       )
 
       this.exerciseListToShow = this.exerciseListToShow.map(ex => {
@@ -213,18 +213,18 @@ export default {
           return {
             ...ex,
             isSelectedEx: true,
-            ammountEx: exerciseToDo.ammount
+            amountEx: exerciseToDo.amount
           }
         }
         return {
           ...ex,
           isSelectedEx: false,
-          ammountEx: 0
+          amountEx: 0
         }
       })
       // console.log(this.foodListToEat)
     },
-    updateExercisesToDo(id, ammount, isSelected) {
+    updateExercisesToDo(id, amount, isSelected) {
       const exercise = this.foodListToEat.find(
         ex => ex.id === id && ex.day === this.activeDay
       )
@@ -233,13 +233,13 @@ export default {
         if (!isSelected) {
           this.foodListToEat = this.foodListToEat.filter(ex => ex.id !== id)
         } else {
-          exercise.ammount = parseInt(ammount)
+          exercise.amount = parseInt(amount)
         }
       } else {
         if (isSelected) {
           this.foodListToEat.push({
             id,
-            ammount: parseInt(ammount),
+            amount: parseInt(amount),
             day: this.activeDay
           })
         }
@@ -255,7 +255,7 @@ export default {
 
   // created() {
   //   this.exerciseList.forEach(exercise => {
-  //     let cat = exercise.category
+  //     let cat = exercise.type
   //     if (!this.categories.includes(cat)) this.categories.push(cat)
   //   })
 
@@ -271,7 +271,7 @@ export default {
     }
 
     this.exerciseList.forEach(exercise => {
-      const cat = exercise.category
+      const cat = exercise.type
       if (!this.categories.includes(cat)) this.categories.push(cat)
     })
 

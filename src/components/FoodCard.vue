@@ -6,11 +6,9 @@
     <div id="card-form" v-else>
       <form @submit.prevent>
         <div class="group-form">
-          <input type="number" v-model="ammount" /><span
-            class="highlight"
-          ></span
+          <input type="number" v-model="amount" /><span class="highlight"></span
           ><span class="bar"></span>
-          <label>Ammount (g/ml)</label>
+          <label>Amount (g/ml)</label>
         </div>
       </form>
     </div>
@@ -23,20 +21,20 @@ export default {
     return {
       isEditable: false,
       isSelected: this.isSelectedEx,
-      ammount: this.ammountEx
+      amount: this.amountEx
     }
   },
   inject: ['updateExercisesToDo'],
   watch: {
     isEditable(newVal, oldVal) {
-      const fieldsAreNotEmpy = this.ammount
+      const fieldsAreNotEmpy = this.amount
       if (oldVal && !newVal) {
         if (fieldsAreNotEmpy) {
           this.isSelected = true
         } else {
           this.isSelected = false
         }
-        this.updateExercisesToDo(this.id, this.ammount, this.isSelected)
+        this.updateExercisesToDo(this.id, this.amount, this.isSelected)
       }
     }
   },
@@ -57,7 +55,7 @@ export default {
       type: Boolean,
       required: true
     },
-    ammountEx: {
+    amountEx: {
       type: Number,
       required: true
     }

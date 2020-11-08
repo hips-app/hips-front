@@ -13,18 +13,18 @@
       ></date-interval>
       <div class="container-fluid">
         <div
-          v-if="exercisesToShow.length !== 0"
+          v-if="foodsToShow.length !== 0"
           class="row align-items-start justify-content-center"
         >
-          <exercise-check-cards
-            :exercises-to-show="exercisesToShow"
+          <food-check-cards
+            :foods-to-show="foodsToShow"
             :current-date="currentDate"
-            :checked-exercises="checkedExercises"
-            @add-checked-exercise="addCheckedExercise"
-          ></exercise-check-cards>
+            :checked-foods="checkedFoods"
+            @add-checked-food="addCheckedFood"
+          ></food-check-cards>
         </div>
-        <div v-else class="no-exercises">
-          <p>THERE ARE NO PLANNED EXERCISES FOR THIS DAY</p>
+        <div v-else class="no-foods">
+          <p>THERE ARE NO PLANNED FOODS FOR THIS DAY</p>
           <p><i class="fas fa-heart-broken"></i></p>
         </div>
       </div>
@@ -34,7 +34,7 @@
 
 <script>
 import DateInterval from '../components/DateInterval'
-import ExerciseCheckCards from '../components/ExerciseCheckCards'
+import FoodCheckCards from '../components/FoodCheckCards'
 import Navbar from '../components/navbar'
 import WeekdaysBar from '../components/WeekdaysBar'
 
@@ -43,7 +43,7 @@ import moment from 'moment'
 export default {
   components: {
     DateInterval,
-    ExerciseCheckCards,
+    FoodCheckCards,
     Navbar,
     WeekdaysBar
   },
@@ -58,77 +58,77 @@ export default {
       startDate: moment('2020-11-01'),
       endDate: moment('2020-11-28'),
       currentDate: moment('2020-11-01'),
-      exercisePlanList: [
+      foodPlanList: [
         {
           id: 1000,
-          exDescription: 'desc1',
-          category: 'cat3',
-          numSeries: 3,
-          numRepetitions: 9,
+          name: 'Pork',
+          description: 'desc1',
+          type: 'cat3',
+          amount: 3,
           day: 1,
           checked: false
         },
         {
           id: 2000,
-          exDescription: 'desc2',
-          category: 'cat1',
-          numSeries: 4,
-          numRepetitions: 11,
+          name: 'Rice',
+          description: 'desc2',
+          type: 'cat1',
+          amount: 4,
           day: 2,
           checked: false
         },
         {
           id: 3000,
-          exDescription: 'desc3',
-          category: 'cat5',
-          numSeries: 54,
-          numRepetitions: 12,
+          name: 'Beef',
+          description: 'desc3',
+          type: 'cat5',
+          amount: 54,
           day: 2,
           checked: false
         },
         {
           id: 4000,
-          exDescription: 'desc1',
-          category: 'cat3',
-          numSeries: 3,
-          numRepetitions: 9,
+          name: 'Blueberry',
+          description: 'desc1',
+          type: 'cat3',
+          amount: 3,
           day: 5,
           checked: false
         },
         {
           id: 5000,
-          exDescription: 'desc2',
-          category: 'cat1',
-          numSeries: 4,
-          numRepetitions: 11,
+          name: 'Apple',
+          description: 'desc2',
+          type: 'cat1',
+          amount: 4,
           day: 2,
           checked: false
         },
         {
           id: 6000,
-          exDescription: 'desc3',
-          category: 'cat5',
-          numSeries: 54,
-          numRepetitions: 12,
+          name: 'Watermelon',
+          description: 'desc3',
+          type: 'cat5',
+          amount: 54,
           day: 4,
           checked: false
         },
         {
           id: 7000,
-          exDescription: 'desc3',
-          category: 'cat2',
-          numSeries: 54,
-          numRepetitions: 12,
+          name: 'Apple',
+          description: 'desc3',
+          type: 'cat2',
+          amount: 54,
           day: 7,
           checked: false
         }
       ],
-      checkedExercises: []
+      checkedFoods: []
     }
   },
   computed: {
-    exercisesToShow() {
-      return this.exercisePlanList.filter(ex => ex.day === this.activeDay)
+    foodsToShow() {
+      return this.foodPlanList.filter(food => food.day === this.activeDay)
     }
   },
   methods: {
@@ -144,27 +144,24 @@ export default {
         .add(7 - this.activeDay + 1, 'days')
       this.activeDay = 1
     },
-    addCheckedExercise(id) {
-      this.checkedExercises.push(id)
-      const plannedExercise = this.exercisePlanList.find(ex => ex.id === id)
-      plannedExercise.checked = true
-      console.log(this.checkedExercises)
+    addCheckedFood(id) {
+      this.checkedFoods.push(id)
+      const plannedFood = this.foodPlanList.find(food => food.id === id)
+      plannedFood.checked = true
+      console.log(this.checkedFoods)
     },
     saveDay() {
       let toSubmit = {}
       toSubmit.date = this.currentDate.format('DD/MM/YYYY')
-      toSubmit.checked = [...this.checkedExercises]
+      toSubmit.checked = [...this.checkedFoods]
 
-      if (
-        this.exercisesToShow.length === 0 ||
-        this.checkedExercises.length === 0
-      )
+      if (this.foodsToShow.length === 0 || this.checkedFoods.length === 0)
         console.log('Nothing to save')
       else console.log(toSubmit)
-      this.checkedExercises.splice(0, this.checkedExercises.length)
+      this.checkedFoods.splice(0, this.checkedFoods.length)
 
-      const plannedExercise = this.exercisePlanList.find(ex => ex.checked)
-      if (plannedExercise) plannedExercise.checked = false
+      const plannedFood = this.foodPlanList.find(ex => ex.checked)
+      if (plannedFood) plannedFood.checked = false
 
       if (this.activeDay < 7) {
         this.activeDay += 1
@@ -187,7 +184,7 @@ export default {
   box-sizing: border-box;
 }
 
-.no-exercises {
+.no-foods {
   font-family: 'Raleway', Sans-serif;
   margin-top: 10vh;
   font-size: 20px;

@@ -1,10 +1,11 @@
 <template>
-  <div v-if="loading" class="spinner-border" role="status">
+  <!-- <div v-if="loading" class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
   </div>
-  <router-view v-else />
+  <router-view v-else /> -->
   <food-schedule v-if="false"></food-schedule>
   <check-exercises v-if="false"></check-exercises>
+  <check-foods v-if="true"></check-foods>
   <specialist-users v-if="false"></specialist-users>
 </template>
 <script>
@@ -12,12 +13,14 @@ import { AuthController } from './controllers'
 import { HttpProvider } from './providers'
 import { AuthService } from './services'
 import CheckExercises from './views/CheckExercises'
+import CheckFoods from './views/CheckFoods'
 import FoodSchedule from './views/FoodSchedule'
 import SpecialistUsers from './views/SpecialistUsers'
 export default {
   name: 'App',
   components: {
     CheckExercises,
+    CheckFoods,
     FoodSchedule,
     SpecialistUsers
   },
