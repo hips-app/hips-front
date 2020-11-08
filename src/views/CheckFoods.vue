@@ -157,7 +157,7 @@ export default {
 
       if (this.foodsToShow.length === 0 || this.checkedFoods.length === 0)
         console.log('Nothing to save')
-      else console.log(toSubmit)
+      else console.log(toSubmit) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
       this.checkedFoods.splice(0, this.checkedFoods.length)
 
       const plannedFood = this.foodPlanList.find(ex => ex.checked)

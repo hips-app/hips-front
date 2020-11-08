@@ -264,7 +264,7 @@ export default {
         ex => ex.numSeries > 0 && ex.repsPerSeries > 0
       )
 
-      console.log(sanitizedObject)
+      console.log(sanitizedObject) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
     }
   },
 

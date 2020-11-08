@@ -252,7 +252,7 @@ export default {
 
       const sanitizedObject = localS.filter(food => food.amount > 0)
 
-      console.log(sanitizedObject)
+      console.log(sanitizedObject) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
     }
   },
 

@@ -160,7 +160,7 @@ export default {
         this.checkedExercises.length === 0
       )
         console.log('Nothing to save')
-      else console.log(toSubmit)
+      else console.log(toSubmit) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
       this.checkedExercises.splice(0, this.checkedExercises.length)
 
       const plannedExercise = this.exercisePlanList.find(ex => ex.checked)
