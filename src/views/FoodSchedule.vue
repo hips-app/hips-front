@@ -249,7 +249,10 @@ export default {
     savePlanIntoDB() {
       // Needs to be refactored. Only for testing purposes
       const localS = JSON.parse(localStorage.getItem('foodListToEat'))['data']
-      console.log(localS)
+
+      const sanitizedObject = localS.filter(food => food.amount > 0)
+
+      console.log(sanitizedObject)
     }
   },
 

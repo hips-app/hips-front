@@ -259,7 +259,12 @@ export default {
       const localS = JSON.parse(localStorage.getItem('exercisesListToDo'))[
         'data'
       ]
-      console.log(localS)
+
+      const sanitizedObject = localS.filter(
+        ex => ex.numSeries > 0 && ex.repsPerSeries > 0
+      )
+
+      console.log(sanitizedObject)
     }
   },
 

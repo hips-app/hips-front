@@ -3,9 +3,10 @@
     <span class="sr-only">Loading...</span>
   </div>
   <router-view v-else /> -->
-  <food-schedule v-if="false"></food-schedule>
+  <food-schedule v-if="true"></food-schedule>
+  <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
-  <check-foods v-if="true"></check-foods>
+  <check-foods v-if="false"></check-foods>
   <specialist-users v-if="false"></specialist-users>
 </template>
 <script>
@@ -15,6 +16,7 @@ import { AuthService } from './services'
 import CheckExercises from './views/CheckExercises'
 import CheckFoods from './views/CheckFoods'
 import FoodSchedule from './views/FoodSchedule'
+import Schedule from './views/Schedule'
 import SpecialistUsers from './views/SpecialistUsers'
 export default {
   name: 'App',
@@ -22,6 +24,7 @@ export default {
     CheckExercises,
     CheckFoods,
     FoodSchedule,
+    Schedule,
     SpecialistUsers
   },
   data() {
