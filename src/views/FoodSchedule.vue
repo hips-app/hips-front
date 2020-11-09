@@ -15,16 +15,14 @@
               name,
               desc,
               isSelectedEx,
-              numSeriesEx,
-              repsPerSeriesEx
+              amountEx
             } in exerciseListToShow"
             :key="id"
             :id="id"
             :name="name"
             :desc="desc"
             :isSelectedEx="isSelectedEx"
-            :numSeriesEx="numSeriesEx"
-            :repsPerSeriesEx="repsPerSeriesEx"
+            :amountEx="amountEx"
             class="col-sm-8 col-md-3"
           ></exercise-card>
         </div>
@@ -33,10 +31,10 @@
   </div>
 </template>
 <script>
-import ExerciseCard from '../components/ExerciseCard';
-import ExerciseButtons from '../components/ExerciseButtons';
-import navbar from '../components/navbar';
-import WeekdaysBar from '../components/WeekdaysBar';
+import ExerciseCard from '../components/FoodCard'
+import ExerciseButtons from '../components/ExerciseButtons'
+import navbar from '../components/navbar'
+import WeekdaysBar from '../components/WeekdaysBar'
 
 export default {
   name: 'Schedule',
@@ -52,24 +50,24 @@ export default {
       changeActiveDay: this.changeActiveDay,
       savePlanIntoDB: this.savePlanIntoDB,
       updateExercisesToDo: this.updateExercisesToDo
-    };
+    }
   },
   watch: {
     activeDay(newDay, oldDay) {
       if (newDay !== oldDay) {
         const modifiedCategories = [
           ...this.categories.filter(cat => cat !== this.activeCategory)
-        ];
-        const idx = Math.floor(Math.random() * modifiedCategories.length);
-        this.activeCategory = modifiedCategories[idx];
-        this.updateExercisesToShow();
+        ]
+        const idx = Math.floor(Math.random() * modifiedCategories.length)
+        this.activeCategory = modifiedCategories[idx]
+        this.updateExercisesToShow()
       }
     },
-    exercisesListToDo(newListToDo) {
+    foodListToEat(newListToDo) {
       localStorage.setItem(
-        'exercisesListToDo',
+        'foodListToEat',
         JSON.stringify({ data: newListToDo })
-      );
+      )
     }
   },
   data() {
@@ -80,189 +78,179 @@ export default {
       exerciseList: [
         {
           id: 1,
-          name: 'Pull Ups',
+          name: 'rice',
           desc:
             'Elbows flex and the shoulders adduct and extend to bring the elbows to the torso',
-          category: 'strength'
+          type: 'carbohydrate'
         },
         {
           id: 2,
-          name: 'Pull Ups',
+          name: 'watermelon',
           desc:
             'Elbows flex and the shoulders adduct and extend to bring the elbows to the torso',
-          category: 'intensive'
+          type: 'fruits'
         },
         {
           id: 3,
-          name: 'Push Ups',
+          name: 'potato',
           desc:
             'By raising and lowering the body using the arms, push-ups exercise the pectoral muscles, triceps, and anterior deltoids',
-          category: 'strength'
+          type: 'carbohydrate'
         },
         {
           id: 4,
-          name: 'Pistol Squats',
+          name: 'potato2',
           desc:
-            'Increase single leg strength, balance, and improve movement mechanics of the lower body',
-          category: 'strength'
+            'Increase single leg carbohydrate, diary, and improve movement mechanics of the lower body',
+          type: 'carbohydrate'
         },
         {
           id: 5,
-          name: 'Pistol Squats',
+          name: 'rice3',
           desc:
-            'Increase single leg strength, balance, and improve movement mechanics of the lower body',
-          category: 'strength'
+            'Increase single leg carbohydrate, diary, and improve movement mechanics of the lower body',
+          type: 'carbohydrate'
         },
         {
           id: 6,
-          name: 'Knee rotation',
+          name: 'spaghetti',
           desc: 'Maintain flexibility',
-          category: 'stretching'
+          type: 'protein'
         },
         {
           id: 7,
-          name: 'Standing knee lift',
+          name: 'cheese',
           desc: 'feel steadier on your feet and helps prevent falls',
-          category: 'balance'
+          type: 'diary'
         },
         {
           id: 8,
-          name: 'Outside Running',
+          name: 'onion',
           desc:
             'Get along with your body Get along with your body Get along with your body Get along with your body',
-          category: 'cardio'
+          type: 'vegetables'
         },
         {
           id: 9,
-          name: 'Outside Running2',
+          name: 'tomatoe',
           desc: 'Get along with your body2',
-          category: 'cardio'
+          type: 'vegetables'
         },
         {
           id: 10,
-          name: 'Knee rotation',
+          name: 'Beef',
           desc: 'Maintain flexibility',
-          category: 'stretching'
+          type: 'protein'
         },
         {
           id: 11,
-          name: 'Standing knee lift',
+          name: 'Milk',
           desc: 'feel steadier on your feet and helps prevent falls',
-          category: 'balance'
+          type: 'diary'
         },
         {
           id: 12,
-          name: 'Outside Running',
+          name: 'pumpkin',
           desc: 'Get along with your body',
-          category: 'cardio'
+          type: 'vegetables'
         },
         {
           id: 13,
-          name: 'Outside Running2',
+          name: 'carrot',
           desc: 'Get along with your body2',
-          category: 'cardio'
+          type: 'vegetables'
         },
         {
           id: 14,
-          name: 'Knee rotation',
+          name: 'pork',
           desc:
             'Maintain flexibility Maintain flexibility Maintain flexibility',
-          category: 'stretching'
+          type: 'protein'
         },
         {
           id: 15,
-          name: 'Standing knee lift',
+          name: 'milk2',
           desc: 'feel steadier on your feet and helps prevent falls',
-          category: 'balance'
+          type: 'diary'
         },
         {
           id: 16,
-          name: 'Outside Running',
+          name: 'carrot2',
           desc: 'Get along with your body',
-          category: 'cardio'
+          type: 'vegetables'
         },
         {
           id: 17,
-          name: 'Outside Running2',
+          name: 'carrot3',
           desc: 'Get along with your body2',
-          category: 'cardio'
+          type: 'vegetables'
         }
       ],
       categories: [],
       exerciseListToShow: [],
-      exercisesListToDo: []
-    };
+      foodListToEat: []
+    }
   },
   methods: {
     changeActiveCategory(catName) {
-      this.activeCategory = catName;
-      this.updateExercisesToShow();
+      this.activeCategory = catName
+      this.updateExercisesToShow()
     },
     changeActiveDay(dayName) {
-      this.activeDay = dayName;
+      this.activeDay = dayName
       // this.updateExercisesToShow()
     },
     updateExercisesToShow() {
       this.exerciseListToShow = this.exerciseList.filter(
-        exercise => exercise.category === this.activeCategory
-      );
+        exercise => exercise.type === this.activeCategory
+      )
 
       this.exerciseListToShow = this.exerciseListToShow.map(ex => {
-        const exerciseToDo = this.exercisesListToDo.find(
+        const exerciseToDo = this.foodListToEat.find(
           exToDo => exToDo.id === ex.id && exToDo.day === this.activeDay
-        );
+        )
         if (exerciseToDo) {
           return {
             ...ex,
             isSelectedEx: true,
-            numSeriesEx: exerciseToDo.numSeries,
-            repsPerSeriesEx: exerciseToDo.repsPerSeries
-          };
+            amountEx: exerciseToDo.amount
+          }
         }
         return {
           ...ex,
           isSelectedEx: false,
-          numSeriesEx: 0,
-          repsPerSeriesEx: 0
-        };
-      });
-      // console.log(this.exercisesListToDo)
+          amountEx: 0
+        }
+      })
+      // console.log(this.foodListToEat)
     },
-    updateExercisesToDo(id, numSeries, repsPerSeries, isSelected) {
-      const exercise = this.exercisesListToDo.find(
+    updateExercisesToDo(id, amount, isSelected) {
+      const exercise = this.foodListToEat.find(
         ex => ex.id === id && ex.day === this.activeDay
-      );
+      )
 
       if (exercise) {
         if (!isSelected) {
-          this.exercisesListToDo = this.exercisesListToDo.filter(
-            ex => ex.id !== id
-          );
+          this.foodListToEat = this.foodListToEat.filter(ex => ex.id !== id)
         } else {
-          exercise.numSeries = parseInt(numSeries);
-          exercise.repsPerSeries = parseInt(repsPerSeries);
+          exercise.amount = parseInt(amount)
         }
       } else {
         if (isSelected) {
-          this.exercisesListToDo.push({
+          this.foodListToEat.push({
             id,
-            numSeries: parseInt(numSeries),
-            repsPerSeries: parseInt(repsPerSeries),
+            amount: parseInt(amount),
             day: this.activeDay
-          });
+          })
         }
       }
-      this.exercisesListToDo = [...this.exercisesListToDo];
+      this.foodListToEat = [...this.foodListToEat]
     },
     savePlanIntoDB() {
       // Needs to be refactored. Only for testing purposes
-      const localS = JSON.parse(localStorage.getItem('exercisesListToDo'))[
-        'data'
-      ]
+      const localS = JSON.parse(localStorage.getItem('foodListToEat'))['data']
 
-      const sanitizedObject = localS.filter(
-        ex => ex.numSeries > 0 && ex.repsPerSeries > 0
-      )
+      const sanitizedObject = localS.filter(food => food.amount > 0)
 
       console.log(sanitizedObject) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
     }
@@ -270,7 +258,7 @@ export default {
 
   // created() {
   //   this.exerciseList.forEach(exercise => {
-  //     let cat = exercise.category
+  //     let cat = exercise.type
   //     if (!this.categories.includes(cat)) this.categories.push(cat)
   //   })
 
@@ -280,22 +268,22 @@ export default {
   //   this.updateExercisesToShow()
   // },
   mounted() {
-    if (localStorage.exercisesListToDo) {
-      const retrievedList = localStorage.getItem('exercisesListToDo');
-      this.exercisesListToDo = JSON.parse(retrievedList)['data'];
+    if (localStorage.foodListToEat) {
+      const retrievedList = localStorage.getItem('foodListToEat')
+      this.foodListToEat = JSON.parse(retrievedList)['data']
     }
 
     this.exerciseList.forEach(exercise => {
-      const cat = exercise.category;
-      if (!this.categories.includes(cat)) this.categories.push(cat);
-    });
+      const cat = exercise.type
+      if (!this.categories.includes(cat)) this.categories.push(cat)
+    })
 
-    const idx = Math.floor(Math.random() * this.categories.length);
-    this.activeCategory = this.categories[idx];
+    const idx = Math.floor(Math.random() * this.categories.length)
+    this.activeCategory = this.categories[idx]
 
-    this.updateExercisesToShow();
+    this.updateExercisesToShow()
   }
-};
+}
 </script>
 <style scoped>
 *,

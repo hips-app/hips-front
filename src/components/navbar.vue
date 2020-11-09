@@ -30,13 +30,12 @@
 </template>
 
 <script>
-import { AuthController } from '../controllers';
-import { HttpProvider } from '../providers';
-import { AuthService } from '../services';
+import { AuthController } from '../controllers'
+import { HttpProvider } from '../providers'
+import { AuthService } from '../services'
 // eslint-disable-next-line no-undef
 import registroMeta from './registroMeta';
 import DailyCalories from './DailyCalories';
-
 export default {
   name: 'Navbar',
   data() {
@@ -59,15 +58,15 @@ export default {
       }
     },
     logout() {
-      AuthService.logout();
-      HttpProvider.removeSessionCredentials();
-      this.$router.push('/');
+      AuthService.logout()
+      HttpProvider.removeSessionCredentials()
+      this.$router.push('/')
     }
   }
-};
+}
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .btn-logout {
   background-color: #837a75;
   border-color: #837a75;
