@@ -25,7 +25,7 @@ export default {
         6: 'SA',
         7: 'SU'
       }
-    }
+    };
   },
   props: {
     activeDay: {
@@ -33,7 +33,7 @@ export default {
       required: true
     }
   }
-}
+};
 </script>
 
 <style scoped>

@@ -8,6 +8,7 @@ import SignUp from '../views/SignUp.vue';
 import metas from '../views/metas.vue';
 import next from '../views/next.vue';
 import profile from '../views/profile.vue';
+import profesionales from '../views/profesionals.vue';
 import { AuthController } from '../controllers';
 
 const routes = [
@@ -47,6 +48,11 @@ const routes = [
     component: profile
   },
   {
+    path: '/profesionales',
+    name: 'profesionales',
+    component: profesionales
+  },
+  {
     path: '/*',
     name: '404',
     component: FourFour
@@ -58,7 +64,12 @@ const router = createRouter({
   routes
 });
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && to.name !== 'SignUp' && !AuthController.isAuthenticated && AuthController.hasLoaded)
+  if (
+    to.name !== 'Login' &&
+    to.name !== 'SignUp' &&
+    !AuthController.isAuthenticated &&
+    AuthController.hasLoaded
+  )
     next({ name: 'Login' });
   else next();
 });

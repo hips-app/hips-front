@@ -20,7 +20,7 @@ export default {
     }
   },
   inject: ['changeActiveCategory']
-}
+};
 </script>
 
 <style scoped>

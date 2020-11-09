@@ -32,24 +32,24 @@ export default {
       isSelected: this.isSelectedEx,
       numSeries: this.numSeriesEx,
       repsPerSeries: this.repsPerSeriesEx
-    }
+    };
   },
   inject: ['updateExercisesToDo'],
   watch: {
     isEditable(newVal, oldVal) {
-      const fieldsAreNotEmpy = this.numSeries && this.repsPerSeries
+      const fieldsAreNotEmpy = this.numSeries && this.repsPerSeries;
       if (oldVal && !newVal) {
         if (fieldsAreNotEmpy) {
-          this.isSelected = true
+          this.isSelected = true;
         } else {
-          this.isSelected = false
+          this.isSelected = false;
         }
         this.updateExercisesToDo(
           this.id,
           this.numSeries,
           this.repsPerSeries,
           this.isSelected
-        )
+        );
       }
     }
   },
@@ -81,10 +81,10 @@ export default {
   },
   methods: {
     changeEditableStatus() {
-      this.isEditable = !this.isEditable
+      this.isEditable = !this.isEditable;
     }
   }
-}
+};
 </script>
 
 <style scoped>

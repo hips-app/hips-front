@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <navbar></navbar>
-  </div>
+  <div><navbar></navbar></div>
   <div class="hello">
     <h1>Perfil de usuario</h1>
   </div>
