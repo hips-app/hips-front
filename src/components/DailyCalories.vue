@@ -3,7 +3,10 @@
     <a>
       <div>
         <div class="card-body">
-          <table class="table" aria-label="Registro de calorias">
+          <table class="table">
+            <caption>
+              ingresar calorias consumidas en un dia
+            </caption>
             <thead>
               <tr>
                 <th class="text-white pr-2 pt-2 pl-5" scope="col">
