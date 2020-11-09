@@ -21,7 +21,7 @@
   border-radius: 4px;
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
   background: #f2994a;
-  background: -webkit-linear-gradient(to bottom, #f2c94c, #f2994a);
-  background: linear-gradient(to bottom, #f2c94c, #f2994a);
+  background: -webkit-linear-gradient(bottom, #f2c94c, #f2994a);
+  background: linear-gradient(bottom, #f2c94c, #f2994a);
 }
 </style>

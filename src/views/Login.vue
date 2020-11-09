@@ -25,11 +25,11 @@
             placeholder="Password"
             required
           />
-          <center>
+          <div style="text-align:center">
             <button href="#0" class="popup-button" type="submit">
               Sign in
             </button>
-          </center>
+          </div>
         </form>
         <router-link to="sign-up" id="btn-2" class="popup-button">
           Sign up

@@ -25,7 +25,7 @@
         </div>
         <div v-else class="no-foods">
           <p>THERE ARE NO PLANNED FOODS FOR THIS DAY</p>
-          <p><i class="fas fa-heart-broken"></i></p>
+          <p><em class="fas fa-heart-broken"></em></p>
         </div>
       </div>
     </div>

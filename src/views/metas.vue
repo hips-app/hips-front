@@ -25,7 +25,7 @@
               placeholder="cm"
               required
             />
-            <center>
+            <div style="text-align:center">
               <button
                 href="#0"
                 class="popup-button  mt-4"
@@ -33,7 +33,7 @@
               >
                 enviar
               </button>
-            </center>
+            </div>
           </div>
         </div>
       </div>

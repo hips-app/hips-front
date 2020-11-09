@@ -1,12 +1,12 @@
 <template>
   <div class="col-12 col-md-6 col-lg-4 ">
     <card class="card-blog">
-        <h5><b>Nombre: </b>{{ Profesional.name }}</h5>
-        <h5><b>Apellido: </b> {{ Profesional.lastName }}</h5>
-        <h5><b>Email: </b> {{ Profesional.email }}</h5>
-        <h5><b>Especialidad: </b> {{ Profesional.typeSpecialist }}</h5>
-        <h5><b>Descripcion: </b> {{ Profesional.drescription }}</h5>
-        <button type="button" class="btn btn-primary">Select</button>
+      <h5><strong>Nombre: </strong>{{ Profesional.name }}</h5>
+      <h5><strong>Apellido: </strong> {{ Profesional.lastName }}</h5>
+      <h5><strong>Email: </strong> {{ Profesional.email }}</h5>
+      <h5><strong>Especialidad: </strong> {{ Profesional.typeSpecialist }}</h5>
+      <h5><strong>Descripcion: </strong> {{ Profesional.drescription }}</h5>
+      <button type="button" class="btn btn-primary">Select</button>
     </card>
   </div>
 </template>

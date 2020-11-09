@@ -1,12 +1,12 @@
 <template>
-  <center>
+  <div style="text-align:center">
     <a>
       <div>
         <div class="card-body">
-          <table class="table" style="">
+          <table class="table" style="" summary="">
             <thead>
               <tr>
-                <th class="text-white pr-2 pt-2 pl-5">
+                <th class="text-white pr-2 pt-2 pl-5" scope="col">
                   Calorias Diarias
                 </th>
               </tr>
@@ -55,7 +55,7 @@
         </div>
       </div>
     </a>
-  </center>
+  </div>
 </template>
 
 <script>
