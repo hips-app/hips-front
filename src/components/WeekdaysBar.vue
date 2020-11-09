@@ -36,14 +36,14 @@ export default {
         6: 'SA',
         7: 'SU'
       }
-    }
+    };
   },
   methods: {
     changeActiveDayIfEditable(day) {
       if (this.isEditable) this.changeActiveDay(day)
     }
   }
-}
+};
 </script>
 
 <style scoped>

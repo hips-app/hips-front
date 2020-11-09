@@ -12,9 +12,8 @@ import metas from '../views/metas.vue'
 import SpecialistUsers from '../views/SpecialistUsers'
 import next from '../views/next.vue'
 import profile from '../views/profile.vue'
-
+import profesionales from '../views/profesionals.vue';
 import { AuthController } from '../controllers'
-
 const routes = [
   {
     path: '/',
@@ -68,6 +67,11 @@ const routes = [
     component: profile
   },
   {
+    path: '/profesionales',
+    name: 'profesionales',
+    component: profesionales
+  },
+  {
     path: '/*',
     name: '404',
     component: FourFour
@@ -85,7 +89,7 @@ router.beforeEach((to, from, next) => {
     !AuthController.isAuthenticated &&
     AuthController.hasLoaded
   )
-    next({ name: 'Login' })
-  else next()
-})
-export default router
+    next({ name: 'Login' });
+  else next();
+});
+export default router;

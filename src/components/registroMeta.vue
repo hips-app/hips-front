@@ -13,5 +13,5 @@
 
 export default {
   name: 'registroMeta'
-}
+};
 </script>
