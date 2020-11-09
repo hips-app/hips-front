@@ -1,14 +1,19 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 
-import FourFour from '../views/404.vue';
-import Login from '../views/Login.vue';
-import RegisterPersonal from '../views/RegisterPersonal.vue';
-import Schedule from '../views/Schedule.vue';
-import SignUp from '../views/SignUp.vue';
-import metas from '../views/metas.vue';
-import next from '../views/next.vue';
-import profile from '../views/profile.vue';
-import { AuthController } from '../controllers';
+import FourFour from '../views/404.vue'
+import Login from '../views/Login.vue'
+import RegisterPersonal from '../views/RegisterPersonal.vue'
+import Schedule from '../views/Schedule.vue'
+import CheckExercises from '../views/CheckExercises'
+import FoodSchedule from '../views/FoodSchedule'
+import CheckFoods from '../views/CheckFoods'
+import SignUp from '../views/SignUp.vue'
+import metas from '../views/metas.vue'
+import SpecialistUsers from '../views/SpecialistUsers'
+import next from '../views/next.vue'
+import profile from '../views/profile.vue'
+
+import { AuthController } from '../controllers'
 
 const routes = [
   {
@@ -32,6 +37,22 @@ const routes = [
     component: Schedule
   },
   {
+    path: '/food-schedule',
+    name: 'FoodSchedule',
+    component: FoodSchedule
+  },
+  {
+    path: '/check-exercises',
+    name: 'CheckExercises',
+    component: CheckExercises
+  },
+  { path: '/check-foods', name: 'CheckFoods', component: CheckFoods },
+  {
+    path: '/specialist-users',
+    name: 'SpecialistUsers',
+    component: SpecialistUsers
+  },
+  {
     path: '/personal-data',
     name: 'RegisterPersonal',
     component: RegisterPersonal
@@ -51,15 +72,20 @@ const routes = [
     name: '404',
     component: FourFour
   }
-];
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
-});
+})
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && to.name !== 'SignUp' && !AuthController.isAuthenticated && AuthController.hasLoaded)
-    next({ name: 'Login' });
-  else next();
-});
-export default router;
+  if (
+    to.name !== 'Login' &&
+    to.name !== 'SignUp' &&
+    !AuthController.isAuthenticated &&
+    AuthController.hasLoaded
+  )
+    next({ name: 'Login' })
+  else next()
+})
+export default router
