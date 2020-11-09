@@ -13,7 +13,7 @@
           ingrese calorias diarias
         </a>
       </div>
-      <div v-if="show" style="">
+      <div v-if="show">
         <DailyCalories style="position:relative; left:100px;"></DailyCalories>
       </div>
     </div>

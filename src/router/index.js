@@ -82,14 +82,14 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, nxt) => {
   if (
     to.name !== 'Login' &&
     to.name !== 'SignUp' &&
     !AuthController.isAuthenticated &&
     AuthController.hasLoaded
   )
-    next({ name: 'Login' });
-  else next();
+    nxt({ name: 'Login' });
+  else nxt();
 });
 export default router;

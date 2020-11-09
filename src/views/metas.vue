@@ -4,14 +4,13 @@
     <main class="container  ">
       <div class="popup">
         <div class="popup-content">
-          <div class="form-group " style="">
+          <div class="form-group ">
             <h4 class="text-light">Ingrese su meta:</h4>
             <input
               v-model="description"
               type="text"
               id="peso"
               class="form-control"
-              style=""
               required
             />
             <h4 class="text-light mt-4">

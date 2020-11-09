@@ -3,7 +3,7 @@
     <a>
       <div>
         <div class="card-body">
-          <table class="table" style="" summary="">
+          <table class="table" summary="">
             <thead>
               <tr>
                 <th class="text-white pr-2 pt-2 pl-5" scope="col">
@@ -20,7 +20,6 @@
                     type="text"
                     id="peso"
                     class="form-control"
-                    style=""
                     required
                   />
                 </td>
