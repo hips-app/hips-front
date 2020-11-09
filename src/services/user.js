@@ -40,4 +40,17 @@ const getProfile = async accountId => {
   );
   return response;
 };
-export { register, updatePersonalData, registerGoal, getProfile };
+const registerCalories = async (calories, date, accountId) => {
+  const response = await HttpProvider.post('/nutrition/calories/' + accountId, {
+    calories,
+    date
+  });
+  return response;
+};
+export {
+  register,
+  updatePersonalData,
+  registerGoal,
+  getProfile,
+  registerCalories
+};
