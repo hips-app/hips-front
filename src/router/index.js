@@ -57,9 +57,21 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 });
+
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && to.name !== 'SignUp' && !AuthController.isAuthenticated && AuthController.hasLoaded)
+  if (
+    to.name !== 'Login' &&
+    to.name !== 'SignUp' &&
+    !AuthController.isAuthenticated &&
+    AuthController.hasLoaded
+  ) {
     next({ name: 'Login' });
-  else next();
+  } else if (
+    (to.name == 'Login' || to.name == 'SignUp') &&
+    AuthController.isAuthenticated &&
+    AuthController.hasLoaded
+  ) {
+    next({ name: 'Schedule' });
+  } else next();
 });
 export default router;

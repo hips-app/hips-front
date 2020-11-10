@@ -4,9 +4,13 @@ import { AccountModel } from '../models';
 
 const get = (url, query = {}, body = {}) => {
   let queryString = '?';
-  Object.keys(query).forEach(key => {
-    queryString += `${key}=${query[key]}&`;
-  });
+  if (query) {
+    Object.keys(query).forEach(key => {
+      if (query[key]) {
+        queryString += `${key}=${query[key]}&`;
+      }
+    });
+  }
   return new Promise((resolve, reject) => {
     axios
       .get(url + (queryString.length == 1 ? '' : queryString), body)
@@ -103,7 +107,7 @@ const setHeaderToken = token => {
   axios.defaults.headers.common['Authorization'] = token;
 };
 
-const setHeaderBaseURL = URL => {
+const setBaseURL = URL => {
   axios.defaults.baseURL = URL;
 };
 
@@ -115,6 +119,6 @@ export default {
   deleted,
   setDefaultHeaders,
   setHeaderToken,
-  setHeaderBaseURL,
+  setBaseURL,
   removeSessionCredentials
 };

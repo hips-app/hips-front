@@ -46,10 +46,11 @@ export default {
   name: 'profile',
   data() {
     return {
+      loading: true,
       profileData: {
-        firstName: AuthController.firstName,
-        lastName: AuthController.lastName,
-        email: AuthController.email
+        firstName: AuthController.currentAccount.firstName,
+        lastName: AuthController.currentAccount.lastName,
+        email: AuthController.currentAccount.email
       }
     };
   },
@@ -57,9 +58,10 @@ export default {
     UserService.getProfile(AuthController.currentAccount.id)
       .then(profileData => {
         this.profileData = profileData;
-        AuthController.firstName = profileData.firstName;
-        AuthController.lastName = profileData.lastName;
-        AuthController.email = profileData.email;
+        this.loading = false;
+        AuthController.currentAccount.firstName = profileData.firstName;
+        AuthController.currentAccount.lastName = profileData.lastName;
+        AuthController.currentAccount.email = profileData.email;
       })
       .catch(() => {
         alert('there was an error fetching user data');
