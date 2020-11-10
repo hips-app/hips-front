@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <navbar></navbar>
-  </div>
+  <div><navbar></navbar></div>
   <div class="hello">
     <h1>Perfil de usuario</h1>
   </div>
   <main class="container  ">
     <div class="popup">
       <div class="popup-content">
-        <div class="form-group " style="">
-          <center>
+        <div class="form-group ">
+          <div style="text-align:center">
             <h1 class="text-white pr-2 pt-2 pl-5">
               First name: {{ profileData.firstName }}
             </h1>
@@ -19,14 +17,14 @@
             <h1 class="text-white pr-2 pt-2 pl-5">
               email: {{ profileData.email }}
             </h1>
-          </center>
-          <center>
+          </div>
+          <div style="text-align:center">
             <router-link to="personal-data">
               <button href="#0" class="popup-button">
                 Editar
               </button></router-link
             >
-          </center>
+          </div>
         </div>
       </div>
     </div>

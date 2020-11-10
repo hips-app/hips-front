@@ -2,7 +2,7 @@
   <div>
     <navbar></navbar>
     <div id="container">
-      <weekdays-bar :activeDay="activeDay"></weekdays-bar>
+      <weekdays-bar :activeDay="activeDay" :isEditable="true"></weekdays-bar>
       <exercise-buttons
         :categories="categories"
         :activeCategory="activeCategory"
@@ -33,10 +33,10 @@
   </div>
 </template>
 <script>
-import ExerciseCard from '../components/ExerciseCard'
-import ExerciseButtons from '../components/ExerciseButtons'
-import navbar from '../components/navbar'
-import WeekdaysBar from '../components/WeekdaysBar'
+import ExerciseCard from '../components/ExerciseCard';
+import ExerciseButtons from '../components/ExerciseButtons';
+import navbar from '../components/navbar';
+import WeekdaysBar from '../components/WeekdaysBar';
 
 export default {
   name: 'Schedule',
@@ -52,24 +52,24 @@ export default {
       changeActiveDay: this.changeActiveDay,
       savePlanIntoDB: this.savePlanIntoDB,
       updateExercisesToDo: this.updateExercisesToDo
-    }
+    };
   },
   watch: {
     activeDay(newDay, oldDay) {
       if (newDay !== oldDay) {
         const modifiedCategories = [
           ...this.categories.filter(cat => cat !== this.activeCategory)
-        ]
-        const idx = Math.floor(Math.random() * modifiedCategories.length)
-        this.activeCategory = modifiedCategories[idx]
-        this.updateExercisesToShow()
+        ];
+        const idx = Math.floor(Math.random() * modifiedCategories.length);
+        this.activeCategory = modifiedCategories[idx];
+        this.updateExercisesToShow();
       }
     },
     exercisesListToDo(newListToDo) {
       localStorage.setItem(
         'exercisesListToDo',
         JSON.stringify({ data: newListToDo })
-      )
+      );
     }
   },
   data() {
@@ -81,56 +81,56 @@ export default {
       categories: [],
       exerciseListToShow: [],
       exercisesListToDo: []
-    }
+    };
   },
   methods: {
     changeActiveCategory(catName) {
-      this.activeCategory = catName
-      this.updateExercisesToShow()
+      this.activeCategory = catName;
+      this.updateExercisesToShow();
     },
     changeActiveDay(dayName) {
-      this.activeDay = dayName
+      this.activeDay = dayName;
       // this.updateExercisesToShow()
     },
     updateExercisesToShow() {
       this.exerciseListToShow = this.exerciseList.filter(
         exercise => exercise.category === this.activeCategory
-      )
+      );
 
       this.exerciseListToShow = this.exerciseListToShow.map(ex => {
         const exerciseToDo = this.exercisesListToDo.find(
           exToDo => exToDo.id === ex.id && exToDo.day === this.activeDay
-        )
+        );
         if (exerciseToDo) {
           return {
             ...ex,
             isSelectedEx: true,
             numSeriesEx: exerciseToDo.numSeries,
             repsPerSeriesEx: exerciseToDo.repsPerSeries
-          }
+          };
         }
         return {
           ...ex,
           isSelectedEx: false,
           numSeriesEx: 0,
           repsPerSeriesEx: 0
-        }
-      })
+        };
+      });
       // console.log(this.exercisesListToDo)
     },
     updateExercisesToDo(id, numSeries, repsPerSeries, isSelected) {
       const exercise = this.exercisesListToDo.find(
         ex => ex.id === id && ex.day === this.activeDay
-      )
+      );
 
       if (exercise) {
         if (!isSelected) {
           this.exercisesListToDo = this.exercisesListToDo.filter(
             ex => ex.id !== id
-          )
+          );
         } else {
-          exercise.numSeries = parseInt(numSeries)
-          exercise.repsPerSeries = parseInt(repsPerSeries)
+          exercise.numSeries = parseInt(numSeries);
+          exercise.repsPerSeries = parseInt(repsPerSeries);
         }
       } else {
         if (isSelected) {
@@ -139,17 +139,22 @@ export default {
             numSeries: parseInt(numSeries),
             repsPerSeries: parseInt(repsPerSeries),
             day: this.activeDay
-          })
+          });
         }
       }
-      this.exercisesListToDo = [...this.exercisesListToDo]
+      this.exercisesListToDo = [...this.exercisesListToDo];
     },
     savePlanIntoDB() {
       // Needs to be refactored. Only for testing purposes
       const localS = JSON.parse(localStorage.getItem('exercisesListToDo'))[
         'data'
       ]
-      console.log(localS)
+
+      const sanitizedObject = localS.filter(
+        ex => ex.numSeries > 0 && ex.repsPerSeries > 0
+      )
+
+      console.log(sanitizedObject) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
     }
   },
 
@@ -166,21 +171,21 @@ export default {
   // },
   mounted() {
     if (localStorage.exercisesListToDo) {
-      const retrievedList = localStorage.getItem('exercisesListToDo')
-      this.exercisesListToDo = JSON.parse(retrievedList)['data']
+      const retrievedList = localStorage.getItem('exercisesListToDo');
+      this.exercisesListToDo = JSON.parse(retrievedList)['data'];
     }
 
     this.exerciseList.forEach(exercise => {
-      const cat = exercise.category
-      if (!this.categories.includes(cat)) this.categories.push(cat)
-    })
+      const cat = exercise.category;
+      if (!this.categories.includes(cat)) this.categories.push(cat);
+    });
 
-    const idx = Math.floor(Math.random() * this.categories.length)
-    this.activeCategory = this.categories[idx]
+    const idx = Math.floor(Math.random() * this.categories.length);
+    this.activeCategory = this.categories[idx];
 
-    this.updateExercisesToShow()
+    this.updateExercisesToShow();
   }
-}
+};
 </script>
 <style scoped>
 *,

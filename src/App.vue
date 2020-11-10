@@ -3,39 +3,56 @@
     <span class="sr-only">Loading...</span>
   </div>
   <router-view v-else />
+  <food-schedule v-if="false"></food-schedule>
+  <schedule v-if="false"></schedule>
+  <check-exercises v-if="false"></check-exercises>
+  <check-foods v-if="false"></check-foods>
+  <specialist-users v-if="false"></specialist-users>
 </template>
 <script>
-import { AuthController } from './controllers';
-import { HttpProvider } from './providers';
-import { AuthService } from './services';
+import { AuthController } from './controllers'
+import { HttpProvider } from './providers'
+import { AuthService } from './services'
+import CheckExercises from './views/CheckExercises'
+import CheckFoods from './views/CheckFoods'
+import FoodSchedule from './views/FoodSchedule'
+import Schedule from './views/Schedule'
+import SpecialistUsers from './views/SpecialistUsers'
 export default {
   name: 'App',
+  components: {
+    CheckExercises,
+    CheckFoods,
+    FoodSchedule,
+    Schedule,
+    SpecialistUsers
+  },
   data() {
-    return { loading: true };
+    return { loading: true }
   },
   mounted() {
-    HttpProvider.setDefaultHeaders();
-    const token = localStorage.getItem('token');
+    HttpProvider.setDefaultHeaders()
+    const token = localStorage.getItem('token')
     if (token) {
       AuthService.loginWithToken(token)
         .then(accountData => {
-          AuthController.setAccount(accountData);
+          AuthController.setAccount(accountData)
         })
         .catch(error => {
-          console.log(error);
-          HttpProvider.removeSessionCredentials();
-          this.$router.push('/?redirect=' + this.$route.path);
+          console.log(error)
+          HttpProvider.removeSessionCredentials()
+          this.$router.push('/?redirect=' + this.$route.path)
         })
         .finally(() => {
-          this.loading = false;
-          AuthController.hasLoaded = true;
-        });
+          this.loading = false
+          AuthController.hasLoaded = true
+        })
     } else {
-      this.loading = false;
-      AuthController.hasLoaded = true;
+      this.loading = false
+      AuthController.hasLoaded = true
     }
   }
-};
+}
 </script>
 <style>
 #app {

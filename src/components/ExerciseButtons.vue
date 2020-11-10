@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ExcerciseButton from '../components/ExerciseButton'
+import ExcerciseButton from '../components/ExerciseButton';
 
 export default {
   components: {
@@ -21,7 +21,7 @@ export default {
   },
   inject: ['savePlanIntoDB'],
   props: ['categories', 'activeCategory']
-}
+};
 </script>
 
 <style scoped>

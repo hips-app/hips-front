@@ -2,9 +2,10 @@
   <div id="weekdays-container">
     <div
       v-for="day in 7"
-      @click="changeActiveDay(day)"
+      @click="changeActiveDayIfEditable(day)"
       :key="day"
-      :class="activeDay === day ? 'highlighted' : ''"
+      class="day"
+      :class="{ isEditable, highlighted: activeDay === day }"
     >
       {{ dayNames[day] }}
     </div>
@@ -14,6 +15,16 @@
 <script>
 export default {
   inject: ['changeActiveDay'],
+  props: {
+    isEditable: {
+      type: Boolean,
+      required: true
+    },
+    activeDay: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       dayNames: {
@@ -25,15 +36,14 @@ export default {
         6: 'SA',
         7: 'SU'
       }
-    }
+    };
   },
-  props: {
-    activeDay: {
-      type: Number,
-      required: true
+  methods: {
+    changeActiveDayIfEditable(day) {
+      if (this.isEditable) this.changeActiveDay(day)
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -61,11 +71,15 @@ export default {
   color: white;
   border-radius: 50%;
 }
-#weekdays-container div:hover {
+.isEditable:hover {
   cursor: grab;
 }
 .highlighted {
   border-color: rgb(0, 255, 127) !important;
+}
+
+.day {
+  user-select: none;
 }
 
 @media only screen and (max-width: 720px) {

@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import navbar from '../components/navbar'
-import PersonalDataForm from '../components/PersonalDataForm'
+import navbar from '../components/navbar';
+import PersonalDataForm from '../components/PersonalDataForm';
 
 export default {
   name: 'RegisterPersonal',
@@ -22,7 +22,7 @@ export default {
     navbar,
     PersonalDataForm
   }
-}
+};
 </script>
 <style scoped>
 * {

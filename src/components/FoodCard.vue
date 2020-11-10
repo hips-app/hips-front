@@ -6,18 +6,9 @@
     <div id="card-form" v-else>
       <form @submit.prevent>
         <div class="group-form">
-          <input type="number" v-model="numSeries" /><span
-            class="highlight"
-          ></span
+          <input type="number" v-model="amount" /><span class="highlight"></span
           ><span class="bar"></span>
-          <label># Series</label>
-        </div>
-        <div class="group-form">
-          <input type="number" v-model="repsPerSeries" /><span
-            class="highlight"
-          ></span
-          ><span class="bar"></span>
-          <label># Reps per Series</label>
+          <label>Amount (g/ml)</label>
         </div>
       </form>
     </div>
@@ -30,26 +21,20 @@ export default {
     return {
       isEditable: false,
       isSelected: this.isSelectedEx,
-      numSeries: this.numSeriesEx,
-      repsPerSeries: this.repsPerSeriesEx
-    };
+      amount: this.amountEx
+    }
   },
   inject: ['updateExercisesToDo'],
   watch: {
     isEditable(newVal, oldVal) {
-      const fieldsAreNotEmpy = this.numSeries && this.repsPerSeries;
+      const fieldsAreNotEmpy = this.amount
       if (oldVal && !newVal) {
         if (fieldsAreNotEmpy) {
-          this.isSelected = true;
+          this.isSelected = true
         } else {
-          this.isSelected = false;
+          this.isSelected = false
         }
-        this.updateExercisesToDo(
-          this.id,
-          this.numSeries,
-          this.repsPerSeries,
-          this.isSelected
-        );
+        this.updateExercisesToDo(this.id, this.amount, this.isSelected)
       }
     }
   },
@@ -70,21 +55,17 @@ export default {
       type: Boolean,
       required: true
     },
-    numSeriesEx: {
-      type: Number,
-      required: true
-    },
-    repsPerSeriesEx: {
+    amountEx: {
       type: Number,
       required: true
     }
   },
   methods: {
     changeEditableStatus() {
-      this.isEditable = !this.isEditable;
+      this.isEditable = !this.isEditable
     }
   }
-};
+}
 </script>
 
 <style scoped>

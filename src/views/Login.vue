@@ -25,11 +25,11 @@
             placeholder="Password"
             required
           />
-          <center>
+          <div style="text-align:center">
             <button href="#0" class="popup-button" type="submit">
               Sign in
             </button>
-          </center>
+          </div>
         </form>
         <router-link to="sign-up" id="btn-2" class="popup-button">
           Sign up
@@ -88,7 +88,7 @@ export default {
       } catch (error) {
         alert('Debes registrarte primero para poder iniciar sesión con google');
         var auth2 = window.gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
+        auth2.signOut().then(function() {
           console.log('User signed out.');
         });
       }
