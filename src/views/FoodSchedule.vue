@@ -31,10 +31,10 @@
   </div>
 </template>
 <script>
-import ExerciseCard from '../components/FoodCard'
-import ExerciseButtons from '../components/ExerciseButtons'
-import navbar from '../components/navbar'
-import WeekdaysBar from '../components/WeekdaysBar'
+import ExerciseCard from '../components/FoodCard';
+import ExerciseButtons from '../components/ExerciseButtons';
+import navbar from '../components/navbar';
+import WeekdaysBar from '../components/WeekdaysBar';
 
 export default {
   name: 'Schedule',
@@ -50,24 +50,24 @@ export default {
       changeActiveDay: this.changeActiveDay,
       savePlanIntoDB: this.savePlanIntoDB,
       updateExercisesToDo: this.updateExercisesToDo
-    }
+    };
   },
   watch: {
     activeDay(newDay, oldDay) {
       if (newDay !== oldDay) {
         const modifiedCategories = [
           ...this.categories.filter(cat => cat !== this.activeCategory)
-        ]
-        const idx = Math.floor(Math.random() * modifiedCategories.length)
-        this.activeCategory = modifiedCategories[idx]
-        this.updateExercisesToShow()
+        ];
+        const idx = Math.floor(Math.random() * modifiedCategories.length);
+        this.activeCategory = modifiedCategories[idx];
+        this.updateExercisesToShow();
       }
     },
     foodListToEat(newListToDo) {
       localStorage.setItem(
         'foodListToEat',
         JSON.stringify({ data: newListToDo })
-      )
+      );
     }
   },
   data() {
@@ -189,51 +189,51 @@ export default {
       categories: [],
       exerciseListToShow: [],
       foodListToEat: []
-    }
+    };
   },
   methods: {
     changeActiveCategory(catName) {
-      this.activeCategory = catName
-      this.updateExercisesToShow()
+      this.activeCategory = catName;
+      this.updateExercisesToShow();
     },
     changeActiveDay(dayName) {
-      this.activeDay = dayName
+      this.activeDay = dayName;
       // this.updateExercisesToShow()
     },
     updateExercisesToShow() {
       this.exerciseListToShow = this.exerciseList.filter(
         exercise => exercise.type === this.activeCategory
-      )
+      );
 
       this.exerciseListToShow = this.exerciseListToShow.map(ex => {
         const exerciseToDo = this.foodListToEat.find(
           exToDo => exToDo.id === ex.id && exToDo.day === this.activeDay
-        )
+        );
         if (exerciseToDo) {
           return {
             ...ex,
             isSelectedEx: true,
             amountEx: exerciseToDo.amount
-          }
+          };
         }
         return {
           ...ex,
           isSelectedEx: false,
           amountEx: 0
-        }
-      })
+        };
+      });
       // console.log(this.foodListToEat)
     },
     updateExercisesToDo(id, amount, isSelected) {
       const exercise = this.foodListToEat.find(
         ex => ex.id === id && ex.day === this.activeDay
-      )
+      );
 
       if (exercise) {
         if (!isSelected) {
-          this.foodListToEat = this.foodListToEat.filter(ex => ex.id !== id)
+          this.foodListToEat = this.foodListToEat.filter(ex => ex.id !== id);
         } else {
-          exercise.amount = parseInt(amount)
+          exercise.amount = parseInt(amount);
         }
       } else {
         if (isSelected) {
@@ -241,18 +241,18 @@ export default {
             id,
             amount: parseInt(amount),
             day: this.activeDay
-          })
+          });
         }
       }
-      this.foodListToEat = [...this.foodListToEat]
+      this.foodListToEat = [...this.foodListToEat];
     },
     savePlanIntoDB() {
       // Needs to be refactored. Only for testing purposes
-      const localS = JSON.parse(localStorage.getItem('foodListToEat'))['data']
+      const localS = JSON.parse(localStorage.getItem('foodListToEat'))['data'];
 
-      const sanitizedObject = localS.filter(food => food.amount > 0)
+      const sanitizedObject = localS.filter(food => food.amount > 0);
 
-      console.log(sanitizedObject) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
+      console.log(sanitizedObject); // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
     }
   },
 
@@ -269,21 +269,21 @@ export default {
   // },
   mounted() {
     if (localStorage.foodListToEat) {
-      const retrievedList = localStorage.getItem('foodListToEat')
-      this.foodListToEat = JSON.parse(retrievedList)['data']
+      const retrievedList = localStorage.getItem('foodListToEat');
+      this.foodListToEat = JSON.parse(retrievedList)['data'];
     }
 
     this.exerciseList.forEach(exercise => {
-      const cat = exercise.type
-      if (!this.categories.includes(cat)) this.categories.push(cat)
-    })
+      const cat = exercise.type;
+      if (!this.categories.includes(cat)) this.categories.push(cat);
+    });
 
-    const idx = Math.floor(Math.random() * this.categories.length)
-    this.activeCategory = this.categories[idx]
+    const idx = Math.floor(Math.random() * this.categories.length);
+    this.activeCategory = this.categories[idx];
 
-    this.updateExercisesToShow()
+    this.updateExercisesToShow();
   }
-}
+};
 </script>
 <style scoped>
 *,

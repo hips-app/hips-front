@@ -14,6 +14,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-family: 'Raleway', Sans-serif;
+  background-color: whitesmoke;
 }
 
 .container {
@@ -36,7 +37,7 @@ body {
   display: flex;
   align-content: center;
   justify-content: center;
-  background-color: rgb(100, 136, 145);
+  background-color: white;
   border-radius: 6px;
   padding: 3rem 2rem;
   box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.25);
@@ -55,7 +56,8 @@ body {
   font-weight: 900;
   margin-top: 0;
 }
-.popup .popup-button {
+.popup .popup-button {    
+  width: 100%;
   display: block;
   text-align: center;
   text-decoration: none;
@@ -106,7 +108,7 @@ input {
 input:focus {
   outline: none;
 }
-label {
+.label {
   color: #999;
   font-size: 18px;
   font-weight: normal;
@@ -166,6 +168,9 @@ input:focus ~ .highlight {
   -webkit-animation: inputHighlighter 0.3s ease;
   -moz-animation: inputHighlighter 0.3s ease;
   animation: inputHighlighter 0.3s ease;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 @-webkit-keyframes inputHighlighter {
   from {

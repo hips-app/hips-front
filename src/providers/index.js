@@ -1,2 +1,4 @@
 import HttpProvider from './http';
-export { HttpProvider };
+import FirebaseProvider from './firebase';
+import FileProvider from './file';
+export { HttpProvider, FirebaseProvider, FileProvider };

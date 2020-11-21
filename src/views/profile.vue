@@ -1,26 +1,35 @@
 <template>
   <div><navbar></navbar></div>
   <div class="hello">
-    <h1>Perfil de usuario</h1>
+    <h1>Profile data</h1>
   </div>
-  <main class="container  ">
+  <main class="container">
     <div class="popup">
       <div class="popup-content">
         <div class="form-group ">
+          <label class="cursor-pointer" htmlFor="file-input">
+            <img
+              class="profile-picture"
+              :src="profilePicture"
+              alt=""
+              width="200"
+              height="200"
+            />
+          </label>
           <div style="text-align:center">
-            <h1 class="text-white pr-2 pt-2 pl-5">
-              First name: {{ profileData.firstName }}
-            </h1>
-            <h1 class="text-white pr-2 pt-2 pl-5">
-              Last name: {{ profileData.lastName }}
-            </h1>
-            <h1 class="text-white pr-2 pt-2 pl-5">
-              email: {{ profileData.email }}
-            </h1>
+            <h3 class="text-white pr-2 pt-2 pl-5">
+              <b>First name:</b> {{ profileData.firstName }}
+            </h3>
+            <h3 class="text-white pr-2 pt-2 pl-5">
+              <b>Last name:</b> {{ profileData.lastName }}
+            </h3>
+            <h3 class="text-white pr-2 pt-2 pl-5">
+              <b>email:</b> {{ profileData.email }}
+            </h3>
           </div>
-          <div style="text-align:center">
+          <div class="mt-5">
             <router-link to="personal-data">
-              <button href="#0" class="popup-button">
+              <button href="#0" class="popup-button w-100">
                 Editar
               </button></router-link
             >
@@ -32,6 +41,15 @@
   <div>
     <foot></foot>
   </div>
+
+  <input
+    id="file-input"
+    type="file"
+    accept="image/x-png,image/jpeg"
+    className="d-none"
+    lang="es"
+    @change="onSetImage"
+  />
 </template>
 
 <script>
@@ -39,6 +57,7 @@ import navbar from '../components/navbar';
 import foot from '../components/foot';
 import { UserService } from '../services';
 import { AuthController } from '../controllers';
+import { FileProvider, FirebaseProvider } from '../providers';
 
 export default {
   name: 'profile',
@@ -49,7 +68,8 @@ export default {
         firstName: AuthController.currentAccount.firstName,
         lastName: AuthController.currentAccount.lastName,
         email: AuthController.currentAccount.email
-      }
+      },
+      profilePicture: null
     };
   },
   mounted() {
@@ -57,6 +77,10 @@ export default {
       .then(profileData => {
         this.profileData = profileData;
         this.loading = false;
+        this.profilePicture =
+          profileData.profilePicture == null || profileData.profilePicture == ''
+            ? 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png'
+            : profileData.profilePicture;
         AuthController.currentAccount.firstName = profileData.firstName;
         AuthController.currentAccount.lastName = profileData.lastName;
         AuthController.currentAccount.email = profileData.email;
@@ -72,7 +96,25 @@ export default {
   methods: {
     setProfile(data) {
       this.nombre = data.data.name;
+    },
+    async onSetImage(event) {
+      const file = event.target.files[0];
+      const fileUrl = await FileProvider.getUrlFormFile(file);
+      this.profilePicture = fileUrl;
+      const logoUrl = await FirebaseProvider.uploadFile(
+        FirebaseProvider.STORAGE_COMPANY_LOGOS_FOLDER,
+        file
+      );
+      await UserService.setProfilePicture(logoUrl);
+      alert('Imagen actializada con exito');
     }
   }
 };
 </script>
+<style>
+.profile-picture {
+  border-radius: 100px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+</style>

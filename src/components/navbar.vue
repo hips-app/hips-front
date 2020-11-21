@@ -1,26 +1,29 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">HIPS APP</a>
-    <registroMeta style="position:relative; left:50px;"></registroMeta>
+    <registroMeta></registroMeta>
     <div>
-      <div style="position:relative; left:100px;">
+      <div v-if="show">
+        <DailyCalories
+          style="position:relative; left:100px;"
+          v-on:finish-task="showCaloriesForm()"
+        ></DailyCalories>
+      </div>
+      <div v-else style="pl-2">
         <a
-          v-on:click.stop.prevent="displai()"
-          class="text-white pr-2 pt-2 pl-5"
+          v-on:click.stop.prevent="showCaloriesForm()"
+          class="text-white pr-2 pt-2 pl-2"
           href=""
           aria-expanded="true"
         >
-          ingrese calorias diarias
+          Calories |
         </a>
-      </div>
-      <div v-if="show">
-        <DailyCalories style="position:relative; left:100px;"></DailyCalories>
       </div>
     </div>
     <div className="mr-auto"></div>
     <router-link to="/profile">
-      <p id="user" class="text-white pr-2 pt-2 pl-5">
-        {{ userName }} ({{ userEmail }})
+      <p id="user" class="text-white pr-2 pt-2 pl-2">
+        {{userName}}
       </p>
     </router-link>
     <button href="#0" class="btn btn-primary" v-on:click="logout()">
@@ -30,9 +33,9 @@
 </template>
 
 <script>
-import { AuthController } from '../controllers'
-import { HttpProvider } from '../providers'
-import { AuthService } from '../services'
+import { AuthController } from '../controllers';
+import { HttpProvider } from '../providers';
+import { AuthService } from '../services';
 // eslint-disable-next-line no-undef
 import registroMeta from './registroMeta';
 import DailyCalories from './DailyCalories';
@@ -50,20 +53,16 @@ export default {
     DailyCalories
   },
   methods: {
-    displai() {
-      if (this.show) {
-        this.show = false;
-      } else {
-        this.show = true;
-      }
+    showCaloriesForm() {
+      this.show = !this.show;
     },
     logout() {
-      AuthService.logout()
-      HttpProvider.removeSessionCredentials()
-      this.$router.push('/')
+      AuthService.logout();
+      HttpProvider.removeSessionCredentials();
+      this.$router.push('/');
     }
   }
-}
+};
 </script>
 
 <style scoped>

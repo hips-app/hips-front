@@ -10,14 +10,14 @@
             class="highlight"
           ></span
           ><span class="bar"></span>
-          <label># Series</label>
+          <label class="label"># Series</label>
         </div>
         <div class="group-form">
           <input type="number" v-model="repsPerSeries" /><span
             class="highlight"
           ></span
           ><span class="bar"></span>
-          <label># Reps per Series</label>
+          <label class="label"># Reps per Series</label>
         </div>
       </form>
     </div>

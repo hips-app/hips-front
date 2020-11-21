@@ -5,7 +5,7 @@
         <div class="card-body">
           <table class="table">
             <caption>
-              ingresar calorias consumidas en un dia
+              ingresar calorias consumidas el dia de hoy
             </caption>
             <thead>
               <tr>
@@ -20,7 +20,7 @@
                   <h4 class="text-light">Ingrese su calorias:</h4>
                   <input
                     v-model="calories"
-                    type="text"
+                    type="number"
                     id="peso"
                     class="form-control"
                     required
@@ -45,7 +45,7 @@
                 <td class="text-white pr-2 pt-2 pl-5">
                   <button
                     href="#0"
-                    class="popup-button  mt-4"
+                    class="btn btn-primary  mt-4"
                     v-on:click="sendCalories()"
                   >
                     enviar
@@ -88,6 +88,7 @@ export default {
           this.date,
           AuthController.currentAccount.id
         );
+        this.$emit('finish-task');
         alert('calorias agregadas');
       } catch (error) {
         alert('There was an error');

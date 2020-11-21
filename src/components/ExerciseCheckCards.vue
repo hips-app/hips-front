@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import BaseCard from './BaseCard'
+import BaseCard from './BaseCard';
 export default {
   components: {
     BaseCard
@@ -43,14 +43,14 @@ export default {
   props: ['exercisesToShow', 'currentDate', 'checkedExercises'],
   emits: ['add-checked-exercise'],
   data() {
-    return {}
+    return {};
   },
   methods: {
     addToCheckedExercises(id) {
-      this.$emit('add-checked-exercise', id)
+      this.$emit('add-checked-exercise', id);
     }
   }
-}
+};
 </script>
 
 <style scoped>

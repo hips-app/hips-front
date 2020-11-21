@@ -6,7 +6,7 @@
         <h2 class="popup-title">Sign in to <span id="hips">Hips</span></h2>
         <form class="form-signin" @submit.prevent="login">
           <div class="alert alert-danger" v-if="error">{{ error }}</div>
-          <label for="inputEmail" class="sr-only">Email address</label>
+          <label class="label sr-only" for="inputEmail">Email address</label>
           <input
             v-model="email"
             type="email"
@@ -16,16 +16,16 @@
             required
             autofocus
           />
-          <label for="inputPassword" class="sr-only">Password</label>
+          <label class="label sr-only" for="inputPassword">Password</label>
           <input
             v-model="password"
             type="password"
             id="inputPassword"
-            class="form-control"
+            class="form-control mt-3"
             placeholder="Password"
             required
           />
-          <div style="text-align:center">
+          <div style="text-align: center">
             <button href="#0" class="popup-button" type="submit">
               Sign in
             </button>
@@ -50,12 +50,17 @@ export default {
     return {
       email: '',
       password: '',
-      error: false
+      error: false,
     };
   },
   mounted() {
     window.gapi.signin2.render('google-signin-button', {
-      onsuccess: this.onGoogleSignIn
+      scope: 'profile email',
+      width: 240,
+      height: 50,
+      longtitle: true,
+      theme: 'dark',
+      onsuccess: this.onGoogleSignIn,
     });
   },
   methods: {
@@ -88,12 +93,17 @@ export default {
       } catch (error) {
         alert('Debes registrarte primero para poder iniciar sesión con google');
         var auth2 = window.gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function() {
+        auth2.signOut().then(function () {
           console.log('User signed out.');
         });
       }
-    }
+    },
   },
-  components: {}
+  components: {},
 };
 </script>
+<style scoped>
+.abcRioButton {
+  width: 100% !important;
+}
+</style>

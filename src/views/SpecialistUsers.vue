@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import BaseCard from '../components/BaseCard'
-import Navbar from '../components/navbar'
+import BaseCard from '../components/BaseCard';
+import Navbar from '../components/navbar';
 export default {
   components: {
     BaseCard,
@@ -130,9 +130,9 @@ export default {
           weight: '67'
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
 
 <style scoped>

@@ -55,24 +55,24 @@ export default {
       return (
         this.endDate.format('DD/MM/YYYY') ===
         this.currentDate.format('DD/MM/YYYY')
-      )
+      );
     },
     nextWeekIsOutOfRange() {
       return (
         this.endDate.clone() <
         this.currentDate.clone().add(7 - this.activeDay + 1, 'days')
-      )
+      );
     }
   },
   methods: {
     addWeek() {
-      this.$emit('go-to-next-week')
+      this.$emit('go-to-next-week');
     },
     saveDay() {
-      this.$emit('save-day')
+      this.$emit('save-day');
     }
   }
-}
+};
 </script>
 
 <style scoped>

@@ -1,10 +1,14 @@
 <template>
   <div style="text-align:center">
-    <a>
-      <router-link class="text-white pr-2 pt-2 pl-5" to="/schedule">
-        Administrar ejercicios
-      </router-link>
-    </a>
+    <router-link class="text-white pt-2 pl-2" to="/schedule">
+      Sport plan |
+    </router-link>
+    <router-link class="text-white pt-2 pl-2" to="/food-schedule">
+      Food plan |
+    </router-link>
+    <router-link class="text-white pt-2 pl-2" to="/profesionales">
+      Specialists |
+    </router-link>
   </div>
 </template>
 

@@ -3,22 +3,22 @@
     <div class="group">
       <input type="text" v-model="firstName" />
       <span class="highlight"></span><span class="bar"></span>
-      <label>First Name</label>
+      <label class="label">First Name</label>
     </div>
     <div class="group">
       <input type="text" v-model="lastName" />
       <span class="highlight"></span><span class="bar"></span>
-      <label>Last Name</label>
+      <label class="label">Last Name</label>
     </div>
     <div class="group">
       <input type="number" v-model="weight" />
       <span class="highlight"></span><span class="bar"></span>
-      <label>Weight (kg)</label>
+      <label class="label">Weight (kg)</label>
     </div>
     <div class="group">
       <input type="number" v-model="height" />
       <span class="highlight"></span><span class="bar"></span>
-      <label>Height (cm)</label>
+      <label class="label">Height (cm)</label>
     </div>
     <span class="">Birth date</span>
     <div class="group">

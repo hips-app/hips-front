@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     changeActiveDayIfEditable(day) {
-      if (this.isEditable) this.changeActiveDay(day)
+      if (this.isEditable) this.changeActiveDay(day);
     }
   }
 };

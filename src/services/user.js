@@ -47,10 +47,25 @@ const registerCalories = async (calories, date, accountId) => {
   });
   return response;
 };
+
+const setProfilePicture = async urlPicture => {
+  const response = await HttpProvider.post(baseEndpoint + `/profile-picture`, {
+    urlPicture
+  });
+  return response;
+};
+const setSpecialist = async specialistId => {
+  const response = await HttpProvider.post(baseEndpoint + `/specialist`, {
+    specialistId
+  });
+  return response;
+};
 export {
   register,
   updatePersonalData,
   registerGoal,
   getProfile,
-  registerCalories
+  registerCalories,
+  setProfilePicture,
+  setSpecialist
 };

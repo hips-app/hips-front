@@ -3,7 +3,7 @@
     <navbar></navbar>
   </div>
   <div class="main">
-    <h1>Lista de profesionales</h1>
+    <h1>Specialist list</h1>
   </div>
   <div class="row">
     <Profesional

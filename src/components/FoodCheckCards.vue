@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import BaseCard from './BaseCard'
+import BaseCard from './BaseCard';
 export default {
   components: {
     BaseCard
@@ -36,14 +36,14 @@ export default {
   props: ['foodsToShow', 'currentDate', 'checkedFoods'],
   emits: ['add-checked-food'],
   data() {
-    return {}
+    return {};
   },
   methods: {
     addToCheckedFoods(id) {
-      this.$emit('add-checked-food', id)
+      this.$emit('add-checked-food', id);
     }
   }
-}
+};
 </script>
 
 <style scoped>

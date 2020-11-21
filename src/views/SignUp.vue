@@ -17,7 +17,7 @@
             />
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>First name</label>
+            <label class="label">First name</label>
           </div>
           <div class="group">
             <input
@@ -29,13 +29,13 @@
             />
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Last name</label>
+            <label class="label">Last name</label>
           </div>
           <div class="group">
-            <input v-model="email" class="form-control" type="text" required />
+            <input v-model="email" class="form-control" type="email" required />
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Email</label>
+            <label class="label">Email</label>
           </div>
           <div class="group">
             <input
@@ -47,7 +47,7 @@
             />
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Password</label>
+            <label class="label">Password</label>
           </div>
           <button ref="#0" class="popup-button" type="submit">Sign up</button>
         </form>

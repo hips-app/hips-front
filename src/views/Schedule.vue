@@ -37,6 +37,7 @@ import ExerciseCard from '../components/ExerciseCard';
 import ExerciseButtons from '../components/ExerciseButtons';
 import navbar from '../components/navbar';
 import WeekdaysBar from '../components/WeekdaysBar';
+import { PhysicalExerciseService } from '../services';
 
 export default {
   name: 'Schedule',
@@ -148,42 +149,35 @@ export default {
       // Needs to be refactored. Only for testing purposes
       const localS = JSON.parse(localStorage.getItem('exercisesListToDo'))[
         'data'
-      ]
+      ];
 
       const sanitizedObject = localS.filter(
         ex => ex.numSeries > 0 && ex.repsPerSeries > 0
-      )
+      );
 
-      console.log(sanitizedObject) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
+      console.log(sanitizedObject); // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
     }
   },
-
-  // created() {
-  //   this.exerciseList.forEach(exercise => {
-  //     let cat = exercise.category
-  //     if (!this.categories.includes(cat)) this.categories.push(cat)
-  //   })
-
-  //   let idx = Math.floor(Math.random() * this.categories.length)
-  //   this.activeCategory = this.categories[idx]
-
-  //   this.updateExercisesToShow()
-  // },
   mounted() {
-    if (localStorage.exercisesListToDo) {
-      const retrievedList = localStorage.getItem('exercisesListToDo');
-      this.exercisesListToDo = JSON.parse(retrievedList)['data'];
-    }
+    PhysicalExerciseService.getAll().then(exercises => {
+      this.exerciseList = exercises.map(exercise => {
+        return {
+          id: exercise.id,
+          category: exercise.type.name,
+          desc: exercise.description,
+          name: exercise.name
+        };
+      });
+      this.exerciseList.forEach(exercise => {
+        const cat = exercise.category;
+        if (!this.categories.includes(cat)) this.categories.push(cat);
+      });
 
-    this.exerciseList.forEach(exercise => {
-      const cat = exercise.category;
-      if (!this.categories.includes(cat)) this.categories.push(cat);
+      const idx = Math.floor(Math.random() * this.categories.length);
+      this.activeCategory = this.categories[idx];
+
+      this.updateExercisesToShow();
     });
-
-    const idx = Math.floor(Math.random() * this.categories.length);
-    this.activeCategory = this.categories[idx];
-
-    this.updateExercisesToShow();
   }
 };
 </script>

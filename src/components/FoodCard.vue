@@ -8,7 +8,7 @@
         <div class="group-form">
           <input type="number" v-model="amount" /><span class="highlight"></span
           ><span class="bar"></span>
-          <label>Amount (g/ml)</label>
+          <label class="label">Amount (g/ml)</label>
         </div>
       </form>
     </div>
@@ -22,19 +22,19 @@ export default {
       isEditable: false,
       isSelected: this.isSelectedEx,
       amount: this.amountEx
-    }
+    };
   },
   inject: ['updateExercisesToDo'],
   watch: {
     isEditable(newVal, oldVal) {
-      const fieldsAreNotEmpy = this.amount
+      const fieldsAreNotEmpy = this.amount;
       if (oldVal && !newVal) {
         if (fieldsAreNotEmpy) {
-          this.isSelected = true
+          this.isSelected = true;
         } else {
-          this.isSelected = false
+          this.isSelected = false;
         }
-        this.updateExercisesToDo(this.id, this.amount, this.isSelected)
+        this.updateExercisesToDo(this.id, this.amount, this.isSelected);
       }
     }
   },
@@ -62,10 +62,10 @@ export default {
   },
   methods: {
     changeEditableStatus() {
-      this.isEditable = !this.isEditable
+      this.isEditable = !this.isEditable;
     }
   }
-}
+};
 </script>
 
 <style scoped>
