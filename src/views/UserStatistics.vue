@@ -13,7 +13,7 @@
     <progress-bar
       v-for="{ date, progress } in exerciseProgressList"
       :key="date"
-      :date="date"
+      :dataProp="date"
       :progress="progress"
     ></progress-bar>
   </div>

@@ -9,14 +9,24 @@
       aria-valuemin="0"
       aria-valuemax="100"
     >
-      {{ date.substring(5, 12) }} / {{ progress }} %
+      {{ dataProp }} / {{ progress }} %
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['date', 'progress'],
+  props: {
+    dataProp: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    progress: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
       bootstrapColor: '',

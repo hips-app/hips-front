@@ -3,7 +3,8 @@
     <span class="sr-only">Loading...</span>
   </div>
   <router-view v-else /> -->
-  <user-statistics v-if="true"></user-statistics>
+  <users-progress v-if="true"></users-progress>
+  <user-statistics v-if="false"></user-statistics>
   <food-schedule v-if="false"></food-schedule>
   <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
@@ -19,6 +20,7 @@ import CheckFoods from './views/CheckFoods'
 import FoodSchedule from './views/FoodSchedule'
 import Schedule from './views/Schedule'
 import SpecialistUsers from './views/SpecialistUsers'
+import UsersProgress from './views/UsersProgress'
 import UserStatistics from './views/UserStatistics'
 
 FirebaseProvider.init()
@@ -30,6 +32,7 @@ export default {
     FoodSchedule,
     Schedule,
     SpecialistUsers,
+    UsersProgress,
     UserStatistics,
   },
   data() {
