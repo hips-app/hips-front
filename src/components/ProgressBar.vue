@@ -2,7 +2,7 @@
   <div id="progress__container" class="progress">
     <div
       id="progress__bar"
-      :class="['progress-bar', bootstrapColor]"
+      :class="[bootstrapColor, 'progress-bar', 'progress-bar-striped', 'progress-bar-animated']"
       :style="progressStyle"
       role="progressbar"
       aria-valuenow="10"
