@@ -3,8 +3,8 @@
     <div
       id="progress__bar"
       :class="['progress-bar', bootstrapColor]"
-      role="progressbar"
       :style="progressStyle"
+      role="progressbar"
       aria-valuenow="10"
       aria-valuemin="0"
       aria-valuemax="100"
@@ -20,11 +20,12 @@ export default {
   data() {
     return {
       bootstrapColor: '',
+      width: 0,
     }
   },
   computed: {
     progressStyle() {
-      return { width: `${this.progress}%` }
+      return { width: `${this.width}%` }
     },
   },
   mounted() {
@@ -33,6 +34,10 @@ export default {
     else if (this.progress >= 60) this.bootstrapColor = 'bg-warning'
     else if (this.progress >= 40) this.bootstrapColor = 'bg-danger'
     else this.bootstrapColor = 'bg-dark'
+
+    setTimeout(() => {
+      this.width = this.progress
+    }, 0)
   },
 }
 </script>
@@ -53,5 +58,6 @@ export default {
   text-align: left;
   padding-left: 2%;
   border-radius: 15px;
+  transition: all 2s;
 }
 </style>

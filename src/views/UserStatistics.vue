@@ -1,7 +1,7 @@
 <template>
   <navbar></navbar>
   <div id="header">MY STATISTICS: {{ 'EXERCISE' }}</div>
-  <div class="stats-container">
+  <div id="stats-container">
     <h1 class="plan-details-title">PROGRESS BY DAY</h1>
     <div>
       <p class="plan__date">START DATE: {{ startDate }}</p>
@@ -40,7 +40,7 @@ export default {
         { date: '2020-11-04', progress: 47 },
         { date: '2020-11-05', progress: 65 },
         { date: '2020-11-06', progress: 15 },
-        { date: '2020-11-07', progress: 62 },
+        { date: '2020-11-07', progress: 30 },
         { date: '2020-11-08', progress: 100 },
       ],
     }
@@ -64,12 +64,13 @@ export default {
   font-family: 'Raleway', Sans-serif;
   font-weight: 900;
 }
-
-.stats-container {
+#stats-container {
   margin: 10vh 5vw;
   padding: 15px;
+  background-color: white;
   border-radius: 4px;
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
+  animation: appear 700ms ease-in;
 }
 
 #header {
@@ -92,5 +93,14 @@ export default {
 
 .plan__date {
   margin: 2px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>
