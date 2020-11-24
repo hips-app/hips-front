@@ -2,7 +2,7 @@
   <navbar></navbar>
   <div id="header">MY STATISTICS: {{ 'EXERCISE' }}</div>
   <div id="stats-container">
-    <h1 class="plan-details-title">PROGRESS BY DAY</h1>
+    <h1 class="plan-details-title">PROGRESS PER DAY</h1>
     <div>
       <p class="plan__date">START DATE: {{ startDate }}</p>
       <p class="plan__date">

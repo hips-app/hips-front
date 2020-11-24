@@ -11,17 +11,17 @@
   <specialist-users v-if="false"></specialist-users>
 </template>
 <script>
-import { AuthController } from './controllers';
-import { HttpProvider, FirebaseProvider } from './providers';
-import { AuthService } from './services';
-import CheckExercises from './views/CheckExercises';
-import CheckFoods from './views/CheckFoods';
-import FoodSchedule from './views/FoodSchedule';
-import Schedule from './views/Schedule';
-import SpecialistUsers from './views/SpecialistUsers';
-import UserStatistics from './views/UserStatistics';
+import { AuthController } from './controllers'
+import { HttpProvider, FirebaseProvider } from './providers'
+import { AuthService } from './services'
+import CheckExercises from './views/CheckExercises'
+import CheckFoods from './views/CheckFoods'
+import FoodSchedule from './views/FoodSchedule'
+import Schedule from './views/Schedule'
+import SpecialistUsers from './views/SpecialistUsers'
+import UserStatistics from './views/UserStatistics'
 
-FirebaseProvider.init();
+FirebaseProvider.init()
 export default {
   name: 'App',
   components: {
@@ -30,37 +30,37 @@ export default {
     FoodSchedule,
     Schedule,
     SpecialistUsers,
-    UserStatistics
+    UserStatistics,
   },
   data() {
-    return { loading: true };
+    return { loading: true }
   },
   mounted() {
-    HttpProvider.setDefaultHeaders();
-    const token = localStorage.getItem('token');
+    HttpProvider.setDefaultHeaders()
+    const token = localStorage.getItem('token')
     if (token) {
       AuthService.loginWithToken(token)
         .then(accountData => {
-          AuthController.setAccount(accountData);
+          AuthController.setAccount(accountData)
           if (this.$route.path == '/' || this.$route.path == '/sign-up') {
-            this.$router.push('/schedule');
+            this.$router.push('/schedule')
           }
         })
         .catch(error => {
-          console.log(error);
-          HttpProvider.removeSessionCredentials();
-          this.$router.push('/?redirect=' + this.$route.path);
+          console.log(error)
+          HttpProvider.removeSessionCredentials()
+          this.$router.push('/?redirect=' + this.$route.path)
         })
         .finally(() => {
-          this.loading = false;
-          AuthController.hasLoaded = true;
-        });
+          this.loading = false
+          AuthController.hasLoaded = true
+        })
     } else {
-      this.loading = false;
-      AuthController.hasLoaded = true;
+      this.loading = false
+      AuthController.hasLoaded = true
     }
-  }
-};
+  },
+}
 </script>
 <style>
 #app {
