@@ -1,8 +1,9 @@
 <template>
-  <div v-if="loading" class="spinner-border" role="status">
+  <!-- <div v-if="loading" class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
   </div>
-  <router-view v-else />
+  <router-view v-else /> -->
+  <user-statistics v-if="true"></user-statistics>
   <food-schedule v-if="false"></food-schedule>
   <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
@@ -18,6 +19,8 @@ import CheckFoods from './views/CheckFoods';
 import FoodSchedule from './views/FoodSchedule';
 import Schedule from './views/Schedule';
 import SpecialistUsers from './views/SpecialistUsers';
+import UserStatistics from './views/UserStatistics';
+
 FirebaseProvider.init();
 export default {
   name: 'App',
@@ -27,6 +30,7 @@ export default {
     FoodSchedule,
     Schedule,
     SpecialistUsers,
+    UserStatistics
   },
   data() {
     return { loading: true };
@@ -36,13 +40,13 @@ export default {
     const token = localStorage.getItem('token');
     if (token) {
       AuthService.loginWithToken(token)
-        .then((accountData) => {
+        .then(accountData => {
           AuthController.setAccount(accountData);
-          if(this.$route.path == "/" || this.$route.path == "/sign-up" ){
-            this.$router.push("/schedule");
+          if (this.$route.path == '/' || this.$route.path == '/sign-up') {
+            this.$router.push('/schedule');
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
           HttpProvider.removeSessionCredentials();
           this.$router.push('/?redirect=' + this.$route.path);
@@ -55,7 +59,7 @@ export default {
       this.loading = false;
       AuthController.hasLoaded = true;
     }
-  },
+  }
 };
 </script>
 <style>
