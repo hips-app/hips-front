@@ -14,21 +14,15 @@ export default {
   name: 'percent',
   data() {
     return {
-      
-      percent: 0
+      percent: 10
     };
   },
   created() {
-      
-      try {
-          UserService.getpercent().then(
-            this.percent = this.response
-          );
-           
-        } catch (error) {
-        alert('There was an error');
-      }
-     10;
+    try {
+      UserService.getpercent().then((this.percent = this.response));
+    } catch (error) {
+      alert('There was an error');
+    }
   },
   mounted() {
     var elem = document.getElementById('myBar');
@@ -41,7 +35,6 @@ export default {
   width: 100%;
   background-color: white;
 }
-
 #myBar {
   width: 1%;
   height: 20px;

@@ -83,10 +83,9 @@ export default {
     };
   },
   created() {
-            UserSubscriptionService.hasSubscription(AuthController.currentAccount.id)
-            .then(  
-              this.subscription = this.response
-            );
+    UserSubscriptionService.hasSubscription(
+      AuthController.currentAccount.id
+    ).then((this.subscription = this.response));
   },
   mounted() {
     UserService.getProfile(AuthController.currentAccount.id)

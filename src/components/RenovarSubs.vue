@@ -1,31 +1,30 @@
 <template>
-    <div class="mt-5">
+  <div class="mt-5">
     <button
-        href="#0"
-        class="popup-button w-100"
-        v-on:click="renovarsubscription()"
+      href="#0"
+      class="popup-button w-100"
+      v-on:click="renovarsubscription()"
     >
-        Renovar subscripcion
+      Renovar subscripcion
     </button>
-    </div>
+  </div>
 </template>
 <script>
-
 import { UserSubscriptionService } from '../services';
 import { AuthController } from '../controllers';
-    
-    
 export default {
   name: 'renovarSubs',
- methods: {
+  methods: {
     async renovarsubscription() {
-        try {
-            await UserSubscriptionService.renovarSubscription(AuthController.currentAccount.id);
-            alert("subscripcion renovada");
-        } catch (error) {
+      try {
+        await UserSubscriptionService.renovarSubscription(
+          AuthController.currentAccount.id
+        );
+        alert('subscripcion renovada');
+      } catch (error) {
         alert('There was an error');
-        }
+      }
     }
- }
-}
+  }
+};
 </script>

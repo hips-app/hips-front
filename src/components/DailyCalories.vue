@@ -17,6 +17,7 @@
             <tbody>
               <tr>
                 <td class="text-white pr-2 pt-2 pl-5">
+                  <!--input que atrapa el numero de calorias consumidas por el usuario-->
                   <h4 class="text-light">Ingrese su calorias:</h4>
                   <input
                     v-model="calories"
@@ -32,6 +33,7 @@
                   <h4 class="text-light mt-4">
                     Ingrese su fecha de expiracion de la meta:
                   </h4>
+                  <!--input que atrapa la fecha en la cual se consumieron en el dia especificado-->
                   <input
                     v-model="date"
                     type="date"
@@ -43,6 +45,7 @@
               </tr>
               <tr>
                 <td class="text-white pr-2 pt-2 pl-5">
+                  <!--boton que llama el metodo manda las calorias a la base de datos-->
                   <button
                     href="#0"
                     class="btn btn-primary  mt-4"
@@ -69,11 +72,13 @@ export default {
   name: 'registroMeta',
   data() {
     return {
+      //los datos que se recolectaran en los v-model
       calories: '',
       date: ''
     };
   },
   methods: {
+    //metodo que envia los datos recolectados a la base de datos usando los servicios de userService
     async sendCalories() {
       try {
         if (!(this.calories && this.date)) {

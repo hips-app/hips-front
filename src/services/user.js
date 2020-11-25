@@ -62,11 +62,9 @@ const setSpecialist = async specialistId => {
   });
   return response;
 };
-//devuelve el porcentaje que se a hecho de ejercicios 
+//devuelve el porcentaje que se a hecho de ejercicios
 const getpercent = async () => {
-  const response = await HttpProvider.get(
-    '/exercise/exercise-progress'
-  );
+  const response = await HttpProvider.get('/exercise/exercise-progress');
   return response;
 };
 //recibe y envia el mensage de comunicacion con el experto

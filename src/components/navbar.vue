@@ -20,31 +20,31 @@
         </a>
       </div>
     </div>
-    <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2">comunicarse con experto</router-link>
+    <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2">
+      comunicarse con experto
+    </router-link>
     <div className="mr-auto"></div>
     <router-link to="/profile">
       <section>
         <div :style="image" class="image"></div>
-          <img
-            class="profile-picture"
-            :src="profilePicture"
-            alt="2"
-            width="50"
-            height="50"
-            />
-        </section>
+        <img
+          class="profile-picture"
+          :src="profilePicture"
+          alt="2"
+          width="50"
+          height="50"
+        />
+      </section>
       <p id="user" class="text-white pr-2 pt-2 pl-2">
-        {{userName}}
+        {{ userName }}
       </p>
       <percentagebar></percentagebar>
     </router-link>
-    
     <button href="#0" class="btn btn-primary" v-on:click="logout()">
       logout
     </button>
   </nav>
 </template>
-
 <script>
 import { UserService } from '../services';
 import { AuthController } from '../controllers';
@@ -54,7 +54,6 @@ import { AuthService } from '../services';
 import registroMeta from './registroMeta';
 import DailyCalories from './DailyCalories';
 import percentagebar from './percentagebar';
-
 export default {
   name: 'Navbar',
   data() {
@@ -66,17 +65,17 @@ export default {
     };
   },
   mounted() {
-            UserService.getProfile(AuthController.currentAccount.id)
-            .then(profileData => {
-                this.profilePicture =
-                    profileData.profilePicture == null || profileData.profilePicture == ''
-                      ? 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png'
-                      : profileData.profilePicture;
-            })
-            .catch(() => {
-                alert('there was an error fetching user data');
-            });
-        },
+    UserService.getProfile(AuthController.currentAccount.id)
+      .then(profileData => {
+        this.profilePicture =
+          profileData.profilePicture == null || profileData.profilePicture == ''
+            ? 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png'
+            : profileData.profilePicture;
+      })
+      .catch(() => {
+        alert('there was an error fetching user data');
+      });
+  },
   components: {
     registroMeta,
     DailyCalories,

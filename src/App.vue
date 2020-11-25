@@ -38,7 +38,7 @@ export default {
       AuthService.loginWithToken(token)
         .then(accountData => {
           AuthController.setAccount(accountData);
-          if(this.$route.path == "/" || this.$route.path == "/sign-up") {
+          if (this.$route.path == '/' || this.$route.path == '/sign-up') {
             this.$router.push('/schedule');
           }
         })
