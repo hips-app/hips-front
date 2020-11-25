@@ -9,7 +9,7 @@ const getProfesionals = async () => {
 //cancela la subscripcion del usuario pago al postear una en el endpoint cancelar subscripcion
 const cancelSubscription = async accountId => {
   const response = await HttpProvider.post(
-    baseEndpoint1 + `/cancelar-subscripcion`,
+    baseEndpoint1 + `/cancel-subscription`,
     {
       accountId
     }
@@ -19,7 +19,7 @@ const cancelSubscription = async accountId => {
 //renueva la subscripcion de los usuarios al postear en el end point renovar-subscripcion
 const renovarSubscription = async accountId => {
   const response = await HttpProvider.post(
-    baseEndpoint1 + `/renovar-subscripcion`,
+    baseEndpoint1 + `/auto-renew-subscription`,
     {
       accountId
     }
