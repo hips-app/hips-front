@@ -1,8 +1,10 @@
 <template>
-  <div v-if="loading" class="spinner-border" role="status">
+  <!-- <div v-if="loading" class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
   </div>
-  <router-view v-else />
+  <router-view v-else /> -->
+  <users-progress v-if="true"></users-progress>
+  <user-statistics v-if="false"></user-statistics>
   <food-schedule v-if="false"></food-schedule>
   <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
@@ -10,15 +12,18 @@
   <specialist-users v-if="false"></specialist-users>
 </template>
 <script>
-import { AuthController } from './controllers';
-import { HttpProvider, FirebaseProvider } from './providers';
-import { AuthService } from './services';
-import CheckExercises from './views/CheckExercises';
-import CheckFoods from './views/CheckFoods';
-import FoodSchedule from './views/FoodSchedule';
-import Schedule from './views/Schedule';
-import SpecialistUsers from './views/SpecialistUsers';
-FirebaseProvider.init();
+import { AuthController } from './controllers'
+import { HttpProvider, FirebaseProvider } from './providers'
+import { AuthService } from './services'
+import CheckExercises from './views/CheckExercises'
+import CheckFoods from './views/CheckFoods'
+import FoodSchedule from './views/FoodSchedule'
+import Schedule from './views/Schedule'
+import SpecialistUsers from './views/SpecialistUsers'
+import UsersProgress from './views/UsersProgress'
+import UserStatistics from './views/UserStatistics'
+
+FirebaseProvider.init()
 export default {
   name: 'App',
   components: {
@@ -27,36 +32,38 @@ export default {
     FoodSchedule,
     Schedule,
     SpecialistUsers,
+    UsersProgress,
+    UserStatistics,
   },
   data() {
-    return { loading: true };
+    return { loading: true }
   },
   mounted() {
-    HttpProvider.setDefaultHeaders();
-    const token = localStorage.getItem('token');
+    HttpProvider.setDefaultHeaders()
+    const token = localStorage.getItem('token')
     if (token) {
       AuthService.loginWithToken(token)
-        .then((accountData) => {
-          AuthController.setAccount(accountData);
-          if(this.$route.path == "/" || this.$route.path == "/sign-up" ){
-            this.$router.push("/schedule");
+        .then(accountData => {
+          AuthController.setAccount(accountData)
+          if (this.$route.path == '/' || this.$route.path == '/sign-up') {
+            this.$router.push('/schedule')
           }
         })
-        .catch((error) => {
-          console.log(error);
-          HttpProvider.removeSessionCredentials();
-          this.$router.push('/?redirect=' + this.$route.path);
+        .catch(error => {
+          console.log(error)
+          HttpProvider.removeSessionCredentials()
+          this.$router.push('/?redirect=' + this.$route.path)
         })
         .finally(() => {
-          this.loading = false;
-          AuthController.hasLoaded = true;
-        });
+          this.loading = false
+          AuthController.hasLoaded = true
+        })
     } else {
-      this.loading = false;
-      AuthController.hasLoaded = true;
+      this.loading = false
+      AuthController.hasLoaded = true
     }
   },
-};
+}
 </script>
 <style>
 #app {
