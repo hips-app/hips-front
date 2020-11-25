@@ -1,19 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+import { AuthController } from '../controllers';
+import CheckExercises from '../views/CheckExercises';
+import CheckFoods from '../views/CheckFoods';
+import ExpertCom from '../views/ExpertCom.vue'
+import FoodSchedule from '../views/FoodSchedule';
 import FourFour from '../views/404.vue';
 import Login from '../views/Login.vue';
 import RegisterPersonal from '../views/RegisterPersonal.vue';
 import Schedule from '../views/Schedule.vue';
-import CheckExercises from '../views/CheckExercises';
-import FoodSchedule from '../views/FoodSchedule';
-import CheckFoods from '../views/CheckFoods';
 import SignUp from '../views/SignUp.vue';
-import metas from '../views/metas.vue';
 import SpecialistUsers from '../views/SpecialistUsers';
+import metas from '../views/metas.vue';
 import next from '../views/next.vue';
-import profile from '../views/profile.vue';
 import profesionales from '../views/profesionals.vue';
-import { AuthController } from '../controllers';
+import profile from '../views/profile.vue';
+
 const routes = [
   {
     path: '/',
@@ -70,6 +72,11 @@ const routes = [
     path: '/profesionales',
     name: 'profesionales',
     component: profesionales
+  },
+  {
+    path: '/ExpertCom',
+    name: 'ExpertCom',
+    component: ExpertCom
   },
   {
     path: '/*',

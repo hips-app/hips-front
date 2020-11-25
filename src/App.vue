@@ -26,7 +26,7 @@ export default {
     CheckFoods,
     FoodSchedule,
     Schedule,
-    SpecialistUsers,
+    SpecialistUsers
   },
   data() {
     return { loading: true };
@@ -36,13 +36,13 @@ export default {
     const token = localStorage.getItem('token');
     if (token) {
       AuthService.loginWithToken(token)
-        .then((accountData) => {
+        .then(accountData => {
           AuthController.setAccount(accountData);
-          if(this.$route.path == "/" || this.$route.path == "/sign-up" ){
-            this.$router.push("/schedule");
+          if(this.$route.path == "/" || this.$route.path == "/sign-up") {
+            this.$router.push('/schedule');
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
           HttpProvider.removeSessionCredentials();
           this.$router.push('/?redirect=' + this.$route.path);
@@ -55,7 +55,7 @@ export default {
       this.loading = false;
       AuthController.hasLoaded = true;
     }
-  },
+  }
 };
 </script>
 <style>
