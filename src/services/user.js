@@ -27,6 +27,7 @@ const updatePersonalData = async (
   });
   return response;
 };
+//pone una meta especifica con una fecha especifica que establece la completitud de esa meta S
 const registerGoal = async (description, expirationDate) => {
   const response = await HttpProvider.post(baseEndpoint + '/goals', {
     description,
@@ -40,6 +41,7 @@ const getProfile = async accountId => {
   );
   return response;
 };
+// registra las calorias consumidas en la fecha especificada
 const registerCalories = async (calories, date, accountId) => {
   const response = await HttpProvider.post('/nutrition/calories/' + accountId, {
     calories,
@@ -60,6 +62,19 @@ const setSpecialist = async specialistId => {
   });
   return response;
 };
+//devuelve el porcentaje que se a hecho de ejercicios
+const getpercent = async () => {
+  const response = await HttpProvider.get('/exercise/exercise-progress');
+  return response;
+};
+//recibe y envia el mensage de comunicacion con el experto
+const enviarMensaje = async (message, accountId) => {
+  const response = await HttpProvider.post('/comunicacion/experto', {
+    message,
+    accountId
+  });
+  return response;
+};
 export {
   register,
   updatePersonalData,
@@ -67,5 +82,7 @@ export {
   getProfile,
   registerCalories,
   setProfilePicture,
-  setSpecialist
+  setSpecialist,
+  getpercent,
+  enviarMensaje
 };

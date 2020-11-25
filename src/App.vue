@@ -44,15 +44,15 @@ export default {
     if (token) {
       AuthService.loginWithToken(token)
         .then(accountData => {
-          AuthController.setAccount(accountData)
+          AuthController.setAccount(accountData);
           if (this.$route.path == '/' || this.$route.path == '/sign-up') {
-            this.$router.push('/schedule')
+            this.$router.push('/schedule');
           }
         })
         .catch(error => {
-          console.log(error)
-          HttpProvider.removeSessionCredentials()
-          this.$router.push('/?redirect=' + this.$route.path)
+          console.log(error);
+          HttpProvider.removeSessionCredentials();
+          this.$router.push('/?redirect=' + this.$route.path);
         })
         .finally(() => {
           this.loading = false
@@ -62,8 +62,8 @@ export default {
       this.loading = false
       AuthController.hasLoaded = true
     }
-  },
-}
+  }
+};
 </script>
 <style>
 #app {
