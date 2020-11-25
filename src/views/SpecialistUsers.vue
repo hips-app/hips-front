@@ -6,13 +6,26 @@
       <div class="container-fluid">
         <div class="row align-items-start justify-content-center">
           <base-card
-            v-for="{ id, firstName, lastName, birthDate, profilePicture, height, weight } in users"
+            v-for="{
+              id,
+              firstName,
+              lastName,
+              birthDate,
+              profilePicture,
+              height,
+              weight
+            } in users"
             :key="id"
             class="col-sm-8 col-md-4"
           >
             <template #description>
               <div class="profile-description-item profile-picture">
-                <img :src="profilePicture" alt="profile_picture" width="60" height="60" />
+                <img
+                  :src="profilePicture"
+                  alt="profile_picture"
+                  width="60"
+                  height="60"
+                />
               </div>
               <div class="profile-description-item profile-data">
                 <p>Name: {{ firstName + ' ' + lastName }}</p>
@@ -22,10 +35,16 @@
               </div>
             </template>
             <template #footer
-              ><div @click="editUserPlan('foodPlan')" class="check-btn btn-magenta">
+              ><div
+                @click="editUserPlan('foodPlan')"
+                class="check-btn btn-magenta"
+              >
                 EDIT FOOD PLAN
               </div>
-              <div @click="editUserPlan('exercisePlan')" class="check-btn btn-steelblue">
+              <div
+                @click="editUserPlan('exercisePlan')"
+                class="check-btn btn-steelblue"
+              >
                 EDIT EXERCISE PLAN
               </div>
             </template>
@@ -37,12 +56,12 @@
 </template>
 
 <script>
-import BaseCard from '../components/BaseCard'
-import Navbar from '../components/navbar'
+import BaseCard from '../components/BaseCard';
+import Navbar from '../components/navbar';
 export default {
   components: {
     BaseCard,
-    Navbar,
+    Navbar
   },
   data() {
     return {
@@ -52,75 +71,81 @@ export default {
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67',
+          weight: '67'
         },
         {
           id: 2,
           firstName: 'My',
           lastName: 'Name',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '99',
+          weight: '99'
         },
         {
           id: 3,
           firstName: 'Daniel',
           lastName: 'Felipe',
           birthDate: '01/01/1881',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '77',
+          weight: '77'
         },
         {
           id: 4,
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '87',
+          weight: '87'
         },
         {
           id: 5,
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67',
+          weight: '67'
         },
         {
           id: 6,
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67',
+          weight: '67'
         },
         {
           id: 7,
           firstName: 'Chu',
           lastName: 'Pica',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67',
-        },
-      ],
-    }
+          weight: '67'
+        }
+      ]
+    };
   },
   methods: {
     editUserPlan(planType) {
-      console.log(planType)
-    },
-  },
-}
+      console.log(planType);
+    }
+  }
+};
 </script>
-
 <style scoped>
 *,
 *::before,

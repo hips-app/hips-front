@@ -12,8 +12,13 @@
           <h1 class="plan-details-title">{{ name }}</h1>
         </template>
         <template #userStats>
-          <progress-bar :data-prop="'EXERCISE PROGRESS'" :progress="exerciseProgress"></progress-bar>
-          <progress-bar :data-prop="'FOOD PROGRESS'" :progress="foodProgress"></progress-bar>
+          <progress-bar
+            :data-prop="'EXERCISE PROGRESS'"
+            :progress="exerciseProgress"
+          >
+          </progress-bar>
+          <progress-bar :data-prop="'FOOD PROGRESS'" :progress="foodProgress">
+          </progress-bar>
         </template>
       </user-statistics-card>
     </div>
@@ -21,15 +26,14 @@
 </template>
 
 <script>
-import ProgressBar from './../components/ProgressBar'
-import navbar from '../components/navbar'
-import UserStatisticsCard from './../components/UserStatisticsCard'
-
+import ProgressBar from './../components/ProgressBar';
+import navbar from '../components/navbar';
+import UserStatisticsCard from './../components/UserStatisticsCard';
 export default {
   components: {
     navbar,
     ProgressBar,
-    UserStatisticsCard,
+    UserStatisticsCard
   },
   data() {
     return {
@@ -38,27 +42,26 @@ export default {
           id: 1,
           name: 'Laura Natalia',
           exerciseProgress: 78,
-          foodProgress: 100,
+          foodProgress: 100
         },
         {
           id: 2,
           name: 'Daniel Solano',
           exerciseProgress: 88,
-          foodProgress: 80,
+          foodProgress: 80
         },
         {
           id: 3,
           name: 'Sebastián Nieto',
           exerciseProgress: 100,
-          foodProgress: 85,
+          foodProgress: 85
         },
-        { id: 4, name: 'Jhonatan', exerciseProgress: 70, foodProgress: 98 },
-      ],
-    }
-  },
-}
+        { id: 4, name: 'Jhonatan', exerciseProgress: 70, foodProgress: 98 }
+      ]
+    };
+  }
+};
 </script>
-
 <style scoped>
 * {
   font-family: 'Raleway', Sans-serif;
@@ -82,7 +85,12 @@ export default {
   border-radius: 4px;
   color: white;
   background: #0f2027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027); /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to bottom,
     #2c5364,

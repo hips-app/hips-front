@@ -2,7 +2,12 @@
   <div id="progress__container" class="progress">
     <div
       id="progress__bar"
-      :class="[bootstrapColor, 'progress-bar', 'progress-bar-striped', 'progress-bar-animated']"
+      :class="[
+        bootstrapColor,
+        'progress-bar',
+        'progress-bar-striped',
+        'progress-bar-animated'
+      ]"
       :style="progressStyle"
       role="progressbar"
       aria-valuenow="10"
@@ -20,36 +25,35 @@ export default {
     dataProp: {
       type: String,
       required: false,
-      default: '',
+      default: ''
     },
     progress: {
       type: Number,
-      required: true,
-    },
+      required: true
+    }
   },
   data() {
     return {
       bootstrapColor: '',
-      width: 0,
-    }
+      width: 0
+    };
   },
   computed: {
     progressStyle() {
-      return { width: `${this.width}%` }
-    },
+      return { width: `${this.width}%` };
+    }
   },
   mounted() {
-    if (this.progress === 100) this.bootstrapColor = 'bg-success'
-    else if (this.progress >= 80) this.bootstrapColor = 'bg-primary'
-    else if (this.progress >= 60) this.bootstrapColor = 'bg-warning'
-    else if (this.progress >= 40) this.bootstrapColor = 'bg-danger'
-    else this.bootstrapColor = 'bg-dark'
-
+    if (this.progress === 100) this.bootstrapColor = 'bg-success';
+    else if (this.progress >= 80) this.bootstrapColor = 'bg-primary';
+    else if (this.progress >= 60) this.bootstrapColor = 'bg-warning';
+    else if (this.progress >= 40) this.bootstrapColor = 'bg-danger';
+    else this.bootstrapColor = 'bg-dark';
     setTimeout(() => {
-      this.width = this.progress
-    }, 0)
-  },
-}
+      this.width = this.progress;
+    }, 0);
+  }
+};
 </script>
 <style scoped>
 #jj {

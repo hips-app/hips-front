@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { AuthController } from '../controllers';
 import CheckExercises from '../views/CheckExercises';
 import CheckFoods from '../views/CheckFoods';
-import ExpertCom from '../views/ExpertCom.vue'
+import ExpertCom from '../views/ExpertCom.vue';
 import FoodSchedule from '../views/FoodSchedule';
 import FourFour from '../views/404.vue';
 import Login from '../views/Login.vue';
