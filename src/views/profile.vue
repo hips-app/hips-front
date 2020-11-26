@@ -7,7 +7,7 @@
     <main class="container">
       <div class="popup">
         <div class="popup-content">
-          <div class="form-group ">
+          <div class="form-group">
             <label class="cursor-pointer" htmlFor="file-input">
               <img
                 class="profile-picture"
@@ -17,7 +17,7 @@
                 height="200"
               />
             </label>
-            <div style="text-align:center">
+            <div style="text-align: center">
               <h3 class="text-white pr-2 pt-2 pl-5">
                 <b>First name:</b> {{ profileData.firstName }}
               </h3>
@@ -30,9 +30,7 @@
             </div>
             <div class="mt-5">
               <router-link to="personal-data">
-                <button href="#0" class="popup-button w-100">
-                  Editar
-                </button>
+                <button href="#0" class="popup-button w-100">Editar</button>
               </router-link>
             </div>
             <div v-if="subscription">
@@ -76,20 +74,20 @@ export default {
       profileData: {
         firstName: AuthController.currentAccount.firstName,
         lastName: AuthController.currentAccount.lastName,
-        email: AuthController.currentAccount.email
+        email: AuthController.currentAccount.email,
       },
       profilePicture: null,
-      subscription: true
+      subscription: true,
     };
   },
   created() {
     UserSubscriptionService.hasSubscription(
       AuthController.currentAccount.id
-    ).then((this.subscription = this.response));
+    ).then((response) => (this.subscription = response));
   },
   mounted() {
     UserService.getProfile(AuthController.currentAccount.id)
-      .then(profileData => {
+      .then((profileData) => {
         this.profileData = profileData;
         this.loading = false;
         this.profilePicture =
@@ -108,7 +106,7 @@ export default {
     navbar,
     foot,
     cancelsubs,
-    renovarSubs
+    renovarSubs,
   },
   methods: {
     setProfile(data) {
@@ -124,8 +122,8 @@ export default {
       );
       await UserService.setProfilePicture(logoUrl);
       alert('Imagen actializada con exito');
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

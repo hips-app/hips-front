@@ -1,38 +1,38 @@
 <template>
-  <!-- <div v-if="loading" class="spinner-border" role="status">
+  <div v-if="loading" class="spinner-border" role="status">
     <span class="sr-only">Loading...</span>
   </div>
-  <router-view v-else /> -->
-  <users-progress v-if="true"></users-progress>
+  <router-view v-else />
+  <!-- <users-progress v-if="true"></users-progress>
   <user-statistics v-if="false"></user-statistics>
   <food-schedule v-if="false"></food-schedule>
   <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
   <check-foods v-if="false"></check-foods>
-  <specialist-users v-if="false"></specialist-users>
+  <specialist-users v-if="false"></specialist-users> -->
 </template>
 <script>
 import { AuthController } from './controllers';
 import { HttpProvider, FirebaseProvider } from './providers';
 import { AuthService } from './services';
-import CheckExercises from './views/CheckExercises';
+/*import CheckExercises from './views/CheckExercises';
 import CheckFoods from './views/CheckFoods';
 import FoodSchedule from './views/FoodSchedule';
 import Schedule from './views/Schedule';
 import SpecialistUsers from './views/SpecialistUsers';
 import UsersProgress from './views/UsersProgress';
-import UserStatistics from './views/UserStatistics';
+import UserStatistics from './views/UserStatistics';*/
 FirebaseProvider.init();
 export default {
   name: 'App',
   components: {
-    CheckExercises,
+    /*CheckExercises,
     CheckFoods,
     FoodSchedule,
     Schedule,
     SpecialistUsers,
     UsersProgress,
-    UserStatistics
+    UserStatistics*/
   },
   data() {
     return { loading: true };

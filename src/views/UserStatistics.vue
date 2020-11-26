@@ -27,9 +27,10 @@ import navbar from '../components/navbar';
 import ProgressBar from '../components/ProgressBar.vue';
 // import ProgressBar from './../components/ProgressBar'
 export default {
+  name: 'UserStatistics',
   components: {
     navbar,
-    ProgressBar
+    ProgressBar,
   },
   data() {
     return {
@@ -41,8 +42,8 @@ export default {
         { date: '2020-11-05', progress: 65 },
         { date: '2020-11-06', progress: 15 },
         { date: '2020-11-07', progress: 30 },
-        { date: '2020-11-08', progress: 100 }
-      ]
+        { date: '2020-11-08', progress: 100 },
+      ],
     };
   },
   computed: {
@@ -53,11 +54,11 @@ export default {
       return this.exerciseProgressList[this.exerciseProgressList.length - 1][
         'date'
       ];
-    }
+    },
   },
   mounted() {
     console.log(moment('2020-11-01'));
-  }
+  },
 };
 </script>
 <style scoped>

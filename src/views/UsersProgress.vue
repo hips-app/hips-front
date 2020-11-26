@@ -30,6 +30,7 @@ import ProgressBar from './../components/ProgressBar';
 import navbar from '../components/navbar';
 import UserStatisticsCard from './../components/UserStatisticsCard';
 export default {
+  name: 'UserProgress',
   components: {
     navbar,
     ProgressBar,

@@ -13,7 +13,7 @@
               birthDate,
               profilePicture,
               height,
-              weight
+              weight,
             } in users"
             :key="id"
             class="col-sm-8 col-md-4"
@@ -59,9 +59,10 @@
 import BaseCard from '../components/BaseCard';
 import Navbar from '../components/navbar';
 export default {
+  name: 'SpecialistUsers',
   components: {
     BaseCard,
-    Navbar
+    Navbar,
   },
   data() {
     return {
@@ -74,7 +75,7 @@ export default {
           profilePicture:
             'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67'
+          weight: '67',
         },
         {
           id: 2,
@@ -84,7 +85,7 @@ export default {
           profilePicture:
             'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '99'
+          weight: '99',
         },
         {
           id: 3,
@@ -94,7 +95,7 @@ export default {
           profilePicture:
             'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '77'
+          weight: '77',
         },
         {
           id: 4,
@@ -104,7 +105,7 @@ export default {
           profilePicture:
             'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '87'
+          weight: '87',
         },
         {
           id: 5,
@@ -114,7 +115,7 @@ export default {
           profilePicture:
             'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67'
+          weight: '67',
         },
         {
           id: 6,
@@ -124,7 +125,7 @@ export default {
           profilePicture:
             'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67'
+          weight: '67',
         },
         {
           id: 7,
@@ -134,16 +135,16 @@ export default {
           profilePicture:
             'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
-          weight: '67'
-        }
-      ]
+          weight: '67',
+        },
+      ],
     };
   },
   methods: {
     editUserPlan(planType) {
       console.log(planType);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>

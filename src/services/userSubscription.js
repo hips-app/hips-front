@@ -22,7 +22,7 @@ const renovarSubscription = async () => {
 };
 //pregunta si el usuario tiene subscripcion donde me devuelve un verdadero o falso dependiendo si posee subscripcion o no
 const hasSubscription = async accountId => {
-  const response = await HttpProvider.get(baseEndpoint1 + `/hasSubscription`, {
+  const response = await HttpProvider.get(baseEndpoint1 + `/has-subscription`, {
     accountId
   });
   return response;
