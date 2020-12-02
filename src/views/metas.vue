@@ -13,7 +13,7 @@
       <div class="popup">
         <div class="popup-content">
           <div class="form-group ">
-            <h4 class="text-light">Ingrese su meta:</h4>
+            <h4 class="text-light">Set your goal</h4>
             <input
               v-model="description"
               type="text"
@@ -22,7 +22,7 @@
               required
             />
             <h4 class="text-light mt-4">
-              Ingrese su fecha de expiracion de la meta:
+              Set your's goal due date
             </h4>
             <input
               v-model="expirationDate"
@@ -78,16 +78,21 @@ export default {
 <style scoped>
 * {
   font-family: 'Ubuntu', sans-serif;
+  color: black !important;
+  font-size: 15px;
 }
 
 #header {
   justify-content: center;
   font-size: 20px;
   font-weight: 700;
-  color: white;
+  color: white !important;
   letter-spacing: 10px;
   background: linear-gradient(to right, #ff5f6d, #ffc371);
   box-shadow: 0px 1px 5px rgb(47, 79, 79);
   margin-bottom: 10px;
+}
+.popup-button {
+  color: white !important;
 }
 </style>
