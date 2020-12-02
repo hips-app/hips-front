@@ -11,7 +11,8 @@
   <check-foods v-if="false"></check-foods>
   <specialist-users v-if="false"></specialist-users>
   <login v-if="false"></login>
-  <signup v-if="true"></signup>
+  <signup v-if="false"></signup>
+  <register-personal v-if="true"></register-personal>
 </template>
 <script>
 import { AuthController } from './controllers'
@@ -26,6 +27,7 @@ import Schedule from './views/Schedule'
 import SpecialistUsers from './views/SpecialistUsers'
 import UsersProgress from './views/UsersProgress'
 import UserStatistics from './views/UserStatistics'
+import RegisterPersonal from './views/RegisterPersonal.vue'
 
 FirebaseProvider.init()
 export default {
@@ -40,6 +42,7 @@ export default {
     SpecialistUsers,
     UsersProgress,
     UserStatistics,
+    RegisterPersonal,
   },
   data() {
     return { loading: true }
