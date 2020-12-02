@@ -14,7 +14,8 @@
   <signup v-if="false"></signup>
   <register-personal v-if="false"></register-personal>
   <profile v-if="false"></profile>
-  <profesionals v-if="true"></profesionals>
+  <profesionals v-if="false"></profesionals>
+  <metas v-if="true"></metas>
 </template>
 <script>
 import { AuthController } from './controllers'
@@ -32,6 +33,7 @@ import UserStatistics from './views/UserStatistics'
 import RegisterPersonal from './views/RegisterPersonal.vue'
 import profile from './views/profile'
 import Profesionals from './views/profesionals.vue'
+import metas from './views/metas.vue'
 
 FirebaseProvider.init()
 export default {
@@ -43,6 +45,7 @@ export default {
     Login,
     profile,
     Signup,
+    metas,
     Schedule,
     SpecialistUsers,
     UsersProgress,
