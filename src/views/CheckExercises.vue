@@ -33,24 +33,24 @@
 </template>
 
 <script>
-import DateInterval from '../components/DateInterval';
-import ExerciseCheckCards from '../components/ExerciseCheckCards';
-import Navbar from '../components/navbar';
-import WeekdaysBar from '../components/WeekdaysBar';
+import DateInterval from '../components/DateInterval'
+import ExerciseCheckCards from '../components/ExerciseCheckCards'
+import Navbar from '../components/navbar'
+import WeekdaysBar from '../components/WeekdaysBar'
 
-import moment from 'moment';
+import moment from 'moment'
 
 export default {
   components: {
     DateInterval,
     ExerciseCheckCards,
     Navbar,
-    WeekdaysBar
+    WeekdaysBar,
   },
   provide() {
     return {
-      changeActiveDay: this.changeActiveDay
-    };
+      changeActiveDay: this.changeActiveDay,
+    }
   },
   data() {
     return {
@@ -66,7 +66,7 @@ export default {
           numSeries: 3,
           numRepetitions: 9,
           day: 1,
-          checked: false
+          checked: false,
         },
         {
           id: 2000,
@@ -75,7 +75,7 @@ export default {
           numSeries: 4,
           numRepetitions: 11,
           day: 2,
-          checked: false
+          checked: false,
         },
         {
           id: 3000,
@@ -84,7 +84,7 @@ export default {
           numSeries: 54,
           numRepetitions: 12,
           day: 2,
-          checked: false
+          checked: false,
         },
         {
           id: 4000,
@@ -93,7 +93,7 @@ export default {
           numSeries: 3,
           numRepetitions: 9,
           day: 5,
-          checked: false
+          checked: false,
         },
         {
           id: 5000,
@@ -102,7 +102,7 @@ export default {
           numSeries: 4,
           numRepetitions: 11,
           day: 2,
-          checked: false
+          checked: false,
         },
         {
           id: 6000,
@@ -111,7 +111,7 @@ export default {
           numSeries: 54,
           numRepetitions: 12,
           day: 4,
-          checked: false
+          checked: false,
         },
         {
           id: 7000,
@@ -120,64 +120,59 @@ export default {
           numSeries: 54,
           numRepetitions: 12,
           day: 7,
-          checked: false
-        }
+          checked: false,
+        },
       ],
-      checkedExercises: []
-    };
+      checkedExercises: [],
+    }
   },
   computed: {
     exercisesToShow() {
-      return this.exercisePlanList.filter(ex => ex.day === this.activeDay);
-    }
+      return this.exercisePlanList.filter(ex => ex.day === this.activeDay)
+    },
   },
   methods: {
     changeActiveDay(day) {
-      this.activeDay = day;
+      this.activeDay = day
     },
     goToNextDay() {
-      this.currentDate = this.currentDate.clone().add(1, 'days');
+      this.currentDate = this.currentDate.clone().add(1, 'days')
     },
     goToNextWeek() {
-      this.currentDate = this.currentDate
-        .clone()
-        .add(7 - this.activeDay + 1, 'days');
-      this.activeDay = 1;
+      this.currentDate = this.currentDate.clone().add(7 - this.activeDay + 1, 'days')
+      this.activeDay = 1
     },
     addCheckedExercise(id) {
-      this.checkedExercises.push(id);
-      const plannedExercise = this.exercisePlanList.find(ex => ex.id === id);
-      plannedExercise.checked = true;
-      console.log(this.checkedExercises);
+      this.checkedExercises.push(id)
+      const plannedExercise = this.exercisePlanList.find(ex => ex.id === id)
+      plannedExercise.checked = true
+      console.log(this.checkedExercises)
     },
     saveDay() {
-      let toSubmit = {};
-      toSubmit.date = this.currentDate.format('DD/MM/YYYY');
-      toSubmit.checked = [...this.checkedExercises];
+      let toSubmit = {}
+      toSubmit.date = this.currentDate.format('DD/MM/YYYY')
+      toSubmit.checked = [...this.checkedExercises]
 
-      if (
-        this.exercisesToShow.length === 0 ||
-        this.checkedExercises.length === 0
-      )
-        console.log('Nothing to save');
-      else console.log(toSubmit); // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
-      this.checkedExercises.splice(0, this.checkedExercises.length);
+      if (this.exercisesToShow.length === 0 || this.checkedExercises.length === 0)
+        console.log('Nothing to save')
+      else console.log(toSubmit) // HERE THIS METHOD SHOULD MAKE A POST REQUEST TO DB
+      this.checkedExercises.splice(0, this.checkedExercises.length)
 
-      const plannedExercise = this.exercisePlanList.find(ex => ex.checked);
-      if (plannedExercise) plannedExercise.checked = false;
+      const plannedExercise = this.exercisePlanList.find(ex => ex.checked)
+      if (plannedExercise) plannedExercise.checked = false
 
       if (this.activeDay < 7) {
-        this.activeDay += 1;
-        this.goToNextDay();
-      } else this.goToNextWeek();
-    }
+        this.activeDay += 1
+        this.goToNextDay()
+      } else this.goToNextWeek()
+    },
   },
   mounted() {
-    let dayNumber = this.startDate.day();
-    if (dayNumber === 0) this.activeDay = 7;
-    else this.activeDay = this.startDate.day();
-  }
-};
+    let dayNumber = this.startDate.day()
+    if (dayNumber === 0) this.activeDay = 7
+    else this.activeDay = this.startDate.day()
+  },
+}
 </script>
 
 <style scoped>
@@ -188,7 +183,7 @@ export default {
 }
 
 .no-exercises {
-  font-family: 'Raleway', Sans-serif;
+  font-family: 'Ubuntu', Sans-serif;
   margin-top: 10vh;
   font-size: 20px;
   font-weight: 900;

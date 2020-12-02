@@ -1,21 +1,23 @@
 <template>
-  <navbar></navbar>
-  <div id="header">MY STATISTICS: {{ 'EXERCISE' }}</div>
-  <div id="stats-container">
-    <h1 class="plan-details-title">PROGRESS PER DAY</h1>
-    <div>
-      <p class="plan__date">START DATE: {{ startDate }}</p>
-      <p class="plan__date">
-        END DATE:
-        {{ endDate }}
-      </p>
+  <div id="container">
+    <navbar></navbar>
+    <div id="header">MY STATISTICS: {{ 'EXERCISE' }}</div>
+    <div id="stats-container">
+      <h1 class="plan-details-title">PROGRESS PER DAY</h1>
+      <div>
+        <p class="plan__date">START DATE: {{ startDate }}</p>
+        <p class="plan__date">
+          END DATE:
+          {{ endDate }}
+        </p>
+      </div>
+      <progress-bar
+        v-for="{ date, progress } in exerciseProgressList"
+        :key="date"
+        :dataProp="date"
+        :progress="progress"
+      ></progress-bar>
     </div>
-    <progress-bar
-      v-for="{ date, progress } in exerciseProgressList"
-      :key="date"
-      :dataProp="date"
-      :progress="progress"
-    ></progress-bar>
   </div>
 </template>
 
@@ -61,9 +63,14 @@ export default {
 
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
-  font-weight: 900;
+  font-family: 'Ubuntu', Sans-serif;
+  font-weight: 500;
 }
+
+#container {
+  background-color: #eedd;
+}
+
 #stats-container {
   margin: 10vh 5vw;
   padding: 15px;
@@ -89,7 +96,12 @@ export default {
   border-radius: inherit;
   color: white;
   background: #0f2027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027); /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to bottom,
     #2c5364,

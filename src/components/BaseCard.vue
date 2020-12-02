@@ -14,7 +14,6 @@
 .exercise-card {
   font-size: 15px;
   font-weight: 500;
-  color: white;
   text-align: justify;
   padding: 12px;
   border-radius: 4px;
@@ -24,10 +23,10 @@
 
 .card-description {
   color: black;
-  font-size: 14px;
+  /* font-size: 14px; */
 }
 
 .exercise-card:hover {
-  background: rgb(240, 248, 205);
+  background: rgb(240, 248, 225);
 }
 </style>

@@ -187,7 +187,7 @@ h1 {
 
 .base-card {
   margin: 30px 15px 0px 15px;
-  animation: to-left 3s ease-in;
+  animation: to-left 1.5s ease-in;
 }
 
 .check-btn {
@@ -201,11 +201,13 @@ h1 {
 
 .btn-magenta {
   background-color: rgb(32, 214, 199);
+  color: white;
   cursor: grab;
 }
 
 .btn-steelblue {
   background-color: rgb(70, 130, 180);
+  color: white;
   cursor: grab;
 }
 

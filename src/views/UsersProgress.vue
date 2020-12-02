@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container">
     <navbar></navbar>
     <div id="header">MY USERS PROGRESS</div>
     <div class="row align-items-start justify-content-center">
@@ -12,8 +12,14 @@
           <h1 class="plan-details-title">{{ name }}</h1>
         </template>
         <template #userStats>
-          <progress-bar :data-prop="'EXERCISE PROGRESS'" :progress="exerciseProgress"></progress-bar>
-          <progress-bar :data-prop="'FOOD PROGRESS'" :progress="foodProgress"></progress-bar>
+          <progress-bar
+            :data-prop="'EXERCISE PROGRESS'"
+            :progress="exerciseProgress"
+          ></progress-bar>
+          <progress-bar
+            :data-prop="'FOOD PROGRESS'"
+            :progress="foodProgress"
+          ></progress-bar>
         </template>
       </user-statistics-card>
     </div>
@@ -61,8 +67,8 @@ export default {
 
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
-  font-weight: 900;
+  font-family: 'Ubuntu', Sans-serif;
+  font-weight: 500;
 }
 
 #header {
@@ -82,7 +88,12 @@ export default {
   border-radius: 4px;
   color: white;
   background: #0f2027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #2c5364, #203a43, #0f2027); /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to bottom,
     #2c5364,
