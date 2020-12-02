@@ -10,13 +10,13 @@
   <check-exercises v-if="false"></check-exercises>
   <check-foods v-if="false"></check-foods>
   <specialist-users v-if="false"></specialist-users>
-  <login v-if="false"></login>
+  <login v-if="true"></login>
   <signup v-if="false"></signup>
   <register-personal v-if="false"></register-personal>
   <profile v-if="false"></profile>
   <profesionals v-if="false"></profesionals>
   <metas v-if="false"></metas>
-  <not-found v-if="true"></not-found>
+  <not-found v-if="false"></not-found>
 </template>
 <script>
 import { AuthController } from './controllers'

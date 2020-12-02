@@ -25,7 +25,7 @@
             :isSelectedEx="isSelectedEx"
             :numSeriesEx="numSeriesEx"
             :repsPerSeriesEx="repsPerSeriesEx"
-            class="col-sm-8 col-md-3"
+            class="col-sm-8 col-md-3 exercise-card"
           ></exercise-card>
         </div>
       </div>
@@ -185,7 +185,19 @@ export default {
   letter-spacing: 2px;
   color: black;
 }
-.col-md-3 {
+
+.exercise-card {
   margin: 30px 15px 0px 15px;
+  animation: scale 1s;
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

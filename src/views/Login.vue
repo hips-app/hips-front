@@ -110,6 +110,7 @@ export default {
 
 .popup {
   position: absolute;
+  animation: reduce-animation 1s;
 }
 
 .hips-svg {
@@ -117,12 +118,31 @@ export default {
   z-index: -1;
   height: 75vh;
   left: -300px;
+  animation: scale-animation 3s infinite;
 }
 
 @media only screen and (min-width: 800px) {
   .popup {
     margin-left: 30vw;
     margin-top: 10vh;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .hips-svg {
+    display: none;
+  }
+}
+
+@keyframes scale-animation {
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes reduce-animation {
+  0% {
+    transform: scale(2);
   }
 }
 </style>

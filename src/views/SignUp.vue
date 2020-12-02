@@ -111,11 +111,24 @@ export default {
   z-index: -1;
   height: 75vh;
   left: -300px;
+  animation: scale-animation 3s infinite;
+}
+
+@media only screen and (max-width: 1050px) {
+  .hips-svg {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 800px) {
   .popup {
     margin-left: 40vw;
+  }
+}
+
+@keyframes scale-animation {
+  50% {
+    transform: scale(1.04);
   }
 }
 </style>
