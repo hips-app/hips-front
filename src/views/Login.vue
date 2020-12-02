@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img class="hips-svg" src="./../assets/undraw_workout_gcgu.svg" alt="" />
+    <img class="hips-svg" src="./../assets/undraw_workout_gcgu.svg" alt="img" />
     <div class="popup">
       <div class="popup-content">
         <p>Welcome!</p>
