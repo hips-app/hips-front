@@ -2,13 +2,21 @@
   <div>
     <navbar></navbar>
     <div id="container">
-      <h1>MY USERS</h1>
+      <div id="header">MY USERS</div>
       <div class="container-fluid">
         <div class="row align-items-start justify-content-center">
           <base-card
-            v-for="{ id, firstName, lastName, birthDate, profilePicture, height, weight } in users"
+            v-for="{
+              id,
+              firstName,
+              lastName,
+              birthDate,
+              profilePicture,
+              height,
+              weight,
+            } in users"
             :key="id"
-            class="col-sm-8 col-md-4"
+            class="col-sm-8 col-md-4 base-card"
           >
             <template #description>
               <div class="profile-description-item profile-picture">
@@ -22,11 +30,14 @@
               </div>
             </template>
             <template #footer
-              ><div @click="editUserPlan('foodPlan')" class="check-btn btn-magenta">
+              ><div @click="goTo('foodPlan')" class="check-btn btn-magenta">
                 EDIT FOOD PLAN
               </div>
-              <div @click="editUserPlan('exercisePlan')" class="check-btn btn-steelblue">
+              <div @click="goTo('exercisePlan')" class="check-btn btn-magenta">
                 EDIT EXERCISE PLAN
+              </div>
+              <div @click="goTo('viewStats')" class="check-btn btn-steelblue">
+                VIEW STATISTICS
               </div>
             </template>
           </base-card>
@@ -52,7 +63,8 @@ export default {
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
           weight: '67',
         },
@@ -61,7 +73,8 @@ export default {
           firstName: 'My',
           lastName: 'Name',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
           weight: '99',
         },
@@ -70,7 +83,8 @@ export default {
           firstName: 'Daniel',
           lastName: 'Felipe',
           birthDate: '01/01/1881',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
           weight: '77',
         },
@@ -79,7 +93,8 @@ export default {
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
           weight: '87',
         },
@@ -88,7 +103,8 @@ export default {
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
           weight: '67',
         },
@@ -97,7 +113,8 @@ export default {
           firstName: 'Pica',
           lastName: 'Chu',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
           weight: '67',
         },
@@ -106,7 +123,8 @@ export default {
           firstName: 'Chu',
           lastName: 'Pica',
           birthDate: '01/01/1991',
-          profilePicture: 'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
+          profilePicture:
+            'https://telegram.org/file/464001801/4/pPObBDJVv-M.32191.png/9963667389a3218249',
           height: '170',
           weight: '67',
         },
@@ -114,8 +132,8 @@ export default {
     }
   },
   methods: {
-    editUserPlan(planType) {
-      console.log(planType)
+    goTo(option) {
+      console.log(option)
     },
   },
 }
@@ -126,12 +144,28 @@ export default {
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: 'Raleway', Sans-serif;
+  font-family: 'Ubuntu', Sans-serif;
 }
 
 p {
   margin: 0;
 }
+
+#container {
+  background-color: #eedd;
+}
+
+#header {
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 10px;
+  background: linear-gradient(to right, #ff5f6d, #ffc371);
+  box-shadow: 0px 1px 5px rgb(47, 79, 79);
+  margin-bottom: 10px;
+}
+
 .profile-description-item {
   display: inline-block;
 }
@@ -144,7 +178,6 @@ p {
 }
 
 .profile-data {
-  font-size: 12px;
   width: 75%;
 }
 
@@ -152,8 +185,9 @@ h1 {
   margin-top: 5vh;
 }
 
-.col-md-4 {
+.base-card {
   margin: 30px 15px 0px 15px;
+  animation: to-left 3s ease-in;
 }
 
 .check-btn {
@@ -167,15 +201,45 @@ h1 {
 
 .btn-magenta {
   background-color: rgb(32, 214, 199);
-  user-select: none;
+  cursor: grab;
 }
+
 .btn-steelblue {
   background-color: rgb(70, 130, 180);
-  user-select: none;
+  cursor: grab;
+}
+
+.btn-magenta:hover,
+.btn-steelblue:hover {
+  animation: scale 0.5s ease-in-out;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes to-left {
+  0% {
+    transform: scale(0);
+  }
+
+  30% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

@@ -3,13 +3,13 @@
     <span class="sr-only">Loading...</span>
   </div>
   <router-view v-else /> -->
-  <users-progress v-if="true"></users-progress>
+  <users-progress v-if="false"></users-progress>
   <user-statistics v-if="false"></user-statistics>
   <food-schedule v-if="false"></food-schedule>
   <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
   <check-foods v-if="false"></check-foods>
-  <specialist-users v-if="false"></specialist-users>
+  <specialist-users v-if="true"></specialist-users>
 </template>
 <script>
 import { AuthController } from './controllers'
