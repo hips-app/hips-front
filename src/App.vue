@@ -12,7 +12,8 @@
   <specialist-users v-if="false"></specialist-users>
   <login v-if="false"></login>
   <signup v-if="false"></signup>
-  <register-personal v-if="true"></register-personal>
+  <register-personal v-if="false"></register-personal>
+  <profile v-if="true"></profile>
 </template>
 <script>
 import { AuthController } from './controllers'
@@ -28,6 +29,7 @@ import SpecialistUsers from './views/SpecialistUsers'
 import UsersProgress from './views/UsersProgress'
 import UserStatistics from './views/UserStatistics'
 import RegisterPersonal from './views/RegisterPersonal.vue'
+import profile from './views/profile'
 
 FirebaseProvider.init()
 export default {
@@ -37,6 +39,7 @@ export default {
     CheckFoods,
     FoodSchedule,
     Login,
+    profile,
     Signup,
     Schedule,
     SpecialistUsers,
