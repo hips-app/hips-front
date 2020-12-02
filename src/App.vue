@@ -9,7 +9,8 @@
   <schedule v-if="false"></schedule>
   <check-exercises v-if="false"></check-exercises>
   <check-foods v-if="false"></check-foods>
-  <specialist-users v-if="true"></specialist-users>
+  <specialist-users v-if="false"></specialist-users>
+  <login v-if="true"></login>
 </template>
 <script>
 import { AuthController } from './controllers'
@@ -18,6 +19,7 @@ import { AuthService } from './services'
 import CheckExercises from './views/CheckExercises'
 import CheckFoods from './views/CheckFoods'
 import FoodSchedule from './views/FoodSchedule'
+import Login from './views/Login'
 import Schedule from './views/Schedule'
 import SpecialistUsers from './views/SpecialistUsers'
 import UsersProgress from './views/UsersProgress'
@@ -30,6 +32,7 @@ export default {
     CheckExercises,
     CheckFoods,
     FoodSchedule,
+    Login,
     Schedule,
     SpecialistUsers,
     UsersProgress,

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <img class="hips-svg" src="./../assets/undraw_workout_gcgu.svg" alt="" />
     <div class="popup">
       <div class="popup-content">
         <p>Welcome!</p>
@@ -41,9 +42,9 @@
 </template>
 
 <script>
-import { AuthController } from '../controllers';
-import { AuthService } from '../services';
-import { AccountTypesEnum } from '../commons/enums';
+import { AuthController } from '../controllers'
+import { AuthService } from '../services'
+import { AccountTypesEnum } from '../commons/enums'
 export default {
   name: 'Login',
   data() {
@@ -51,7 +52,7 @@ export default {
       email: '',
       password: '',
       error: false,
-    };
+    }
   },
   mounted() {
     window.gapi.signin2.render('google-signin-button', {
@@ -61,49 +62,67 @@ export default {
       longtitle: true,
       theme: 'dark',
       onsuccess: this.onGoogleSignIn,
-    });
+    })
   },
   methods: {
     async login() {
       try {
-        const accountData = await AuthService.login(this.email, this.password);
-        AuthController.setAccount(accountData);
+        const accountData = await AuthService.login(this.email, this.password)
+        AuthController.setAccount(accountData)
         if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
-          this.$router.replace(this.$route.query.redirect || '/next');
+          this.$router.replace(this.$route.query.redirect || '/next')
         } else {
-          this.$router.replace(this.$route.query.redirect || '/personal-data');
+          this.$router.replace(this.$route.query.redirect || '/personal-data')
         }
       } catch (error) {
-        alert('Incorrect credentials');
+        alert('Incorrect credentials')
       }
     },
     async onGoogleSignIn(user) {
-      const profile = user.getBasicProfile();
+      const profile = user.getBasicProfile()
       try {
         const accountData = await AuthService.loginWithGoogle(
           profile.getEmail(),
           profile.getId()
-        );
-        AuthController.setAccount(accountData);
+        )
+        AuthController.setAccount(accountData)
         if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
-          this.$router.replace(this.$route.query.redirect || '/next');
+          this.$router.replace(this.$route.query.redirect || '/next')
         } else {
-          this.$router.replace(this.$route.query.redirect || '/personal-data');
+          this.$router.replace(this.$route.query.redirect || '/personal-data')
         }
       } catch (error) {
-        alert('Debes registrarte primero para poder iniciar sesión con google');
-        var auth2 = window.gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-        });
+        alert('Debes registrarte primero para poder iniciar sesión con google')
+        var auth2 = window.gapi.auth2.getAuthInstance()
+        auth2.signOut().then(function() {
+          console.log('User signed out.')
+        })
       }
     },
   },
   components: {},
-};
+}
 </script>
 <style scoped>
-.abcRioButton {
-  width: 100% !important;
+* {
+  font-family: 'Ubuntu';
+}
+
+.popup {
+  position: absolute;
+}
+
+.hips-svg {
+  position: relative;
+  z-index: -1;
+  height: 75vh;
+  left: -300px;
+}
+
+@media only screen and (min-width: 800px) {
+  .popup {
+    margin-left: 30vw;
+    margin-top: 10vh;
+  }
 }
 </style>
