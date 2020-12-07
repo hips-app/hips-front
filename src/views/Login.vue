@@ -77,7 +77,7 @@ export default {
         const accountData = await AuthService.login(this.email, this.password);
         AuthController.setAccount(accountData);
         if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
-          this.$router.replace(this.$route.query.redirect || '/next');
+          this.$router.replace(this.$route.query.redirect || '/specialist-users');
         } else {
           this.$router.replace(this.$route.query.redirect || '/personal-data');
         }
@@ -94,7 +94,7 @@ export default {
         );
         AuthController.setAccount(accountData);
         if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
-          this.$router.replace(this.$route.query.redirect || '/next');
+          this.$router.replace(this.$route.query.redirect || '/specialist-users');
         } else {
           this.$router.replace(this.$route.query.redirect || '/personal-data');
         }

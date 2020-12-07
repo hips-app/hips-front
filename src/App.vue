@@ -12,6 +12,7 @@
   <specialist-users v-if="false"></specialist-users> -->
 </template>
 <script>
+import { AccountTypesEnum } from './commons/enums';
 import { AuthController } from './controllers';
 import { HttpProvider, FirebaseProvider } from './providers';
 import { AuthService } from './services';
@@ -42,13 +43,19 @@ export default {
     const token = localStorage.getItem('token');
     if (token) {
       AuthService.loginWithToken(token)
-        .then(accountData => {
+        .then((accountData) => {
           AuthController.setAccount(accountData);
           if (this.$route.path == '/' || this.$route.path == '/sign-up') {
-            this.$router.push('/schedule');
+            if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
+              this.$router.replace(
+                this.$route.query.redirect || '/specialist-users'
+              );
+            } else {
+              this.$router.replace(this.$route.query.redirect || '/schedule');
+            }
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
           HttpProvider.removeSessionCredentials();
           this.$router.push('/?redirect=' + this.$route.path);
@@ -61,7 +68,7 @@ export default {
       this.loading = false;
       AuthController.hasLoaded = true;
     }
-  }
+  },
 };
 </script>
 <style>

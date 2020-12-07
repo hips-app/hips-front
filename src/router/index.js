@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import { AuthController } from '../controllers';
 import CheckExercises from '../views/CheckExercises';
+import UsersProgress from '../views/UsersProgress';
+import UserStatistics from '../views/UserStatistics';
 import CheckFoods from '../views/CheckFoods';
 import ExpertCom from '../views/ExpertCom.vue';
 import FoodSchedule from '../views/FoodSchedule';
@@ -15,6 +17,8 @@ import metas from '../views/metas.vue';
 import next from '../views/next.vue';
 import profesionales from '../views/profesionals.vue';
 import profile from '../views/profile.vue';
+
+import { AccountTypesEnum } from '../commons/enums';
 
 const routes = [
   {
@@ -79,6 +83,16 @@ const routes = [
     component: ExpertCom
   },
   {
+    path: '/UsersProgress',
+    name: 'UsersProgress',
+    component: UsersProgress
+  },
+  {
+    path: '/UserStatistics',
+    name: 'UserStatistics',
+    component: UserStatistics
+  },
+  {
     path: '/*',
     name: '404',
     component: FourFour
@@ -103,7 +117,11 @@ router.beforeEach((to, from, next) => {
     AuthController.isAuthenticated &&
     AuthController.hasLoaded
   ) {
-    next({ name: 'Schedule' });
+    if (AuthController.currentAccount.type == AccountTypesEnum.SPECIALIST) {
+      next({ name: 'SpecialistUsers' });
+    } else {
+      next({ name: 'Schedule' });
+    }
   } else next();
 });
 export default router;

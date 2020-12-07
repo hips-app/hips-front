@@ -1,11 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">HIPS APP</a>
-    <registroMeta></registroMeta>
-    <div>
+    <registroMeta v-if="showProgress"></registroMeta>
+    <div v-if="showProgress">
       <div v-if="show">
         <DailyCalories
-          style="position:relative; left:100px;"
+          style="position: relative; left: 100px"
           v-on:finish-task="showCaloriesForm()"
         ></DailyCalories>
       </div>
@@ -21,13 +21,14 @@
       </div>
     </div>
     <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2">
-      comunicarse con experto
+      {{smsText}}
     </router-link>
     <div className="mr-auto"></div>
     <router-link to="/profile">
       <section>
         <div :style="image" class="image"></div>
         <img
+          v-if="showProgress"
           class="profile-picture"
           :src="profilePicture"
           alt="2"
@@ -38,7 +39,7 @@
       <p id="user" class="text-white pr-2 pt-2 pl-2">
         {{ userName }}
       </p>
-      <percentagebar></percentagebar>
+      <percentagebar v-if="showProgress"></percentagebar>
     </router-link>
     <button href="#0" class="btn btn-primary" v-on:click="logout()">
       logout
@@ -54,6 +55,7 @@ import { AuthService } from '../services';
 import registroMeta from './registroMeta';
 import DailyCalories from './DailyCalories';
 import percentagebar from './percentagebar';
+import { AccountTypesEnum } from '../commons/enums';
 export default {
   name: 'Navbar',
   data() {
@@ -61,25 +63,33 @@ export default {
       userName: AuthController.currentAccount.firstName,
       userEmail: AuthController.currentAccount.email,
       show: false,
-      profilePicture: null
+      profilePicture: null,
+      smsText:
+        AuthController.currentAccount.type == AccountTypesEnum.USER
+          ? 'Comunicarse con experto'
+          : 'Comunicarse con usuario',
+      showProgress: AuthController.currentAccount.type == AccountTypesEnum.USER,
     };
   },
   mounted() {
-    UserService.getProfile(AuthController.currentAccount.id)
-      .then(profileData => {
-        this.profilePicture =
-          profileData.profilePicture == null || profileData.profilePicture == ''
-            ? 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png'
-            : profileData.profilePicture;
-      })
-      .catch(() => {
-        alert('there was an error fetching user data');
-      });
+    if (AuthController.currentAccount.type == AccountTypesEnum.USER) {
+      UserService.getProfile(AuthController.currentAccount.id)
+        .then((profileData) => {
+          this.profilePicture =
+            profileData.profilePicture == null ||
+            profileData.profilePicture == ''
+              ? 'https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png'
+              : profileData.profilePicture;
+        })
+        .catch(() => {
+          alert('there was an error fetching user data');
+        });
+    }
   },
   components: {
     registroMeta,
     DailyCalories,
-    percentagebar
+    percentagebar,
   },
   methods: {
     showCaloriesForm() {
@@ -89,8 +99,8 @@ export default {
       AuthService.logout();
       HttpProvider.removeSessionCredentials();
       this.$router.push('/');
-    }
-  }
+    },
+  },
 };
 </script>
 

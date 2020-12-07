@@ -8,26 +8,30 @@
   </div>
 </template>
 <script>
+import { AccountTypesEnum } from '../commons/enums';
+import { AuthController } from '../controllers';
 import { UserService } from '../services';
 
 export default {
   name: 'percent',
   data() {
     return {
-      percent: 10
+      percent: 10,
     };
   },
   created() {
-    try {
-      UserService.getpercent().then((this.percent = this.response));
-    } catch (error) {
-      alert('There was an error');
+    if (AuthController.currentAccount.type == AccountTypesEnum.UserService) {
+      try {
+        UserService.getpercent().then((this.percent = this.response));
+      } catch (error) {
+        alert('There was an error');
+      }
     }
   },
   mounted() {
     var elem = document.getElementById('myBar');
     elem.style.width = this.percent + '%';
-  }
+  },
 };
 </script>
 <style>
