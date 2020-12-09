@@ -9,16 +9,16 @@
             </caption>
             <thead>
               <tr>
-                <th class="text-white pr-2 pt-2 pl-5" scope="col">
+                <th scope="col">
                   Calorias Diarias
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="text-white pr-2 pt-2 pl-5">
+                <td>
                   <!--input que atrapa el numero de calorias consumidas por el usuario-->
-                  <h4 class="text-light">Ingrese su calorias:</h4>
+                  <h4>Ingrese su calorias:</h4>
                   <input
                     v-model="calories"
                     type="number"
@@ -29,8 +29,8 @@
                 </td>
               </tr>
               <tr>
-                <td class="text-white pr-2 pt-2 pl-5">
-                  <h4 class="text-light mt-4">
+                <td>
+                  <h4>
                     Ingrese su fecha de expiracion de la meta:
                   </h4>
                   <!--input que atrapa la fecha en la cual se consumieron en el dia especificado-->
@@ -44,7 +44,7 @@
                 </td>
               </tr>
               <tr>
-                <td class="text-white pr-2 pt-2 pl-5">
+                <td>
                   <!--boton que llama el metodo manda las calorias a la base de datos-->
                   <button
                     href="#0"
@@ -93,7 +93,7 @@ export default {
           this.date,
           AuthController.currentAccount.id
         );
-        this.$emit('finish-task');
+        this.$router.replace(this.$route.query.redirect || '/personal-data')
         alert('calorias agregadas');
       } catch (error) {
         alert('There was an error');

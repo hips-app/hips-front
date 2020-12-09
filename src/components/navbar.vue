@@ -2,25 +2,11 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="/">HIPS APP</a>
     <registroMeta v-if="showProgress"></registroMeta>
-    <div v-if="showProgress">
-      <div v-if="show">
-        <DailyCalories
-          style="position: relative; left: 100px"
-          v-on:finish-task="showCaloriesForm()"
-        ></DailyCalories>
-      </div>
-      <div v-else style="pl-2">
-        <a
-          v-on:click.stop.prevent="showCaloriesForm()"
-          class="text-white pr-2 pt-2 pl-2"
-          href=""
-          aria-expanded="true"
-        >
-          Calories |
-        </a>
-      </div>
-    </div>
-    <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2">
+    <router-link to="/DailyCalories"
+      style="position: relative; left:10px"
+      class="text-white pr-2 pt-2 pl-2"
+    >Calories</router-link>
+      <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2">
       {{smsText}}
     </router-link>
     <div className="mr-auto"></div>
@@ -53,7 +39,6 @@ import { HttpProvider } from '../providers';
 import { AuthService } from '../services';
 // eslint-disable-next-line no-undef
 import registroMeta from './registroMeta';
-import DailyCalories from './DailyCalories';
 import percentagebar from './percentagebar';
 import { AccountTypesEnum } from '../commons/enums';
 export default {
@@ -88,7 +73,6 @@ export default {
   },
   components: {
     registroMeta,
-    DailyCalories,
     percentagebar,
   },
   methods: {
