@@ -1,36 +1,102 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">HIPS APP</a>
-    <registroMeta v-if="showProgress"></registroMeta>
-    <router-link to="/DailyCalories"
-      style="position: relative; left:10px"
-      class="text-white pr-2 pt-2 pl-2"
-    >Calories</router-link>
-      <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2">
-      {{smsText}}
-    </router-link>
-    <div className="mr-auto"></div>
-    <router-link to="/profile">
-      <section>
-        <div :style="image" class="image"></div>
-        <img
+<div>
+  <div class="navbar navbar-expand-lg navbar-dark" style="background-color: #620500;">
+    <a class="navbar-brand" href="/">
+      <img
           v-if="showProgress"
           class="profile-picture"
           :src="profilePicture"
-          alt="2"
           width="50"
           height="50"
-        />
-      </section>
-      <p id="user" class="text-white pr-2 pt-2 pl-2">
-        {{ userName }}
-      </p>
-      <percentagebar v-if="showProgress"></percentagebar>
-    </router-link>
-    <button href="#0" class="btn btn-primary" v-on:click="logout()">
-      logout
+      />HIPS APP
+    </a>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0" v-if="show">
+      <li class="nav-item">
+        <percentagebar v-if="showProgress"></percentagebar>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">
+          <registroMeta v-if="showProgress" aria-current="page" href="#"></registroMeta>  
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">
+          <router-link to="/DailyCalories"
+              style="position: relative; left:5px"
+              class="text-white pr-2 pt-2 pl-2"
+              aria-current="page"
+              href="/"
+          >Calories | </router-link>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">
+          <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2" aria-current="page" href="#">
+              {{smsText}}
+          </router-link>
+        </a>
+      </li>
+      <li class="nav-item">
+        <div class="container-fluid">
+        <router-link to="/profile">
+            <p id="user" class="text-white pr-2 pt-2 pl-2">
+             {{ userName }}
+            </p>
+        </router-link>
+        <button href="#0" v-on:click="logout()" style="position: absolute; right:100px">
+          logout
+        </button>
+        </div>
+      </li>
+    </ul>
+    <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" v-on:click="showCaloriesForm()" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+      </span>
     </button>
-  </nav>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+            <registroMeta v-if="showProgress" aria-current="page" href="#"></registroMeta>  
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+          <router-link to="/DailyCalories"
+              style="position: relative; left:5px"
+              class="text-white pr-2 pt-2 pl-2"
+              aria-current="page"
+              href="/"
+          >Calories | </router-link>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+          <router-link to="/ExpertCom" class="text-white pr-2 pt-2 pl-2" aria-current="page" href="#">
+              {{smsText}}
+          </router-link>
+          </a>
+        </li>
+      </ul>
+        <div style="position: absolute; right:5px">
+          <router-link to="/profile">
+            <p id="user" class="text-white pr-2 pt-2 pl-2">
+             {{ userName }}
+            </p>
+            <percentagebar v-if="showProgress"></percentagebar>
+          </router-link>
+        </div>
+        <button href="#0" class="btn btn-primary" v-on:click="logout()" style="position: absolute; right:100px">
+          logout
+        </button>
+    </div>
+    </div>
+  </div>
+</div>
 </template>
 <script>
 import { UserService } from '../services';
@@ -100,4 +166,5 @@ export default {
   border-color: #31302f;
   color: #fff;
 }
+
 </style>
