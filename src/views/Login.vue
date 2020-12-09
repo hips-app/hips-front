@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <img class="hips-svg" src="./../assets/undraw_workout_gcgu.svg" alt="img" />
     <div class="popup">
       <div class="popup-content">
         <!--Mensaje de Bienvenida a la aplicacion-->
@@ -48,9 +49,9 @@
 </template>
 
 <script>
-import { AuthController } from '../controllers';
-import { AuthService } from '../services';
-import { AccountTypesEnum } from '../commons/enums';
+import { AuthController } from '../controllers'
+import { AuthService } from '../services'
+import { AccountTypesEnum } from '../commons/enums'
 export default {
   name: 'Login',
   data() {
@@ -58,8 +59,8 @@ export default {
       //crea los datos que van a hacer utilizados
       email: '',
       password: '',
-      error: false
-    };
+      error: false,
+    }
   },
   mounted() {
     window.gapi.signin2.render('google-signin-button', {
@@ -68,49 +69,88 @@ export default {
       height: 50,
       longtitle: true,
       theme: 'dark',
-      onsuccess: this.onGoogleSignIn
-    });
+      onsuccess: this.onGoogleSignIn,
+    })
   },
   methods: {
     async login() {
       try {
-        const accountData = await AuthService.login(this.email, this.password);
-        AuthController.setAccount(accountData);
+        const accountData = await AuthService.login(this.email, this.password)
+        AuthController.setAccount(accountData)
         if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
           this.$router.replace(this.$route.query.redirect || '/specialist-users');
         } else {
-          this.$router.replace(this.$route.query.redirect || '/personal-data');
+          this.$router.replace(this.$route.query.redirect || '/personal-data')
         }
       } catch (error) {
-        alert('Incorrect credentials');
+        alert('Incorrect credentials')
       }
     },
     async onGoogleSignIn(user) {
-      const profile = user.getBasicProfile();
+      const profile = user.getBasicProfile()
       try {
         const accountData = await AuthService.loginWithGoogle(
           profile.getEmail(),
           profile.getId()
-        );
-        AuthController.setAccount(accountData);
+        )
+        AuthController.setAccount(accountData)
         if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
           this.$router.replace(this.$route.query.redirect || '/specialist-users');
         } else {
-          this.$router.replace(this.$route.query.redirect || '/personal-data');
+          this.$router.replace(this.$route.query.redirect || '/personal-data')
         }
       } catch (error) {
-        alert('Debes registrarte primero para poder iniciar sesión con google');
-        var auth2 = window.gapi.auth2.getAuthInstance();
+        alert('Debes registrarte primero para poder iniciar sesión con google')
+        var auth2 = window.gapi.auth2.getAuthInstance()
         auth2.signOut().then(function() {
-          console.log('User signed out.');
-        });
+          console.log('User signed out.')
+        })
       }
-    }
-  }
-};
+    },
+  },
+  components: {},
+}
 </script>
 <style scoped>
-.abcRioButton {
-  width: 100% !important;
+* {
+  font-family: 'Ubuntu';
+}
+
+.popup {
+  position: absolute;
+  animation: reduce-animation 1s;
+}
+
+.hips-svg {
+  position: relative;
+  z-index: -1;
+  height: 75vh;
+  left: -300px;
+  animation: scale-animation 3s infinite;
+}
+
+@media only screen and (min-width: 800px) {
+  .popup {
+    margin-left: 30vw;
+    margin-top: 10vh;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .hips-svg {
+    display: none;
+  }
+}
+
+@keyframes scale-animation {
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes reduce-animation {
+  0% {
+    transform: scale(2);
+  }
 }
 </style>

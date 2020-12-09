@@ -1,6 +1,6 @@
 <template>
   <div class="exercise-card">
-    <div v-if="$slots.description">
+    <div v-if="$slots.description" class="card-description">
       <slot name="description"> </slot>
     </div>
     <div v-if="$slots.details">
@@ -12,16 +12,21 @@
 
 <style scoped>
 .exercise-card {
-  font-family: 'Raleway', Sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: white;
   text-align: justify;
   padding: 12px;
   border-radius: 4px;
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
-  background: #f2994a;
-  background: -webkit-linear-gradient(bottom, #f2c94c, #f2994a);
-  background: linear-gradient(to bottom, #f2c94c, #f2994a);
+  background: rgb(240, 248, 255);
+}
+
+.card-description {
+  color: black;
+  /* font-size: 14px; */
+}
+
+.exercise-card:hover {
+  background: rgb(240, 248, 225);
 }
 </style>

@@ -2,7 +2,7 @@
   <base-card
     v-for="{ id, name, description, type, amount, checked } in foodsToShow"
     :key="id"
-    class="col-sm-8 col-md-3"
+    class="col-sm-8 col-md-3 base-card"
   >
     <template #description>
       <p>{{ name }}</p>
@@ -10,14 +10,10 @@
     </template>
     <template #details>
       <p>Amount (g/ml): {{ amount }}</p>
-      <p>{{ type }}</p>
+      <p>Category: {{ type }}</p>
     </template>
     <template #footer>
-      <div
-        v-if="!checked"
-        class="check-btn btn-yellow"
-        @click="addToCheckedFoods(id)"
-      >
+      <div v-if="!checked" class="check-btn btn-steelblue" @click="addToCheckedFoods(id)">
         MARK AS EATEN
       </div>
       <div v-else class="check-btn btn-red">
@@ -28,25 +24,32 @@
 </template>
 
 <script>
-import BaseCard from './BaseCard';
+import BaseCard from './BaseCard'
 export default {
   components: {
-    BaseCard
+    BaseCard,
   },
   props: ['foodsToShow', 'currentDate', 'checkedFoods'],
   emits: ['add-checked-food'],
   data() {
-    return {};
+    return {}
   },
   methods: {
     addToCheckedFoods(id) {
-      this.$emit('add-checked-food', id);
-    }
-  }
-};
+      this.$emit('add-checked-food', id)
+    },
+  },
+}
 </script>
 
 <style scoped>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Ubuntu', Sans-serif;
+}
+
 p {
   margin: 0;
 }
@@ -60,19 +63,30 @@ p {
   text-align: center;
 }
 
-.btn-yellow {
-  background-color: rgb(255, 215, 0);
-  color: black;
+.btn-steelblue {
+  background-color: rgb(70, 130, 180);
+  color: white;
   cursor: grab;
 }
 
 .btn-red {
-  background-color: rgb(139, 0, 0);
-  user-select: none;
+  background-color: rgb(123, 104, 238);
   color: white;
+  cursor: grab;
 }
 
-.col-md-3 {
+.base-card {
   margin: 30px 15px 0px 15px;
+  animation: scale 1s;
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

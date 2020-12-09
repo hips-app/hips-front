@@ -13,21 +13,21 @@
 </template>
 
 <script>
-import navbar from '../components/navbar';
-import PersonalDataForm from '../components/PersonalDataForm';
+import navbar from '../components/navbar'
+import PersonalDataForm from '../components/PersonalDataForm'
 
 export default {
   name: 'RegisterPersonal',
   components: {
     navbar,
-    PersonalDataForm
-  }
-};
+    PersonalDataForm,
+  },
+}
 </script>
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
-  font-weight: 900;
+  font-family: 'Ubuntu', Sans-serif;
+  font-weight: 500;
 }
 #header {
   justify-content: center;

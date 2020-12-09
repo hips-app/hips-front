@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container">
     <navbar></navbar>
     <div id="header">MY USERS PROGRESS</div>
     <div class="row align-items-start justify-content-center">
@@ -15,10 +15,11 @@
           <progress-bar
             :data-prop="'EXERCISE PROGRESS'"
             :progress="exerciseProgress"
-          >
-          </progress-bar>
-          <progress-bar :data-prop="'FOOD PROGRESS'" :progress="foodProgress">
-          </progress-bar>
+          ></progress-bar>
+          <progress-bar
+            :data-prop="'FOOD PROGRESS'"
+            :progress="foodProgress"
+          ></progress-bar>
         </template>
       </user-statistics-card>
     </div>
@@ -65,8 +66,8 @@ export default {
 </script>
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
-  font-weight: 900;
+  font-family: 'Ubuntu', Sans-serif;
+  font-weight: 500;
 }
 
 #header {

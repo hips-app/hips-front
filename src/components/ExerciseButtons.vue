@@ -13,15 +13,15 @@
 </template>
 
 <script>
-import ExcerciseButton from '../components/ExerciseButton';
+import ExcerciseButton from '../components/ExerciseButton'
 
 export default {
   components: {
-    ExcerciseButton
+    ExcerciseButton,
   },
   inject: ['savePlanIntoDB'],
-  props: ['categories', 'activeCategory']
-};
+  props: ['categories', 'activeCategory'],
+}
 </script>
 
 <style scoped>
@@ -34,9 +34,9 @@ export default {
 }
 
 * {
-  font-family: 'Raleway', Sans-serif;
+  font-family: 'Ubuntu', Sans-serif;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 500;
   letter-spacing: 2px;
   color: white;
 }

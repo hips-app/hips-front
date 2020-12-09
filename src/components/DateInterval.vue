@@ -27,11 +27,7 @@
           .toUpperCase()
       }}
     </div>
-    <div
-      v-if="!areExercisesToCheck"
-      class="right-date btn-next"
-      @click="saveDay"
-    >
+    <div v-if="!areExercisesToCheck" class="right-date btn-next" @click="saveDay">
       SAVE DAY
     </div>
     <div
@@ -52,32 +48,29 @@ export default {
   emits: ['go-to-next-week', 'save-day'],
   computed: {
     areExercisesToCheck() {
-      return (
-        this.endDate.format('DD/MM/YYYY') ===
-        this.currentDate.format('DD/MM/YYYY')
-      );
+      return this.endDate.format('DD/MM/YYYY') === this.currentDate.format('DD/MM/YYYY')
     },
     nextWeekIsOutOfRange() {
       return (
         this.endDate.clone() <
         this.currentDate.clone().add(7 - this.activeDay + 1, 'days')
-      );
-    }
+      )
+    },
   },
   methods: {
     addWeek() {
-      this.$emit('go-to-next-week');
+      this.$emit('go-to-next-week')
     },
     saveDay() {
-      this.$emit('save-day');
-    }
-  }
-};
+      this.$emit('save-day')
+    },
+  },
+}
 </script>
 
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
+  font-family: 'Ubuntu', Sans-serif;
   font-size: 14px;
   font-weight: 900;
 }
@@ -85,16 +78,14 @@ export default {
   margin-left: 20px;
 }
 .date-interval-container {
-  background-color: blueviolet;
-  color: white;
   display: flex;
   justify-content: center;
   box-shadow: 1px 1px 5px rgb(47, 79, 79);
 }
 .btn-next {
   padding: 0 4px 0 4px;
-  background-color: rgb(255, 239, 213);
-  color: black;
+  color: white;
+  background: rgb(0, 0, 128);
   user-select: none;
   cursor: grab;
 }

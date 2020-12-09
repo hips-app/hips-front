@@ -6,10 +6,10 @@
       category,
       numSeries,
       numRepetitions,
-      checked
+      checked,
     } in exercisesToShow"
     :key="id"
-    class="col-sm-8 col-md-3"
+    class="col-sm-8 col-md-3 base-card"
   >
     <template #description>
       <p>{{ exDescription }}</p>
@@ -22,7 +22,7 @@
     <template #footer>
       <div
         v-if="!checked"
-        class="check-btn btn-yellow"
+        class="check-btn btn-steelblue"
         @click="addToCheckedExercises(id)"
       >
         MARK AS DONE
@@ -35,25 +35,32 @@
 </template>
 
 <script>
-import BaseCard from './BaseCard';
+import BaseCard from './BaseCard'
 export default {
   components: {
-    BaseCard
+    BaseCard,
   },
   props: ['exercisesToShow', 'currentDate', 'checkedExercises'],
   emits: ['add-checked-exercise'],
   data() {
-    return {};
+    return {}
   },
   methods: {
     addToCheckedExercises(id) {
-      this.$emit('add-checked-exercise', id);
-    }
-  }
-};
+      this.$emit('add-checked-exercise', id)
+    },
+  },
+}
 </script>
 
 <style scoped>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: 'Ubuntu', Sans-serif;
+}
+
 p {
   margin: 0;
 }
@@ -67,19 +74,30 @@ p {
   text-align: center;
 }
 
-.btn-yellow {
-  background-color: rgb(255, 215, 0);
-  color: black;
+.btn-steelblue {
+  background-color: rgb(70, 130, 180);
+  color: white;
   cursor: grab;
 }
 
 .btn-red {
-  background-color: rgb(139, 0, 0);
-  user-select: none;
+  background-color: rgb(123, 104, 238);
   color: white;
+  cursor: grab;
 }
 
-.col-md-3 {
+.base-card {
   margin: 30px 15px 0px 15px;
+  animation: scale 1s;
+}
+
+@keyframes scale {
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

@@ -1,39 +1,42 @@
 <template>
-  <form @submit.prevent="saveData">
-    <div class="group">
-      <input type="text" v-model="firstName" />
-      <span class="highlight"></span><span class="bar"></span>
-      <label class="label">First Name</label>
-    </div>
-    <div class="group">
-      <input type="text" v-model="lastName" />
-      <span class="highlight"></span><span class="bar"></span>
-      <label class="label">Last Name</label>
-    </div>
-    <div class="group">
-      <input type="number" v-model="weight" />
-      <span class="highlight"></span><span class="bar"></span>
-      <label class="label">Weight (kg)</label>
-    </div>
-    <div class="group">
-      <input type="number" v-model="height" />
-      <span class="highlight"></span><span class="bar"></span>
-      <label class="label">Height (cm)</label>
-    </div>
-    <span class="">Birth date</span>
-    <div class="group">
-      <input v-model="birthDate" type="date" required />
-      <span class="highlight"></span><span class="bar"></span>
-    </div>
-    <button class="button buttonBlue" v-on:click="sendHealthData()">
-      SAVE PERSONAL DATA
-    </button>
-  </form>
+  <div class="container">
+    <img class="hips-svg" src="./../assets/undraw_nature_fun_n9lv.svg" alt="img" />
+    <form @submit.prevent="saveData">
+      <div class="group">
+        <input type="text" v-model="firstName" />
+        <span class="highlight"></span><span class="bar"></span>
+        <label class="label">First Name</label>
+      </div>
+      <div class="group">
+        <input type="text" v-model="lastName" />
+        <span class="highlight"></span><span class="bar"></span>
+        <label class="label">Last Name</label>
+      </div>
+      <div class="group">
+        <input type="number" v-model="weight" />
+        <span class="highlight"></span><span class="bar"></span>
+        <label class="label">Weight (kg)</label>
+      </div>
+      <div class="group">
+        <input type="number" v-model="height" />
+        <span class="highlight"></span><span class="bar"></span>
+        <label class="label">Height (cm)</label>
+      </div>
+      <span class="">Birth date</span>
+      <div class="group">
+        <input v-model="birthDate" type="date" required />
+        <span class="highlight"></span><span class="bar"></span>
+      </div>
+      <button class="button buttonBlue" v-on:click="sendHealthData()">
+        SAVE PERSONAL DATA
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
-import { AuthController } from '../controllers';
-import { UserService } from '../services';
+import { AuthController } from '../controllers'
+import { UserService } from '../services'
 export default {
   data() {
     return {
@@ -41,13 +44,13 @@ export default {
       lastName: AuthController.currentAccount.lastName,
       weight: null,
       height: null,
-      birthDate: null
-    };
+      birthDate: null,
+    }
   },
   methods: {
     async sendHealthData() {
       try {
-        console.log(this.birthDate);
+        console.log(this.birthDate)
         if (
           !(
             this.weight &&
@@ -57,8 +60,8 @@ export default {
             this.firstName
           )
         ) {
-          alert('Please fill all fields');
-          return;
+          alert('Please fill all fields')
+          return
         }
         await UserService.updatePersonalData(
           this.firstName,
@@ -66,26 +69,26 @@ export default {
           this.weight,
           this.height,
           this.birthDate
-        );
-        AuthController.currentAccount.firstName = this.firstName;
-        AuthController.currentAccount.lastName = this.lastName;
-        this.$router.replace('goal');
+        )
+        AuthController.currentAccount.firstName = this.firstName
+        AuthController.currentAccount.lastName = this.lastName
+        this.$router.replace('goal')
       } catch (error) {
-        alert('Ha ocurrido un error');
+        alert('Ha ocurrido un error')
       }
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
-  font-weight: 900;
+  font-family: 'Ubuntu', Sans-serif;
+  font-weight: 500;
 }
 form {
   width: 380px;
-  margin: 4em auto;
+  margin: 0 auto;
   padding: 3em 2em 2em 2em;
   border-radius: 5px;
   background: #fafafa;
@@ -119,7 +122,7 @@ input:focus {
 label {
   color: #999;
   font-size: 18px;
-  font-weight: normal;
+  font-weight: 500;
   position: absolute;
   pointer-events: none;
   left: 5px;
@@ -208,7 +211,7 @@ input:focus ~ .highlight {
   position: relative;
   display: inline-block;
   padding: 12px 24px;
-  margin: 0.3em 0 1em 0;
+  margin: 0.02em 0 1em 0;
   width: 100%;
   vertical-align: middle;
   color: #fff;
@@ -235,5 +238,22 @@ input:focus ~ .highlight {
 
 .buttonBlue:hover {
   background: #357bd8;
+}
+
+.hips-svg {
+  position: relative;
+  z-index: -1;
+  height: 75vh;
+  left: -300px;
+}
+
+form {
+  position: absolute;
+}
+
+@media only screen and (min-width: 800px) {
+  form {
+    margin-left: 40vw;
+  }
 }
 </style>

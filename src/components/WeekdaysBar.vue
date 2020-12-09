@@ -18,12 +18,12 @@ export default {
   props: {
     isEditable: {
       type: Boolean,
-      required: true
+      required: true,
     },
     activeDay: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -34,21 +34,21 @@ export default {
         4: 'TH',
         5: 'FR',
         6: 'SA',
-        7: 'SU'
-      }
-    };
+        7: 'SU',
+      },
+    }
   },
   methods: {
     changeActiveDayIfEditable(day) {
-      if (this.isEditable) this.changeActiveDay(day);
-    }
-  }
-};
+      if (this.isEditable) this.changeActiveDay(day)
+    },
+  },
+}
 </script>
 
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
+  font-family: 'Ubuntu', Sans-serif;
   font-size: 20px;
   font-weight: 900;
 }

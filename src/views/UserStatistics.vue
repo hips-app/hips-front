@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="container">
     <navbar></navbar>
     <div id="header">MY STATISTICS: {{ 'EXERCISE' }}</div>
     <div id="stats-container">
@@ -63,9 +63,14 @@ export default {
 </script>
 <style scoped>
 * {
-  font-family: 'Raleway', Sans-serif;
-  font-weight: 900;
+  font-family: 'Ubuntu', Sans-serif;
+  font-weight: 500;
 }
+
+#container {
+  background-color: #eedd;
+}
+
 #stats-container {
   margin: 10vh 5vw;
   padding: 15px;

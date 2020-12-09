@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <img class="hips-svg" src="./../assets/undraw_nature_fun_n9lv.svg" alt="img" />
     <div class="popup">
       <div class="popup-content">
         <p>Welcome!</p>
@@ -58,9 +59,9 @@
 </template>
 
 <script>
-import { AccountTypesEnum } from '../commons/enums';
-import { AuthController } from '../controllers';
-import { UserService } from '../services';
+import { AccountTypesEnum } from '../commons/enums'
+import { AuthController } from '../controllers'
+import { UserService } from '../services'
 export default {
   name: 'SignUp',
   data() {
@@ -69,8 +70,8 @@ export default {
       lastName: '',
       email: '',
       password: '',
-      error: false
-    };
+      error: false,
+    }
   },
   methods: {
     async signup() {
@@ -80,18 +81,54 @@ export default {
           this.lastName,
           this.email,
           this.password
-        );
-        AuthController.setAccount(accountData);
+        )
+        AuthController.setAccount(accountData)
         if (accountData.accountType == AccountTypesEnum.SPECIALIST) {
-          this.$router.replace(this.$route.query.redirect || '/next');
+          this.$router.replace(this.$route.query.redirect || '/next')
         } else {
-          this.$router.replace(this.$route.query.redirect || '/personal-data');
+          this.$router.replace(this.$route.query.redirect || '/personal-data')
         }
       } catch (error) {
-        alert('Incorrect credentials');
+        alert('Incorrect credentials')
       }
-    }
+    },
   },
-  components: {}
-};
+  components: {},
+}
 </script>
+
+<style scoped>
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.popup {
+  position: absolute;
+}
+
+.hips-svg {
+  position: relative;
+  z-index: -1;
+  height: 75vh;
+  left: -300px;
+  animation: scale-animation 3s infinite;
+}
+
+@media only screen and (max-width: 1050px) {
+  .hips-svg {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .popup {
+    margin-left: 40vw;
+  }
+}
+
+@keyframes scale-animation {
+  50% {
+    transform: scale(1.04);
+  }
+}
+</style>
